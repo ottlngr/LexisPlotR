@@ -11,7 +11,8 @@ lexisplotr is an easy to use function to plot Lexis Diagrams.
 lexisplotr(from_year, to_year, from_age, to_age,
             cohort, year, age, lifelines, polygon, 
             xlab = "Year", ylab = "Age", 
-            year_col = "red", cohort_col = "green", age_col = "blue", ll_col = "blue", poly_col = "grey", 
+            year_col = "red", cohort_col = "green", age_col = "blue", ll_col = "blue",
+            poly_col = "grey", 
             title = "Lexis Diagram")
 }
 %- maybe also 'usage' for other objects documented here.
@@ -38,10 +39,16 @@ integer, set a year to emphasize.
 integer, set an age to emphasize.
 }
   \item{lifelines}{
-list, set lifelines to be drawn. The list contains each lifeline as a vector specifying the date of birth of the respective person, the date of the beginning of the observation and the date of the end of the observation. Dates in format \code{"dd/mm/yyyy"}.
+list, set lifelines to be drawn. The list contains each lifeline as a vector specifying 
+the date of birth of the respective person, the date of the beginning of the 
+observation and the date of the end of the observation. Dates in format 
+\code{"dd/mm/yyyy"}.
 }
   \item{polygon}{
-list, set polygons to be drawn. The list contains each lifeline as a vector specifying the coordinates of the polygon. The vector contains the coordinates on the x-axis (dates) followed by the coordintes of the y-axis (integer). Dates in format \code{"dd/mm/yyyy"}.
+list, set polygons to be drawn. The list contains each lifeline as a vector 
+specifying the coordinates of the polygon. The vector contains the coordinates 
+on the x-axis (dates) followed by the coordintes of the y-axis (integer). 
+Dates in format \code{"dd/mm/yyyy"}.
 }
   \item{xlab}{
 character, set the label for the x-axis. Default: "Year".
@@ -50,13 +57,16 @@ character, set the label for the x-axis. Default: "Year".
 character, set the label for the y-axis. Default: "Age".
 }
   \item{year_col}{
-character, set the colour used to emphasize \code{year}. Default: \code{"red"} with \code{alpha=0.5}.
+character, set the colour used to emphasize \code{year}. Default: \code{"red"} with 
+\code{alpha=0.5}.
 }
   \item{cohort_col}{
-character, set the colour used to emphasize \code{cohort}. Default: \code{"green"} with \code{alpha=0.5}.
+character, set the colour used to emphasize \code{cohort}. Default: \code{"green"} 
+with \code{alpha=0.5}.
 }
   \item{age_col}{
-character, set the colour used to emphasize \code{age}. Default: \code{"blue"} with \code{alpha=0.5}.
+character, set the colour used to emphasize \code{age}. Default: \code{"blue"} with 
+\code{alpha=0.5}.
 }
   \item{ll_col}{
 character, set the colour used for \code{lifelines}. Default: \code{"blue"}.
@@ -71,9 +81,12 @@ character, title of the plot. Default: "Lexis Diagram".
 \details{
 Required date format: \code{"dd/mm/yyyy"}.
 
-The function determines the aspect ratio of the x- and y-axis to enforce isosceles triangles. The aspect ratio will not be effected by defining \code{width} and \code{height} in \code{pdf()} or other graphic devices.
+The function determines the aspect ratio of the x- and y-axis to enforce isosceles 
+triangles. The aspect ratio will not be effected by defining \code{width} and 
+\code{height} in \code{pdf()} or other graphic devices.
 
-Because the returned object is a ggplot2 graph, the overall appearence of the graph can be edited by adding e.g. \code{themes()} to the plot.
+Because the returned object is a ggplot2 graph, the overall appearence of the graph 
+can be edited by adding e.g. \code{themes()} to the plot.
 }
 \value{
 The functions returns a ggplot2-plot.
@@ -85,13 +98,17 @@ The functions returns a ggplot2-plot.
 Philipp Ottolinger
 }
 \note{
-To save the plot, using \code{pdf()} is recommended since it will achieve good results and avoid overlapping in most cases. Unix users may use \code{x11()} to start a new graphical device to preview the plot.
+To save the plot, using \code{pdf()} is recommended since it will achieve good results 
+and avoid overlapping in most cases. Unix users may use \code{x11()} to start a new 
+graphical device to preview the plot.
 }
 \seealso{
 %% ~~objects to See Also as \code{\link{help}}, ~~~
 \code{\link{ggplot2}}
 }
 \examples{
+library(LexisPlotR)
+
 ## Plot a Lexis Diagram grid
 lexisplotr(from_year=1900, to_year=1905, from_age=0, to_age=5)
 
@@ -109,16 +126,14 @@ lexisplotr(from_year=1900, to_year=1905, from_age=0, to_age=5,
 lexisplotr(from_year=1900, to_year=1905, from_age=0, to_age=5,
            polygon=list(c("01/01/1901","31/12/1901","31/12/1901","01/01/1901",1,1,2,1))
            
-## Change the size of the axis texts:
-lexis <- lexisplotr(from_year=1900, to_year=1905, from_age=0, to_age=5)
-lexis <- lexis + theme(axis.text = element_text(size=10))
-lexis
+## Change the size of the axis texts
+#lexis <- lexisplotr(from_year=1900, to_year=1905, from_age=0, to_age=5)
+#lexis <- lexis + theme(axis.text = element_text(size=10))
+#lexis
 
-## Save the plot to pdf:
-pdf("LexisDiagram.pdf")
-lexisplotr(from_year=1900, to_year=1905, from_age=0, to_age=5)
-dev.off()
+## Save the plot to pdf
+#pdf("LexisDiagram.pdf")
+#lexisplotr(from_year=1900, to_year=1905, from_age=0, to_age=5)
+#dev.off()
 }
-% Add one or more standard keywords, see file 'KEYWORDS' in the
-% R documentation directory.
 \keyword{hplot}
