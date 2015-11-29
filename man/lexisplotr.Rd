@@ -82,7 +82,7 @@ The functions returns a ggplot2-plot.
 %% ~put references to the literature/web site here ~
 }
 \author{
-Philipp Ottolinger}
+Philipp Ottolinger
 }
 \note{
 To save the plot, using \code{pdf()} is recommended since it will achieve good results and avoid overlapping in most cases. Unix users may use \code{x11()} to start a new graphical device to preview the plot.
