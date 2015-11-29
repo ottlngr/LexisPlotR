@@ -96,27 +96,12 @@ lexisplotr(from_year=1900, to_year=1905, from_age=0, to_age=5,
                           
 ## Emphasize a certain Lexis Triangle
 lexisplotr(from_year=1900, to_year=1905, from_age=0, to_age=5,
-          polygon=list(c("01/01/1901","31/12/1901","31/12/1901","01/01/1901",1,1,2,1))
-           
-## Change the size of the axis texts
-lexis <- lexisplotr(from_year=1900, to_year=1905, from_age=0, to_age=5)
-lexis <- lexis + theme(axis.text = element_text(size=10))
-lexis
-
-## Save the plot to pdf
-pdf("LexisDiagram.pdf")
-lexisplotr(from_year=1900, to_year=1905, from_age=0, to_age=5)
-dev.off()
-
+          polygon=list(c("01/01/1901","31/12/1901","31/12/1901","01/01/1901",1,1,2,1)))
 }
 \author{
 Philipp Ottolinger
 }
-\references{
-%% ~put references to the literature/web site here ~
-}
 \seealso{
-%% ~~objects to See Also as \code{\link{help}}, ~~~
 \code{\link{ggplot2}}
 }
 \keyword{hplot}

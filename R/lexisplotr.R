@@ -2,14 +2,6 @@
 #' 
 #' lexisplotr is an easy to use function to plot Lexis Diagrams.
 #' 
-#' Required date format: \code{"dd/mm/yyyy"}.
-#' 
-#' The function determines the aspect ratio of the x- and y-axis to enforce
-#' isosceles triangles. The aspect ratio will not be effected by defining
-#' \code{width} and \code{height} in \code{pdf()} or other graphic devices.
-#' 
-#' Because the returned object is a ggplot2 graph, the overall appearence of
-#' the graph can be edited by adding e.g. \code{themes()} to the plot.
 #' 
 #' @param from_year integer, set the year the Lexis Diagram starts with
 #' (January 1st).
@@ -41,15 +33,24 @@
 #' @param poly_col character, set the colour used for \code{polygons}. Default:
 #' \code{"grey"}.
 #' @param title character, title of the plot. Default: "Lexis Diagram".
+#' @details Required date format: \code{"dd/mm/yyyy"}.
+#' 
+#' The function determines the aspect ratio of the x- and y-axis to enforce
+#' isosceles triangles. The aspect ratio will not be effected by defining
+#' \code{width} and \code{height} in \code{pdf()} or other graphic devices.
+#' 
+#' Because the returned object is a ggplot2 graph, the overall appearence of
+#' the graph can be edited by adding e.g. \code{themes()} to the plot.
 #' @return The functions returns a ggplot2-plot.
 #' @note To save the plot, using \code{pdf()} is recommended since it will
 #' achieve good results and avoid overlapping in most cases. Unix users may use
 #' \code{x11()} to start a new graphical device to preview the plot.
 #' @author Philipp Ottolinger
-#' @seealso %% ~~objects to See Also as \code{\link{help}}, ~~~
-#' \code{\link{ggplot2}}
-#' @references %% ~put references to the literature/web site here ~
+#' @seealso \code{\link{ggplot2}}
 #' @keywords hplot
+#' @export lexisplotr
+#' @import ggplot2
+#' @import scales
 #' @examples
 #' library(LexisPlotR)
 #' 
@@ -68,18 +69,7 @@
 #'                           
 #' ## Emphasize a certain Lexis Triangle
 #' lexisplotr(from_year=1900, to_year=1905, from_age=0, to_age=5,
-#'           polygon=list(c("01/01/1901","31/12/1901","31/12/1901","01/01/1901",1,1,2,1))
-#'            
-#' ## Change the size of the axis texts
-#' lexis <- lexisplotr(from_year=1900, to_year=1905, from_age=0, to_age=5)
-#' lexis <- lexis + theme(axis.text = element_text(size=10))
-#' lexis
-#' 
-#' ## Save the plot to pdf
-#' pdf("LexisDiagram.pdf")
-#' lexisplotr(from_year=1900, to_year=1905, from_age=0, to_age=5)
-#' dev.off()
-#' 
+#'           polygon=list(c("01/01/1901","31/12/1901","31/12/1901","01/01/1901",1,1,2,1)))
 lexisplotr <- function(from_year, to_year, from_age, to_age, cohort,year,age,lifelines,polygon,
                        xlab="Year",ylab="Age", year_col="red", cohort_col="green", age_col="blue", ll_col="blue", poly_col="grey", title="Lexis Diagram") {
   
