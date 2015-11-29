@@ -72,6 +72,8 @@ character, title of the plot. Default: "Lexis Diagram".
 Required date format: \code{"dd/mm/yyyy"}.
 
 The function determines the aspect ratio of the x- and y-axis to enforce isosceles triangles. The aspect ratio will not be effected by defining \code{width} and \code{height} in \code{pdf()} or other graphic devices.
+
+Because the returned object is a ggplot2 graph, the overall appearence of the graph can be edited by adding e.g. \code{themes()} to the plot.
 }
 \value{
 The functions returns a ggplot2-plot.
@@ -108,6 +110,11 @@ lexisplotr(from_year=1900, to_year=1905, from_age=0, to_age=5,
 ## Emphasize a certain Lexis Triangle
 lexisplotr(from_year=1900, to_year=1905, from_age=0, to_age=5,
            polygon=list(c("01/01/1901","31/12/1901","31/12/1901","01/01/1901",1,1,2,1))
+           
+## Change the size of the axis texts:
+lexis <- lexisplotr(from_year=1900, to_year=1905, from_age=0, to_age=5)
+lexis <- lexis + theme(axis.text = element_text(size=10))
+lexis
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.
