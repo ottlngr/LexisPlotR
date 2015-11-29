@@ -1,3 +1,5 @@
+# lexisplotr example call
+
 lexisplotr(from_year=1900,
            to_year=1905,
            from_age=0,
