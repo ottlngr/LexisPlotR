@@ -70,6 +70,8 @@ character, title of the plot. Default: "Lexis Diagram".
 }
 \details{
 Required date format: \code{"dd/mm/yyyy"}.
+
+The function determines the aspect ratio of the x- and y-axis to enforce isosceles triangles. The aspect ratio will not be effected by defining \code{width} and \code{height} in \code{pdf()} or other graphic devices.
 }
 \value{
 The functions returns a ggplot2-plot.
