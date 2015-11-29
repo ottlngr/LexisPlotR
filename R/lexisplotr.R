@@ -101,7 +101,7 @@ lexisplotr <- function(from_year, to_year, from_age, to_age, cohort,year,age,lif
     theme(axis.ticks = element_line(colour="black")) +
     theme(axis.text = element_text(size=14, colour="black")) +
     theme(axis.title = element_text(size=18, face="bold")) + 
-    theme(plot.title = element_text(size=25, face="bold")) +
+    theme(plot.title = element_text(size=25, face="bold", vjust=1.5)) +
     theme(panel.grid.major.y = element_blank()) +
     theme(panel.background = element_rect(fill='white', colour='black')) +
     theme(panel.grid.major.x = element_blank())
