@@ -1,7 +1,7 @@
 # LexisPlotR
 
 
-LexisPlotR is a tool to easily plot Lexis Diagrams. It is mainly based on Hadley Wickham's [ggplot2](https://github.com/hadley/ggplot2) and wraps necessary steps like drawing the grid, emphasizing certain areas or inserting lifelines in a single function.
+LexisPlotR is a tool to easily plot Lexis Diagrams within R. It is mainly based on Hadley Wickham's [ggplot2](https://github.com/hadley/ggplot2) and wraps necessary steps like drawing the grid, emphasizing certain areas or inserting lifelines in a single function.
 
 ![LexisPlotR_example](https://github.com/ottlngr/LexisPlotR/blob/master/LexisPlotR_example.png)
 
