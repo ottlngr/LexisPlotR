@@ -85,13 +85,11 @@ The functions returns a ggplot2-plot.
 Philipp Ottolinger}
 }
 \note{
-%%  ~~further notes~~
+To save the plot, using \code{pdf()} is recommended since it will achieve good results and avoid overlapping in most cases. Unix users may use \code{x11()} to start a new graphical device to preview the plot.
 }
-
-%% ~Make other sections like Warning with \section{Warning }{....} ~
-
 \seealso{
 %% ~~objects to See Also as \code{\link{help}}, ~~~
+\code{\link{ggplot2}}
 }
 \examples{
 ## Plot a Lexis Diagram grid
@@ -115,6 +113,11 @@ lexisplotr(from_year=1900, to_year=1905, from_age=0, to_age=5,
 lexis <- lexisplotr(from_year=1900, to_year=1905, from_age=0, to_age=5)
 lexis <- lexis + theme(axis.text = element_text(size=10))
 lexis
+
+## Save the plot to pdf:
+pdf("LexisDiagram.pdf")
+lexisplotr(from_year=1900, to_year=1905, from_age=0, to_age=5)
+dev.off()
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.
