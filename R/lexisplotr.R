@@ -70,6 +70,16 @@
 #' ## Emphasize a certain Lexis Triangle
 #' lexisplotr(from_year=1900, to_year=1905, from_age=0, to_age=5,
 #'           polygon=list(c("01/01/1901","31/12/1901","31/12/1901","01/01/1901",1,1,2,1)))
+#'           
+#' ## Change the size of the axis text
+#' lexis <- lexisplotr(from_year=1900, to_year=1905, from_age=0, to_age=5)
+#' lexis <- lexis + theme(axis.text = element_text(size=10))
+#' lexis
+#' 
+#' ## Save the plot to pdf
+#' pdf("Lexis.pdf")
+#' lexisplotr(from_year=1900, to_year=1905, from_age=0, to_age=5)
+#' dev.off()
 lexisplotr <- function(from_year, to_year, from_age, to_age, cohort,year,age,lifelines,polygon,
                        xlab="Year",ylab="Age", year_col="red", cohort_col="green", age_col="blue", ll_col="blue", poly_col="grey", title="Lexis Diagram") {
   
