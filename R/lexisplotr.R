@@ -1,3 +1,85 @@
+#' Plot a Lexis Diagram.
+#' 
+#' lexisplotr is an easy to use function to plot Lexis Diagrams.
+#' 
+#' Required date format: \code{"dd/mm/yyyy"}.
+#' 
+#' The function determines the aspect ratio of the x- and y-axis to enforce
+#' isosceles triangles. The aspect ratio will not be effected by defining
+#' \code{width} and \code{height} in \code{pdf()} or other graphic devices.
+#' 
+#' Because the returned object is a ggplot2 graph, the overall appearence of
+#' the graph can be edited by adding e.g. \code{themes()} to the plot.
+#' 
+#' @param from_year integer, set the year the Lexis Diagram starts with
+#' (January 1st).
+#' @param to_year integer, set the year the Lexis Diagram ends with (January
+#' 1st).
+#' @param from_age integer, set the age the Lexis Diagram starts with.
+#' @param to_age integer, set the age the Lexis Diagram ends with.
+#' @param cohort integer, set a cohort to emphasize.
+#' @param year integer, set a year to emphasize.
+#' @param age integer, set an age to emphasize.
+#' @param lifelines list, set lifelines to be drawn. The list contains each
+#' lifeline as a vector specifying the date of birth of the respective person,
+#' the date of the beginning of the observation and the date of the end of the
+#' observation. Dates in format \code{"dd/mm/yyyy"}.
+#' @param polygon list, set polygons to be drawn. The list contains each
+#' lifeline as a vector specifying the coordinates of the polygon. The vector
+#' contains the coordinates on the x-axis (dates) followed by the coordintes of
+#' the y-axis (integer).  Dates in format \code{"dd/mm/yyyy"}.
+#' @param xlab character, set the label for the x-axis. Default: "Year".
+#' @param ylab character, set the label for the y-axis. Default: "Age".
+#' @param year_col character, set the colour used to emphasize \code{year}.
+#' Default: \code{"red"} with \code{alpha=0.5}.
+#' @param cohort_col character, set the colour used to emphasize \code{cohort}.
+#' Default: \code{"green"} with \code{alpha=0.5}.
+#' @param age_col character, set the colour used to emphasize \code{age}.
+#' Default: \code{"blue"} with \code{alpha=0.5}.
+#' @param ll_col character, set the colour used for \code{lifelines}. Default:
+#' \code{"blue"}.
+#' @param poly_col character, set the colour used for \code{polygons}. Default:
+#' \code{"grey"}.
+#' @param title character, title of the plot. Default: "Lexis Diagram".
+#' @return The functions returns a ggplot2-plot.
+#' @note To save the plot, using \code{pdf()} is recommended since it will
+#' achieve good results and avoid overlapping in most cases. Unix users may use
+#' \code{x11()} to start a new graphical device to preview the plot.
+#' @author Philipp Ottolinger
+#' @seealso %% ~~objects to See Also as \code{\link{help}}, ~~~
+#' \code{\link{ggplot2}}
+#' @references %% ~put references to the literature/web site here ~
+#' @keywords hplot
+#' @examples
+#' library(LexisPlotR)
+#' 
+#' ## Plot a Lexis Diagram grid
+#' lexisplotr(from_year=1900, to_year=1905, from_age=0, to_age=5)
+#' 
+#' ## Emphasize a certain cohort, year and age
+#' lexisplotr(from_year=1900, to_year=1905, from_age=0, to_age=5,
+#'            cohort=1901, year=1903, age=2)
+#'            
+#' ## Plot lifelines
+#' lexisplotr(from_year=1900, to_year=1905, from_age=0, to_age=5,
+#'            lifelines=list(c("03/03/1900","01/07/1900","27/06/1901"),
+#'                           c("01/06/1900","01/01/1901","31/12/1903"),
+#'                           c("23/09/1902","23/09/1902","31/12/1904")))
+#'                           
+#' ## Emphasize a certain Lexis Triangle
+#' lexisplotr(from_year=1900, to_year=1905, from_age=0, to_age=5,
+#'           polygon=list(c("01/01/1901","31/12/1901","31/12/1901","01/01/1901",1,1,2,1))
+#'            
+#' ## Change the size of the axis texts
+#' lexis <- lexisplotr(from_year=1900, to_year=1905, from_age=0, to_age=5)
+#' lexis <- lexis + theme(axis.text = element_text(size=10))
+#' lexis
+#' 
+#' ## Save the plot to pdf
+#' pdf("LexisDiagram.pdf")
+#' lexisplotr(from_year=1900, to_year=1905, from_age=0, to_age=5)
+#' dev.off()
+#' 
 lexisplotr <- function(from_year, to_year, from_age, to_age, cohort,year,age,lifelines,polygon,
                        xlab="Year",ylab="Age", year_col="red", cohort_col="green", age_col="blue", ll_col="blue", poly_col="grey", title="Lexis Diagram") {
   
@@ -104,20 +186,4 @@ lexisplotr <- function(from_year, to_year, from_age, to_age, cohort,year,age,lif
   ##### return #####
   return(lex + theme(aspect.ratio=(to_age-from_age)/(to_year-from_year)))
 }
-
-##### full example #####
-# lexisplotr(from_year=1900,
-#            to_year=1905,
-#            from_age=0,
-#            to_age=5,
-#            cohort=1901,
-#            year=1903,
-#            age=2,
-#            lifelines=list(c("01/06/1900","01/01/1901","31/12/1903"),
-#                           c("23/09/1902","23/09/1902","31/12/1904")),
-#            polygon=list(c("01/01/1901","31/12/1901","31/12/1901","01/01/1901",
-#                           1,1,2,1),
-#                         c("01/01/1901","01/01/1901","31/12/1901","31/12/1901",
-#                           4,3,4,4))
-# )
 
