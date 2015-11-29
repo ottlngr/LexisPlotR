@@ -102,20 +102,5 @@ lexisplotr <- function(from_year, to_year, from_age, to_age, cohort,year,age,lif
   }
   
   ##### return #####
-  return(lex)
+  return(lex + theme(aspect.ratio=(to_age-from_age)/(to_year-from_year)))
 }
-
-lexisplotr(from_year=1900,
-           to_year=1905,
-           from_age=0,
-           to_age=5,
-           cohort=1901,
-           year=1903,
-           age=2,
-           lifelines=list(c("01/06/1900","01/01/1901","31/12/1903"),
-                          c("23/09/1902","23/09/1902","31/12/1904")),
-           polygon=list(c("01/01/1901","31/12/1901","31/12/1901","01/01/1901",
-                          1,1,2,1),
-                        c("01/01/1901","01/01/1901","31/12/1901","31/12/1901",
-                          4,3,4,4))
-)
