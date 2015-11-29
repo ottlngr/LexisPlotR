@@ -104,3 +104,4 @@ lexisplotr <- function(from_year, to_year, from_age, to_age, cohort,year,age,lif
   ##### return #####
   return(lex + theme(aspect.ratio=(to_age-from_age)/(to_year-from_year)))
 }
+
