@@ -159,6 +159,7 @@ lexisplotr <- function(from_year, to_year, from_age, to_age, cohort,year,age,lif
       ll_df <- data.frame(ll_df,
                           start_age= as.numeric(difftime(ll_df$start,ll_df$born)/364.25),
                           end_age= as.numeric(difftime(ll_df$end,ll_df$born)/364.25))
+      #ifelse(ll_df$end_age > to_age, to_age, ll_df$end_age)
       lex <- lex + geom_segment(data=ll_df, aes(x=start,xend=end,y=start_age,yend=end_age),
                                 col=ll_col, size=1)
     }
