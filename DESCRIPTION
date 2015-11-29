@@ -4,7 +4,7 @@ Title: Plot Lexis Diagrams for Demographic purposes
 Version: 0.1
 Date: 2015-11-27
 Authors@R: c(person("Philipp", "Ottolinger", , "philipp@ottolinger.de", role=c("aut","cre")),
-						 person("Marieke", "Smilde-Becker", role="ctb"))
+						 person("Marieke", "Smilde-Becker", role="aut"))
 Maintainer: Philipp Ottolinger <philipp@ottolinger.de>
 Description: Functions to plot Lexis Diagrams for Demographic purposes
 Depends:
