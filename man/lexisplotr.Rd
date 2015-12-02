@@ -10,11 +10,9 @@ lexisplotr(from_year, to_year, from_age, to_age, cohort, year, age, lifelines,
   poly_col = "grey", title = "Lexis Diagram")
 }
 \arguments{
-\item{from_year}{integer, set the year the Lexis Diagram starts with
-(January 1st).}
+\item{from_year}{integer, set the year the Lexis Diagram starts with.}
 
-\item{to_year}{integer, set the year the Lexis Diagram ends with (January
-1st).}
+\item{to_year}{integer, set the year the Lexis Diagram ends with.}
 
 \item{from_age}{integer, set the age the Lexis Diagram starts with.}
 
