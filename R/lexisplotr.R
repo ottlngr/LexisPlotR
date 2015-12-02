@@ -3,10 +3,8 @@
 #' lexisplotr is an easy to use function to plot Lexis Diagrams.
 #' 
 #' 
-#' @param from_year integer, set the year the Lexis Diagram starts with
-#' (January 1st).
-#' @param to_year integer, set the year the Lexis Diagram ends with (January
-#' 1st).
+#' @param from_year integer, set the year the Lexis Diagram starts with.
+#' @param to_year integer, set the year the Lexis Diagram ends with.
 #' @param from_age integer, set the age the Lexis Diagram starts with.
 #' @param to_age integer, set the age the Lexis Diagram ends with.
 #' @param cohort integer, set a cohort to emphasize.
@@ -83,17 +81,25 @@
 lexisplotr <- function(from_year, to_year, from_age, to_age, cohort,year,age,lifelines,polygon,
                        xlab="Year",ylab="Age", year_col="red", cohort_col="green", age_col="blue", ll_col="blue", poly_col="grey", title="Lexis Diagram") {
   
+  start_age=end_age=x1=x2=x3=x4=y1=y2=y3=y4=NULL
   
+  if ("tmp.lex.data" %in% search()) {
+    detach(tmp.lex.data)
+  }
   ##### create data #####
-  aseq <<- from_age:to_age
+  aseq <- from_age:to_age
   adist <- to_age - from_age
-  yyseq <<- (from_year - (adist)):(to_year+(adist))
-  yy_start.d <<- as.Date(paste("01/01/",yyseq[1],sep=""),"%d/%m/%Y") 
-  yy_end.d <<- as.Date(paste("01/01/",yyseq[length(yyseq)],sep=""),"%d/%m/%Y")
-  yyseq.d <<- seq(yy_start.d, yy_end.d,"year")
-  from_year.d <<- as.Date(paste("01/01/",from_year,sep=""),"%d/%m/%Y")
-  to_year.d <<- as.Date(paste("01/01/",to_year,sep=""),"%d/%m/%Y")
-  yseq.d <<- seq(from_year.d, to_year.d, "year")
+  yyseq <- (from_year - (adist)):(to_year+(adist))
+  yy_start.d <- as.Date(paste("01/01/",yyseq[1],sep=""),"%d/%m/%Y")
+  yy_end.d <- as.Date(paste("01/01/",yyseq[length(yyseq)],sep=""),"%d/%m/%Y")
+  yyseq.d <- seq(yy_start.d, yy_end.d,"year")
+  from_year.d <- as.Date(paste("01/01/",from_year,sep=""),"%d/%m/%Y")
+  to_year.d <- as.Date(paste("01/01/",to_year,sep=""),"%d/%m/%Y")
+  yseq.d <- seq(from_year.d, to_year.d, "year")
+  
+  tmp.lex.data <- list(aseq=aseq,adist=adist,yyseq=yyseq,yy_start.d=yy_start.d,yy_end.d=yy_end.d,yyseq.d=yyseq.d,from_year.d=from_year.d,to_year.d=to_year.d,yseq.d=yseq.d)
+  attach(tmp.lex.data)
+  #on.exit(detach(tmp.lex.data))
   
   ##### basic plot settings #####
   lex <- ggplot() +
@@ -107,13 +113,13 @@ lexisplotr <- function(from_year, to_year, from_age, to_age, cohort,year,age,lif
     theme(panel.grid.major.x = element_blank())
   
   ##### plot grid #####
-  lex <- lex
-  lex <- lex + scale_y_continuous(name=ylab,limits=c(from_age, to_age), breaks=from_age:to_age,expand = c(0,0)) 
-  lex <- lex + scale_x_date(name=xlab,limits=c(from_year.d,to_year.d),breaks = date_breaks("year"),labels = date_format("%Y"),expand = c(0,0)) 
-  lex <- lex + geom_segment(aes(x=seq(yyseq.d[1],to_year.d,"year"), xend=seq(from_year.d,yyseq.d[length(yyseq.d)],"year"),y=aseq[1],yend=aseq[length(aseq)])) 
-  lex <- lex + geom_segment(aes(x=seq(from_year.d, to_year.d,"year"),xend=seq(from_year.d, to_year.d,"year"), y=aseq[length(aseq)],yend=aseq[1])) 
-  lex <- lex + geom_segment(aes(x=from_year.d, xend=to_year.d, y=aseq[1]:aseq[length(aseq)],yend=aseq[1]:aseq[length(aseq)]))
-  lex <- lex + ggtitle(title)
+  lex <- lex + 
+    scale_y_continuous(name=ylab,limits=c(from_age, to_age), breaks=from_age:to_age,expand = c(0,0)) +
+    scale_x_date(name=xlab,limits=c(from_year.d,to_year.d),breaks = date_breaks("year"),labels = date_format("%Y"),expand = c(0,0)) + 
+    geom_segment(aes(x=seq(yyseq.d[1],to_year.d,"year"), xend=seq(from_year.d,yyseq.d[length(yyseq.d)],"year"),y=aseq[1],yend=aseq[length(aseq)])) + 
+    geom_segment(aes(x=seq(from_year.d, to_year.d,"year"),xend=seq(from_year.d, to_year.d,"year"), y=aseq[length(aseq)],yend=aseq[1])) + 
+    geom_segment(aes(x=from_year.d, xend=to_year.d, y=aseq[1]:aseq[length(aseq)],yend=aseq[1]:aseq[length(aseq)])) + 
+    ggtitle(title)
   
   ##### plot year #####
   if (!missing(year)) {
@@ -133,7 +139,6 @@ lexisplotr <- function(from_year, to_year, from_age, to_age, cohort,year,age,lif
     lex <- lex + geom_polygon(data=coord,aes(x=x_coord,
                                              y=y_coord),
                               fill=cohort_col,
-                              
                               alpha=0.5)  
   }
   
