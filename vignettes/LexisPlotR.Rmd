@@ -1,0 +1,32 @@
+---
+title: "LexisPlotR"
+output: html_document
+---
+
+LexisPlotR provides functins to plot Lexis Diagrams for Demographic purposes. 
+
+
+## Load LexisPlotR
+```{r}
+library(LexisPlotR)
+``` 
+
+## Plotting a Lexis Grid
+```{r}
+lexisplotr(from_year=1900, to_year=1905, from_age=0, to_age=5)
+``` 
+
+## Emphasize the cohort 1901
+```{r}
+lexisplotr(from_year=1900, to_year=1905, from_age=0, to_age=5, cohort=1901)
+``` 
+
+## Emphasize the year 1902
+```{r}
+lexisplotr(from_year=1900, to_year=1905, from_age=0, to_age=5, year=1902)
+``` 
+
+## Emphasize the age 3
+```{r}
+lexisplotr(from_year=1900, to_year=1905, from_age=0, to_age=5, age=3)
+``` 
