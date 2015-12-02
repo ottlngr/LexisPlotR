@@ -1,10 +1,11 @@
 Package: LexisPlotR
 Type: Package
-Title: Plot Lexis Diagrams for Demographic purposes
+Title: Plot Lexis Diagrams for Demographic Purposes
 Version: 0.1
 Date: 2015-11-27
 Authors@R: c(person("Philipp", "Ottolinger", , "philipp@ottolinger.de", role=c("aut","cre")),
-						 person("Marieke", "Smilde-Becker", role="aut"))
+						 person("Marieke", "Smilde-Becker", role="ctb"))
+Author: Philipp Ottolinger [aut, cre], Marieke Smilde-Becker [ctb]
 Maintainer: Philipp Ottolinger <philipp@ottolinger.de>
 Description: Functions to plot Lexis Diagrams for Demographic purposes.
 Depends:
