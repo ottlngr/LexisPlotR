@@ -81,7 +81,7 @@
 lexisplotr <- function(from_year, to_year, from_age, to_age, cohort,year,age,lifelines,polygon,
                        xlab="Year",ylab="Age", year_col="red", cohort_col="green", age_col="blue", ll_col="blue", poly_col="grey", title="Lexis Diagram") {
   
-  aseq=adist=yyseq=yy_start.d=yy_end.d=yyseq.d=from_year.d=to_year.d=yseq.d=start_age=end_age=x1=x2=x3=x4=y1=y2=y3=y4=NULL
+  start=end=aseq=adist=yyseq=yy_start.d=yy_end.d=yyseq.d=from_year.d=to_year.d=yseq.d=start_age=end_age=x1=x2=x3=x4=y1=y2=y3=y4=NULL
   
   if ("tmp.lex.data" %in% search()) {
     detach(tmp.lex.data)
