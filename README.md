@@ -14,7 +14,7 @@ You can install the latest version of **`LexisPlotR`** by using `install_github(
     install_github("ottlngr/LexisPlotR")
     library(LexisPlotR)
     
-LexisPlotR v0.1 was submitted to CRAN at Dez 2nd 2015. 
+A submission to CRAN is planned.
     
 ## News
     
