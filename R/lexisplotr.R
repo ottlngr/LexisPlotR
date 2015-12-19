@@ -79,13 +79,9 @@
 #' lexisplotr(from_year=1900, to_year=1905, from_age=0, to_age=5)
 #' dev.off()
 lexisplotr <- function(from_year, to_year, from_age, to_age, cohort,year,age,lifelines,polygon,
-                       xlab="Year",ylab="Age", year_col="red", cohort_col="green", age_col="blue", ll_col="blue", poly_col="grey", title="Lexis Diagram") {
+                       xlab="Year",ylab="Age", year_col="red", cohort_col="green", age_col="blue", ll_col="blue", poly_col="grey", title="Lexis Diagram",
+                       envir = environment()) {
   
-  start=born=end=aseq=adist=yyseq=yy_start.d=yy_end.d=yyseq.d=from_year.d=to_year.d=yseq.d=start_age=end_age=x1=x2=x3=x4=y1=y2=y3=y4=NULL
-  
-  if ("tmp.lex.data" %in% search()) {
-    detach(tmp.lex.data)
-  }
   ##### create data #####
   aseq <- from_age:to_age
   adist <- to_age - from_age
@@ -96,18 +92,6 @@ lexisplotr <- function(from_year, to_year, from_age, to_age, cohort,year,age,lif
   from_year.d <- as.Date(paste("01/01/",from_year,sep=""),"%d/%m/%Y")
   to_year.d <- as.Date(paste("01/01/",to_year,sep=""),"%d/%m/%Y")
   yseq.d <- seq(from_year.d, to_year.d, "year")
-  
-  assign("aseq", aseq, envir=.GlobalEnv)
-  assign("adist", adist, envir=.GlobalEnv)
-  assign("yyseq", yyseq, envir=.GlobalEnv)
-  assign("yy_start.d", yy_start.d, envir=.GlobalEnv)
-  assign("yy_end.d", yy_end.d, envir=.GlobalEnv)
-  assign("yyseq.d", yyseq.d, envir=.GlobalEnv)
-  assign("from_year.d", from_year.d, envir=.GlobalEnv)
-  assign("to_year.d", to_year.d, envir=.GlobalEnv)
-  assign("yseq.d", yseq.d, envir=.GlobalEnv)
-  
-  #on.exit(detach(tmp.lex.data))
   
   ##### basic plot settings #####
   lex <- ggplot() +
@@ -200,6 +184,7 @@ lexisplotr <- function(from_year, to_year, from_age, to_age, cohort,year,age,lif
   ##### set aspect ratio #####
   lex <- lex + theme(aspect.ratio=(to_age-from_age)/(to_year-from_year))
   ##### return #####
+  lex$plot_env <- envir
   return(lex)
 }
 
