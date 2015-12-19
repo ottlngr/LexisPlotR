@@ -97,12 +97,20 @@ lexisplotr <- function(from_year, to_year, from_age, to_age, cohort,year,age,lif
   to_year.d <- as.Date(paste("01/01/",to_year,sep=""),"%d/%m/%Y")
   yseq.d <- seq(from_year.d, to_year.d, "year")
   
-  tmp.lex.data <- list(aseq=aseq,adist=adist,yyseq=yyseq,yy_start.d=yy_start.d,yy_end.d=yy_end.d,yyseq.d=yyseq.d,from_year.d=from_year.d,to_year.d=to_year.d,yseq.d=yseq.d)
-  attach(tmp.lex.data)
+  assign("aseq", aseq, envir=.GlobalEnv)
+  assign("adist", adist, envir=.GlobalEnv)
+  assign("yyseq", yyseq, envir=.GlobalEnv)
+  assign("yy_start.d", yy_start.d, envir=.GlobalEnv)
+  assign("yy_end.d", yy_end.d, envir=.GlobalEnv)
+  assign("yyseq.d", yyseq.d, envir=.GlobalEnv)
+  assign("from_year.d", from_year.d, envir=.GlobalEnv)
+  assign("to_year.d", to_year.d, envir=.GlobalEnv)
+  assign("yseq.d", yseq.d, envir=.GlobalEnv)
+  
   #on.exit(detach(tmp.lex.data))
   
   ##### basic plot settings #####
-  lex <- ggplot(environment=new.env()) +
+  lex <- ggplot() +
     theme(axis.line = element_line(colour="black", size=0.3)) +
     theme(axis.ticks = element_line(colour="black")) +
     theme(axis.text = element_text(size=14, colour="black")) +
@@ -188,7 +196,7 @@ lexisplotr <- function(from_year, to_year, from_age, to_age, cohort,year,age,lif
     }
     
   }
-
+  
   ##### set aspect ratio #####
   lex <- lex + theme(aspect.ratio=(to_age-from_age)/(to_year-from_year))
   ##### return #####
