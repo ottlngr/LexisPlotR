@@ -11,27 +11,16 @@
 #' @param year integer, set a year to emphasize.
 #' @param age integer, set an age to emphasize.
 #' @param lifelines list, set lifelines to be drawn. The list contains each
-#' lifeline as a vector specifying the date of birth of the respective person,
-#' the date of the beginning of the observation and the date of the end of the
-#' observation. Dates in format \code{"dd/mm/yyyy"}.
-#' @param polygon list, set polygons to be drawn. The list contains each
-#' lifeline as a vector specifying the coordinates of the polygon. The vector
-#' contains the coordinates on the x-axis (dates) followed by the coordintes of
-#' the y-axis (integer).  Dates in format \code{"dd/mm/yyyy"}.
-#' @param xlab character, set the label for the x-axis. Default: "Year".
-#' @param ylab character, set the label for the y-axis. Default: "Age".
-#' @param year_col character, set the colour used to emphasize \code{year}.
-#' Default: \code{"red"} with \code{alpha=0.5}.
-#' @param cohort_col character, set the colour used to emphasize \code{cohort}.
-#' Default: \code{"green"} with \code{alpha=0.5}.
-#' @param age_col character, set the colour used to emphasize \code{age}.
-#' Default: \code{"blue"} with \code{alpha=0.5}.
-#' @param ll_col character, set the colour used for \code{lifelines}. Default:
-#' \code{"blue"}.
-#' @param poly_col character, set the colour used for \code{polygons}. Default:
-#' \code{"grey"}.
+#' lifeline as a vector specifying the date of the beginning of the observation 
+#' and the date of the end of the observation. Dates in format \code{"dd.mm.yyyy"}.
+#' @param triangle list, set triangles to be drawn. The list contains each lifeline
+#' as a vector of a year-age-combination and a keyword to determine whether the upper \code{"u"}
+#' or lower \code{"l"} triangle shall be drawn.
+#' @param colors vector, set the colors used for \code{cohort, year, age, lifelines, triangle}.
+#' Default: \code{colors=c("yellow", "green", "blue", "red", "purple")}
 #' @param title character, title of the plot. Default: "Lexis Diagram".
-#' @details Required date format: \code{"dd/mm/yyyy"}.
+#' @param envir, Default: \code{environment()}. Should not be changed. Needed as a workarround.
+#' @details Required date format: \code{"dd.mm.yyyy"}.
 #' 
 #' The function determines the aspect ratio of the x- and y-axis to enforce
 #' isosceles triangles. The aspect ratio will not be effected by defining
@@ -44,11 +33,10 @@
 #' achieve good results and avoid overlapping in most cases. Unix users may use
 #' \code{x11()} to start a new graphical device to preview the plot.
 #' @author Philipp Ottolinger
-#' @seealso \code{\link{ggplot2}}
+#' @seealso \code{\link{ggplot}}
 #' @keywords hplot
 #' @export lexisplotr
 #' @import ggplot2
-#' @import scales
 #' @examples
 #' library(LexisPlotR)
 #' 
@@ -61,13 +49,12 @@
 #'            
 #' ## Plot lifelines
 #' lexisplotr(from_year=1900, to_year=1905, from_age=0, to_age=5,
-#'            lifelines=list(c("03/03/1900","01/07/1900","27/06/1901"),
-#'                           c("01/06/1900","01/01/1901","31/12/1903"),
-#'                           c("23/09/1902","23/09/1902","31/12/1904")))
+#'            lifelines=list(c("30.06.1900", "23.09.1903"),
+#'                           c("01.01.1901", "31.12.1904")))
 #'                           
-#' ## Emphasize a certain Lexis Triangle
+#' ## Emphasize a certain triangles
 #' lexisplotr(from_year=1900, to_year=1905, from_age=0, to_age=5,
-#'           polygon=list(c("01/01/1901","31/12/1901","31/12/1901","01/01/1901",1,1,2,1)))
+#'            triangle=list(c(1901,2,"u"),c(1902,4,"l")))
 #'           
 #' ## Change the size of the axis text
 #' lexis <- lexisplotr(from_year=1900, to_year=1905, from_age=0, to_age=5)
@@ -78,113 +65,174 @@
 #' pdf("Lexis.pdf")
 #' lexisplotr(from_year=1900, to_year=1905, from_age=0, to_age=5)
 #' dev.off()
-lexisplotr <- function(from_year, to_year, from_age, to_age, cohort,year,age,lifelines,polygon,
-                       xlab="Year",ylab="Age", year_col="red", cohort_col="green", age_col="blue", ll_col="blue", poly_col="grey", title="Lexis Diagram",
-                       envir = environment()) {
+lexisplotr <- function(from_year, 
+                       to_year, 
+                       from_age, 
+                       to_age, 
+                       age, 
+                       cohort, 
+                       year, 
+                       triangle, 
+                       lifelines,
+                       colors=c("yellow", "green", "blue", "red", "purple"),
+                       title="Lexis Diagram",
+                       envir=environment()){
   
-  ##### create data #####
-  aseq <- from_age:to_age
-  adist <- to_age - from_age
-  yyseq <- (from_year - (adist)):(to_year+(adist))
-  yy_start.d <- as.Date(paste("01/01/",yyseq[1],sep=""),"%d/%m/%Y")
-  yy_end.d <- as.Date(paste("01/01/",yyseq[length(yyseq)],sep=""),"%d/%m/%Y")
-  yyseq.d <- seq(yy_start.d, yy_end.d,"year")
-  from_year.d <- as.Date(paste("01/01/",from_year,sep=""),"%d/%m/%Y")
-  to_year.d <- as.Date(paste("01/01/",to_year,sep=""),"%d/%m/%Y")
-  yseq.d <- seq(from_year.d, to_year.d, "year")
+  #### Create data ####
+  from_year.d <- as.Date(paste("01.01.", from_year, sep=""), "%d.%m.%Y")
+  to_year.d <- as.Date(paste("01.01.", to_year, sep=""),"%d.%m.%Y")
+  years <- from_year:to_year
+  years.d <- seq(from_year.d, to_year.d, "year")
+  ages <- from_age:to_age
   
-  ##### basic plot settings #####
+  
+  #### Plot grid ####
   lex <- ggplot() +
-    theme(axis.line = element_line(colour="black", size=0.3)) +
-    theme(axis.ticks = element_line(colour="black")) +
-    theme(axis.text = element_text(size=14, colour="black")) +
-    theme(axis.title = element_text(size=18, face="bold")) + 
-    theme(plot.title = element_text(size=25, face="bold", vjust=1.5)) +
-    theme(panel.grid.major.y = element_blank()) +
-    theme(panel.background = element_rect(fill='white', colour='black')) +
-    theme(panel.grid.major.x = element_blank())
+    geom_abline(
+      aes(
+        intercept=-as.numeric(from_year.d)/364.25+seq(-to_age+1,to_age-1,1), 
+        slope=1/364.25),
+      lwd=0.4) + 
+    geom_hline(
+      yintercept=seq(from_age,to_age,1),
+      lwd=0.4) +
+    geom_vline(
+      xintercept = as.numeric(years.d),
+      lwd=0.4) +
+    scale_x_date(
+      limits=c(from_year.d, to_year.d), 
+      date_breaks="1 year", 
+      expand=c(0,0),
+      date_labels="%Y",
+      name="Year") +
+    scale_y_continuous(
+      limits=c(from_age, to_age), 
+      expand=c(0,0),
+      breaks=ages,
+      name="Age")
   
-  ##### plot grid #####
-  lex <- lex + 
-    scale_y_continuous(name=ylab,limits=c(from_age, to_age), breaks=from_age:to_age,expand = c(0,0)) +
-    scale_x_date(name=xlab,limits=c(from_year.d,to_year.d),breaks = date_breaks("year"),labels = date_format("%Y"),expand = c(0,0)) + 
-    geom_segment(aes(x=seq(yyseq.d[1],to_year.d,"year"), xend=seq(from_year.d,yyseq.d[length(yyseq.d)],"year"),y=aseq[1],yend=aseq[length(aseq)])) + 
-    geom_segment(aes(x=seq(from_year.d, to_year.d,"year"),xend=seq(from_year.d, to_year.d,"year"), y=aseq[length(aseq)],yend=aseq[1])) + 
-    geom_segment(aes(x=from_year.d, xend=to_year.d, y=aseq[1]:aseq[length(aseq)],yend=aseq[1]:aseq[length(aseq)])) + 
-    ggtitle(title)
+  #### Appearance ####
+  lex <- lex +
+    theme_bw() +
+    theme(
+      aspect.ratio=(to_age-from_age)/(as.numeric(to_year.d)/364.25-as.numeric(from_year.d)/364.25),
+      axis.line = element_line(colour="black", size=0.3),
+      axis.ticks = element_line(colour="black"),
+      axis.text.x = element_text(size=14, colour="black"),
+      axis.text.y = element_text(size=14, colour="black"),
+      axis.title = element_text(size=18, face="bold"),
+      plot.title = element_text(size=25, face="bold", vjust=1.5),
+      panel.grid.major.y = element_blank(),
+      panel.background = element_rect(fill='white', colour='black'),
+      panel.grid.major.x = element_blank()) +
+    ggtitle("Lexis Diagram")
   
-  ##### plot year #####
-  if (!missing(year)) {
-    x_coord <- c(year, year+1, year+1, year)
-    y_coord <- c(aseq[1], aseq[1], aseq[length(aseq)],aseq[length(aseq)])
-    coord <- data.frame(x_coord=as.Date(paste("01/01/",x_coord,sep=""), "%d/%m/%Y"), y_coord)
-    lex <- lex + geom_polygon(data=coord,aes(x=x_coord,
-                                             y=y_coord),
-                              fill=year_col,
-                              alpha=0.5)
-  }
-  ##### plot cohort #####
-  if (!missing(cohort)) {
-    x_coord  <- c(cohort,cohort+1,cohort+1+adist,cohort+adist)
-    y_coord <- c(aseq[1], aseq[1], aseq[length(aseq)],aseq[length(aseq)])
-    coord <- data.frame(x_coord=as.Date(paste("01/01/",x_coord,sep=""), "%d/%m/%Y"), y_coord)
-    lex <- lex + geom_polygon(data=coord,aes(x=x_coord,
-                                             y=y_coord),
-                              fill=cohort_col,
-                              alpha=0.5)  
-  }
-  
-  #####plot age #####
+  #### Plot age ####
   if (!missing(age)) {
-    x_coord <- c(from_year, to_year, to_year, from_year)
-    y_coord <- c(age, age, age+1, age+1)
-    coord <- data.frame(x_coord=as.Date(paste("01/01/",x_coord,sep=""), "%d/%m/%Y"), y_coord)
-    lex <- lex + geom_polygon(data=coord,aes(x=x_coord,
-                                             y=y_coord),
-                              fill=age_col,
-                              alpha=0.5)  
-    
-  } 
-  
-  ##### plot lifelines #####
+    lex <- lex + 
+      geom_polygon(
+        aes(x=c(from_year.d, to_year.d, to_year.d, from_year.d), 
+            y=c(age,age, age+1, age+1)), 
+        fill=colors[1], 
+        col=colors[1], 
+        alpha=0.5)
+  }
+  #### plot cohort ####
+  if (!missing(cohort)) {
+    lex <- lex + 
+      geom_polygon(
+        aes(x=c(as.Date(paste("01.01.", cohort, sep=""), "%d.%m.%Y"),
+                as.Date(paste("01.01.", cohort+1, sep=""), "%d.%m.%Y"),
+                to_year.d, 
+                to_year.d),
+            y=c(from_age, 
+                from_age, 
+                to_age-2, 
+                to_age-1)),
+        col=colors[2], 
+        fill=colors[2], 
+        alpha=0.5)
+  }
+  #### plot year ####
+  if (!missing(year)) {
+    lex <- lex + 
+      geom_polygon(
+        aes(
+          x=c(as.Date(paste("01.01.", year, sep=""), "%d.%m.%Y"),
+              as.Date(paste("01.01.", year+1, sep=""), "%d.%m.%Y"),
+              as.Date(paste("01.01.", year+1, sep=""), "%d.%m.%Y"),
+              as.Date(paste("01.01.", year, sep=""), "%d.%m.%Y")),
+          y=c(from_age, from_age, to_age, to_age)),
+        col=colors[3], 
+        fill=colors[3], 
+        alpha=0.5)
+  }
+  #### plot triangles ####
+  #triangle <- list(c(1988,2,"u"),c(1988,3,"u"))
+  if (!missing(triangle)) {
+    for (i in 1:length(triangle)) {
+      if (triangle[[i]][3] == "u") {
+        lex <- lex + 
+          geom_polygon(
+            aes_string(
+              x=c(as.Date(paste("01.01.", as.numeric(triangle[[i]][1]), sep=""), "%d.%m.%Y"),
+                  as.Date(paste("01.01.", as.numeric(triangle[[i]][1])+1, sep=""), "%d.%m.%Y"),
+                  as.Date(paste("01.01.", as.numeric(triangle[[i]][1]), sep=""), "%d.%m.%Y")),
+              y=c(as.numeric(triangle[[i]][2]),
+                  as.numeric(triangle[[i]][2])+1,
+                  as.numeric(triangle[[i]][2])+1)),
+            col=colors[4],
+            fill=colors[4],
+            alpha=0.5
+          )
+      }
+      if (triangle[[i]][3] == "l") {
+        lex <- lex + 
+          geom_polygon(
+            aes_string(
+              x=c(as.Date(paste("01.01.", as.numeric(triangle[[i]][1]), sep=""), "%d.%m.%Y"),
+                  as.Date(paste("01.01.", as.numeric(triangle[[i]][1])+1, sep=""), "%d.%m.%Y"),
+                  as.Date(paste("01.01.", as.numeric(triangle[[i]][1])+1, sep=""), "%d.%m.%Y")),
+              y=c(as.numeric(triangle[[i]][2]),
+                  as.numeric(triangle[[i]][2]),
+                  as.numeric(triangle[[i]][2])+1)), 
+            col=colors[4],
+            fill=colors[4],
+            alpha=0.5
+          )
+      }
+    }
+  }
+  #### Plot lifelines ####
+  # lifelines <- list(c("01.06.1987","01.06.1993"))
   if (!missing(lifelines)) {
     for (i in 1:length(lifelines)) {
-      ll <- matrix(lifelines[[i]], ncol=3, byrow=TRUE)      
-      ll_df <- data.frame(start=as.Date(ll[,2],"%d/%m/%Y"),
-                          born=as.Date(ll[,1],"%d/%m/%Y"), 
-                          end=as.Date(ll[,3],"%d/%m/%Y"))
-      ll_df <- data.frame(ll_df,
-                          start_age= as.numeric(difftime(ll_df$start,ll_df$born)/364.25),
-                          end_age= as.numeric(difftime(ll_df$end,ll_df$born)/364.25))
-      #ifelse(ll_df$end_age > to_age, to_age, ll_df$end_age)
-      lex <- lex + geom_segment(data=ll_df, aes(x=start,xend=end,y=start_age,yend=end_age),
-                                col=ll_col, size=1)
+      ll <- lifelines[[i]]
+      lex <- lex + 
+        geom_segment(
+          aes_string(
+            x=as.Date(ll[1], "%d.%m.%Y"),
+            xend=as.Date(ll[2], "%d.%m.%Y"),
+            y=0,
+            yend=as.numeric(as.Date(ll[2], "%d.%m.%Y")-as.Date(ll[1], "%d.%m.%Y"))/364.25),
+          col=colors[5],
+          lwd=1
+        )
     }
   }
-  
-  ##### plot polygons #####
-  if (!missing(polygon)) {
-    #pg <- matrix(polygon, ncol=8, byrow=TRUE)
-    for (i in 1:length(polygon)) {
-      pg_df <- data.frame(x1=as.Date(polygon[[i]][1],"%d/%m/%Y"),
-                          x2=as.Date(polygon[[i]][2],"%d/%m/%Y"),
-                          x3=as.Date(polygon[[i]][3],"%d/%m/%Y"),
-                          x4=as.Date(polygon[[i]][4],"%d/%m/%Y"),
-                          y1=as.numeric(polygon[[i]][5]),
-                          y2=as.numeric(polygon[[i]][6]),
-                          y3=as.numeric(polygon[[i]][7]),
-                          y4=as.numeric(polygon[[i]][8]))
-      lex <- lex + geom_polygon(data=pg_df, aes(x=c(x1,x2,x3,x4),
-                                                y=c(y1,y2,y3,y4)),
-                                fill=poly_col, alpha=0.5)
-    }
-    
-  }
-  
-  ##### set aspect ratio #####
-  lex <- lex + theme(aspect.ratio=(to_age-from_age)/(to_year-from_year))
-  ##### return #####
-  lex$plot_env <- envir
+  #### return ####
   return(lex)
 }
 
+#### Test call ####
+# lexisplotr(
+#   from_year=1987,
+#   to_year=1994,
+#   from_age=0,
+#   to_age=7, 
+#   age=4, 
+#   cohort=1988, 
+#   year=1991, 
+#   triangle=list(c(1987,2,"u"),c(1992,1,"l"), c(1989,5,"u")), 
+#   lifelines = list(c("01.06.1987","01.06.1993"), c("01.02.1991","30.11.1993"))
+# )

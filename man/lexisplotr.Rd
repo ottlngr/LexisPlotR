@@ -4,10 +4,9 @@
 \alias{lexisplotr}
 \title{Plot a Lexis Diagram.}
 \usage{
-lexisplotr(from_year, to_year, from_age, to_age, cohort, year, age, lifelines,
-  polygon, xlab = "Year", ylab = "Age", year_col = "red",
-  cohort_col = "green", age_col = "blue", ll_col = "blue",
-  poly_col = "grey", title = "Lexis Diagram")
+lexisplotr(from_year, to_year, from_age, to_age, age, cohort, year, triangle,
+  lifelines, colors = c("yellow", "green", "blue", "red", "purple"),
+  title = "Lexis Diagram", envir = environment())
 }
 \arguments{
 \item{from_year}{integer, set the year the Lexis Diagram starts with.}
@@ -18,42 +17,26 @@ lexisplotr(from_year, to_year, from_age, to_age, cohort, year, age, lifelines,
 
 \item{to_age}{integer, set the age the Lexis Diagram ends with.}
 
+\item{age}{integer, set an age to emphasize.}
+
 \item{cohort}{integer, set a cohort to emphasize.}
 
 \item{year}{integer, set a year to emphasize.}
 
-\item{age}{integer, set an age to emphasize.}
+\item{triangle}{list, set triangles to be drawn. The list contains each lifeline
+as a vector of a year-age-combination and a keyword to determine whether the upper \code{"u"}
+or lower \code{"l"} triangle shall be drawn.}
 
 \item{lifelines}{list, set lifelines to be drawn. The list contains each
-lifeline as a vector specifying the date of birth of the respective person,
-the date of the beginning of the observation and the date of the end of the
-observation. Dates in format \code{"dd/mm/yyyy"}.}
+lifeline as a vector specifying the date of the beginning of the observation 
+and the date of the end of the observation. Dates in format \code{"dd.mm.yyyy"}.}
 
-\item{polygon}{list, set polygons to be drawn. The list contains each
-lifeline as a vector specifying the coordinates of the polygon. The vector
-contains the coordinates on the x-axis (dates) followed by the coordintes of
-the y-axis (integer).  Dates in format \code{"dd/mm/yyyy"}.}
-
-\item{xlab}{character, set the label for the x-axis. Default: "Year".}
-
-\item{ylab}{character, set the label for the y-axis. Default: "Age".}
-
-\item{year_col}{character, set the colour used to emphasize \code{year}.
-Default: \code{"red"} with \code{alpha=0.5}.}
-
-\item{cohort_col}{character, set the colour used to emphasize \code{cohort}.
-Default: \code{"green"} with \code{alpha=0.5}.}
-
-\item{age_col}{character, set the colour used to emphasize \code{age}.
-Default: \code{"blue"} with \code{alpha=0.5}.}
-
-\item{ll_col}{character, set the colour used for \code{lifelines}. Default:
-\code{"blue"}.}
-
-\item{poly_col}{character, set the colour used for \code{polygons}. Default:
-\code{"grey"}.}
+\item{colors}{vector, set the colors used for \code{cohort, year, age, lifelines, triangle}.
+Default: \code{colors=c("yellow", "green", "blue", "red", "purple")}}
 
 \item{title}{character, title of the plot. Default: "Lexis Diagram".}
+
+\item{envir, }{Default: \code{environment()}. Should not be changed. Needed as a workarround.}
 }
 \value{
 The functions returns a ggplot2-plot.
@@ -62,7 +45,7 @@ The functions returns a ggplot2-plot.
 lexisplotr is an easy to use function to plot Lexis Diagrams.
 }
 \details{
-Required date format: \code{"dd/mm/yyyy"}.
+Required date format: \code{"dd.mm.yyyy"}.
 
 The function determines the aspect ratio of the x- and y-axis to enforce
 isosceles triangles. The aspect ratio will not be effected by defining
@@ -88,13 +71,12 @@ lexisplotr(from_year=1900, to_year=1905, from_age=0, to_age=5,
            
 ## Plot lifelines
 lexisplotr(from_year=1900, to_year=1905, from_age=0, to_age=5,
-           lifelines=list(c("03/03/1900","01/07/1900","27/06/1901"),
-                          c("01/06/1900","01/01/1901","31/12/1903"),
-                          c("23/09/1902","23/09/1902","31/12/1904")))
+           lifelines=list(c("30.06.1900", "23.09.1903"),
+                          c("01.01.1901", "31.12.1904")))
                           
-## Emphasize a certain Lexis Triangle
+## Emphasize a certain triangles
 lexisplotr(from_year=1900, to_year=1905, from_age=0, to_age=5,
-          polygon=list(c("01/01/1901","31/12/1901","31/12/1901","01/01/1901",1,1,2,1)))
+           triangle=list(c(1901,2,"u"),c(1902,4,"l")))
           
 ## Change the size of the axis text
 lexis <- lexisplotr(from_year=1900, to_year=1905, from_age=0, to_age=5)
@@ -110,7 +92,7 @@ dev.off()
 Philipp Ottolinger
 }
 \seealso{
-\code{\link{ggplot2}}
+\code{\link{ggplot}}
 }
 \keyword{hplot}
 
