@@ -60,11 +60,6 @@
 #' lexis <- lexisplotr(from_year=1900, to_year=1905, from_age=0, to_age=5)
 #' lexis <- lexis + theme(axis.text = element_text(size=10))
 #' lexis
-#' 
-#' ## Save the plot to pdf
-#' pdf("Lexis.pdf")
-#' lexisplotr(from_year=1900, to_year=1905, from_age=0, to_age=5)
-#' dev.off()
 lexisplotr <- function(from_year, 
                        to_year, 
                        from_age, 
