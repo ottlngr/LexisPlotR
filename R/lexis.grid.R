@@ -1,3 +1,26 @@
+#' Plot a Lexis grid
+#' 
+#' lexis.grid() plots the basic Lexis grid.
+#' 
+#' @param year.start integer, set the year the Lexis Diagram starts with.
+#' @param year.end integer, set the year the Lexis Diagram ends with.
+#' @param age.start integer, set the age the Lexis Diagram starts with.
+#' @param age.end integer, set the age the Lexis Diagram ends with.
+#' @details  
+#' The function determines the aspect ratio of the x- and y-axis to enforce
+#' isosceles triangles. The aspect ratio will not be effected by defining
+#' \code{width} and \code{height} in \code{pdf()} or other graphic devices.
+#' 
+#' Because the returned object is a ggplot2 graph, the overall appearence of
+#' the graph can be edited by adding \code{themes()} to the plot.
+#' @return The functions returns a ggplot2-plot.
+#' @author Philipp Ottolinger
+#' @seealso \code{\link{ggplot2}}
+#' @export lexis.grid
+#' @import ggplot2
+#' @examples 
+#' library(LexisPlotR)
+#' lexis.grid(1900, 1905, 0, 5)
 lexis.grid <- function(year.start, year.end, age.start, age.end) {
   # check arguments for is.numeric()
   if (!is.numeric(year.start)) { stop("No numeric value for year.start") }
