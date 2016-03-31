@@ -20,7 +20,9 @@ The age group \code{110+} will be removed from the data.
 \examples{
 \donttest{
 library(LexisPlotR)
-deaths.triangles <- prepare.hmd("Deaths_lexis.txt")
+# Load sample data
+path <- system.file("extdata", "Deaths_lexis_sample.txt", package = "LexisPlotR")
+deaths.triangles <- prepare.hmd(path)
 }
 }
 \author{

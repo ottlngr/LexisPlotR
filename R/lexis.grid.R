@@ -15,9 +15,8 @@
 #' the graph can be edited by adding \code{themes()} to the plot.
 #' @return The functions returns a ggplot2-plot.
 #' @author Philipp Ottolinger
-#' @seealso \code{\link{ggplot2}}
-#' @export lexis.grid
 #' @import ggplot2
+#' @export lexis.grid
 #' @examples 
 #' library(LexisPlotR)
 #' lexis.grid(1900, 1905, 0, 5)

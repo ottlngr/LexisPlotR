@@ -7,10 +7,13 @@
 #' Furthermore seven columns (\code{upper, x1, x2, x3, y1, y2, y3}) that contain the coordinates of the triangles will be added.
 #' The age group \code{110+} will be removed from the data.
 #' @author Philipp Ottolinger
+#' @export prepare.hmd
 #' @examples
 #' \donttest{
 #' library(LexisPlotR)
-#' deaths.triangles <- prepare.hmd("Deaths_lexis.txt")
+#' # Load sample data
+#' path <- system.file("extdata", "Deaths_lexis_sample.txt", package = "LexisPlotR")
+#' deaths.triangles <- prepare.hmd(path)
 #' }
 
 prepare.hmd <- function(file) {

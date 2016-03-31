@@ -9,8 +9,8 @@
 #' @details Takes an existing Lexis grid and adds a coloured rectangle that highlights all triangles belonging to a certain age.
 #' @return A ggplot2 object.
 #' @author Philipp Ottolinger
-#' @export lexis.age
 #' @import ggplot2
+#' @export lexis.age
 #' @examples 
 #' library(LexisPlotR)
 #' lexis <- lexis.grid(1900, 1905, 0, 5)
@@ -24,6 +24,8 @@ lexis.age <- function(lg, age, fill = "yellow", alpha = 0.5) {
   age.end <- tail(ggplot_build(lg)$data[[1]]$yend,1)
   if (age > age.end) { stop("Out of bounds.") }
   if (age < age.start) { stop("Out of bounds.") }
+  x <- NULL
+  y <- NULL
   df <- data.frame(x = c(year.start, year.end, year.end, year.start),
                    y = c(age, age, age+1, age+1))
   lg <- lg + geom_polygon(data = df, aes(x,y), fill = fill, alpha = alpha, colour = NA)

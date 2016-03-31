@@ -12,8 +12,8 @@
 #' @details Takes an existing Lexis grid and adds lifelines to the grid. Input can be a single dates or dates from a vector.
 #' @return A ggplot2 object.
 #' @author Philipp Ottolinger
-#' @export lexis.lifeline
 #' @import ggplot2
+#' @export lexis.lifeline
 #' @examples 
 #' lg <- lexis.grid(1900, 1905, 0, 5)
 #' lexis.lifeline(lg, entry = "1901-09-23")
@@ -27,7 +27,10 @@ lexis.lifeline <- function(lg, entry, exit = NA, lineends = F, colour = "red", a
   year.end <- as.Date(tail(ggplot_build(lg)$data[[1]]$xend,1), origin = "1970-01-01")
   age.start <- ggplot_build(lg)$data[[1]][1,3]
   age.end <- tail(ggplot_build(lg)$data[[1]]$yend,1)
-  
+  x <- NULL
+  y <- NULL
+  xend <- NULL
+  yend <- NULL
   case <- data.frame(entry, exit)
   case$x <- entry
   case$xend <- ifelse(is.na(exit), year.end, exit)

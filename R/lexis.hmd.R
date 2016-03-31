@@ -9,19 +9,18 @@
 #' The triangles will be filled according to the data in \code{column}.
 #' @author Philipp Ottolinger
 #' @import ggplot2
+#' @export lexis.hmd
 #' @examples 
 #' library(LexisPlotR)
-#' lg <- lexis.grid(1990, 1995, 0, 5)
-#' \donttest{
-#' deaths.triangles <- prepare.hmd("Deaths_lexis.txt")
+#' lg <- lexis.grid(1980, 1985, 0, 5)
+#' # Load sample data
+#' path <- system.file("extdata", "Deaths_lexis_sample.txt", package = "LexisPlotR")
+#' deaths.triangles <- prepare.hmd(path)
 #' lexis.hmd(lg, deaths.triangles, "Total")
-#' }
+#' 
 #' ### Plot data not explicitly present in HMD data
-#' \donttest{
-#' deaths.triangles <- prepare.hmd("Deaths_lexis.txt")
 #' deaths.triangles$RatioMale <- deaths.triangles$Male / deaths.triangles$Total
 #' lexis.hmd(lg, deaths.triangles, "RatioMale")
-#' }
 
 lexis.hmd <- function(lg, hmd.data, column) {
   year.start <- as.Date(ggplot_build(lg)$data[[1]][1,1], origin="1970-01-01")

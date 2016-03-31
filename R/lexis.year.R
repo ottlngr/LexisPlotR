@@ -9,8 +9,8 @@
 #' @details Takes an existing Lexis grid and adds a coloured rectangle to the plot. The rectangle will highlight a certain year in the grid.
 #' @return A ggplot2 object.
 #' @author Philipp Ottoliner
-#' @export lexis.year
 #' @import ggplot2
+#' @export lexis.year
 #' @examples 
 #' lg <- lexis.grid(1900, 1905, 0, 5)
 #' lexis.year(lg, 1902)
@@ -27,6 +27,8 @@ lexis.year <- function(lg, year, fill = "blue", alpha = 0.5) {
   year1 <- year + 1
   year <- as.Date(paste(year, "-01-01", sep = ""), origin = "1970-01-01")
   year1 <- as.Date(paste(year1, "-01-01", sep = ""), origin = "1970-01-01")
+  x <- NULL
+  y <- NULL
   df <- data.frame(x = c(year, year1, year1, year),
                    y = c(age.start, age.start, age.end, age.end))
   lg <- lg + geom_polygon(data = df, aes(x,y), fill = fill, alpha = alpha, colour = NA)

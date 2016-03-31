@@ -36,7 +36,4 @@ lexis.grid(1900, 1905, 0, 5)
 \author{
 Philipp Ottolinger
 }
-\seealso{
-\code{\link{ggplot2}}
-}
 

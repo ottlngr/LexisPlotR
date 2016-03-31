@@ -15,7 +15,7 @@ how.old(from, to)
 Numeric age in years.
 }
 \description{
-Determines the numeric age in years from a date range
+Determines the numeric age in years from a date range.
 }
 \details{
 Helper for LexisPlotR. The numeric age gets rounded to 5 digits.
@@ -23,7 +23,6 @@ Helper for LexisPlotR. The numeric age gets rounded to 5 digits.
 \examples{
 library(LexisPlotR)
 how.old("1900-01-01", "1905-01-01")
-
 }
 \author{
 Philipp Ottolinger

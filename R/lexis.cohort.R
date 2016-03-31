@@ -9,6 +9,7 @@
 #' @details Takes an existing Lexis grid and adds a coloured rectangle to the plot. The rectangle will highlight a certain cohort in the Lexis grid.
 #' @author Philipp Ottolinger
 #' @import ggplot2
+#' @export lexis.cohort
 #' @examples
 #' library(LexisPlotR)
 #' lg <- lexis.grid(1900, 1905, 0, 5)
@@ -20,7 +21,8 @@ lexis.cohort <- function(lg, cohort, fill = "green", alpha = 0.5) {
   year.end <- as.Date(tail(ggplot_build(lg)$data[[1]]$xend,1), origin = "1970-01-01")
   age.start <- ggplot_build(lg)$data[[1]][1,3]
   age.end <- tail(ggplot_build(lg)$data[[1]]$yend,1)
-  
+  x <- NULL
+  y <- NULL
   df <- data.frame(x = c(cohort, cohort+1, cohort+1+age.end, cohort + age.end),
                    y = c(0,0,age.end, age.end))
   df$x <- as.Date(paste(df$x, "-01-01", sep = ""), origin = "1970-01-01")
