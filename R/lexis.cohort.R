@@ -1,3 +1,19 @@
+#' Emphasize a certain cohort in a Lexis grid
+#' 
+#' Takes an existing Lexis grid and adds a coloured rectangle to highlight a certain cohort.
+#' 
+#' @param lg, an existing object originally created with \code{lexis.grid()}.
+#' @param cohort numeric, set the cohort to highlight.
+#' @param fill character, set the colour of the rectangle. Default is \code{"green"}.
+#' @param alpha numeric, set the level of transparency of the rectangle. Default is \code{0.5}.
+#' @details Takes an existing Lexis grid and adds a coloured rectangle to the plot. The rectangle will highlight a certain cohort in the Lexis grid.
+#' @author Philipp Ottolinger
+#' @import ggplot2
+#' @examples
+#' library(LexisPlotR)
+#' lg <- lexis.grid(1900, 1905, 0, 5)
+#' lexis.cohort(lg, 1901)
+
 lexis.cohort <- function(lg, cohort, fill = "green", alpha = 0.5) {
   if (!is.ggplot(lg)) { stop("No valid ggplot object.") }
   year.start <- as.Date(ggplot_build(lg)$data[[1]][1,1], origin="1970-01-01")
@@ -8,7 +24,6 @@ lexis.cohort <- function(lg, cohort, fill = "green", alpha = 0.5) {
   df <- data.frame(x = c(cohort, cohort+1, cohort+1+age.end, cohort + age.end),
                    y = c(0,0,age.end, age.end))
   df$x <- as.Date(paste(df$x, "-01-01", sep = ""), origin = "1970-01-01")
-  print(df)
   lg <- lg + geom_polygon(data = df, aes(x,y), fill = fill, alpha = alpha)
   return(lg)
 }

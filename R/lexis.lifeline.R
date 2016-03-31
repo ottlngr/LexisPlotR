@@ -34,7 +34,6 @@ lexis.lifeline <- function(lg, entry, exit = NA, lineends = F, colour = "red", a
   case$xend <- as.Date(case$xend, origin = "1970-01-01")
   case$y <- 0
   case$yend <- ifelse(is.na(case$exit), how.old(case$entry, year.end), how.old(case$entry, case$exit))
-  print(case)
   lg <- lg + geom_segment(data = case, aes(x=x,xend=xend,y=y,yend=yend), colour = colour, alpha = alpha, lwd = lwd)
   if (lineends == TRUE) {
     lg <- lg + geom_point(data = case[!is.na(case$exit),], aes(x=xend, y=yend), size=2, shape = 3)
