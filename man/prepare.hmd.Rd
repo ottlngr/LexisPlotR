@@ -18,12 +18,10 @@ Furthermore seven columns (\code{upper, x1, x2, x3, y1, y2, y3}) that contain th
 The age group \code{110+} will be removed from the data.
 }
 \examples{
-\donttest{
 library(LexisPlotR)
 # Load sample data
 path <- system.file("extdata", "Deaths_lexis_sample.txt", package = "LexisPlotR")
 deaths.triangles <- prepare.hmd(path)
-}
 }
 \author{
 Philipp Ottolinger

@@ -9,12 +9,10 @@
 #' @author Philipp Ottolinger
 #' @export prepare.hmd
 #' @examples
-#' \donttest{
 #' library(LexisPlotR)
 #' # Load sample data
 #' path <- system.file("extdata", "Deaths_lexis_sample.txt", package = "LexisPlotR")
 #' deaths.triangles <- prepare.hmd(path)
-#' }
 
 prepare.hmd <- function(file) {
   data <- read.csv(file, sep="", skip = 2)
