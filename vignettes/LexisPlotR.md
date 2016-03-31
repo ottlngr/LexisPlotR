@@ -29,22 +29,12 @@ A Lexis Diagram is basically determined by two measures: A range of years presen
 library(LexisPlotR)
 ```
 
-    ## Loading required package: ggplot2
-
-    ## 
-    ## Attaching package: 'LexisPlotR'
-
-    ## The following objects are masked _by_ '.GlobalEnv':
-    ## 
-    ##     how.old, lexis.age, lexis.cohort, lexis.grid, lexis.hmd,
-    ##     lexis.lifeline, lexis.year, prepare.hmd, what.date
-
 ``` r
 # Plot a Lexis grid from year 1900 to year 1905, representing the ages from 0 to 5
 lexis.grid(year.start = 1900, year.end = 1905, age.start = 0, age.end = 5)
 ```
 
-![](LexisPlotR_files/figure-markdown_github/unnamed-chunk-1-1.png)
+![](LexisPlotR_files/figure-markdown_github/unnamed-chunk-2-1.png)
 
 The aspect ratio of the axes is fixed to ensure right-angled triangles. So even non-square Lexis grids show right-angled triangles:
 
@@ -52,7 +42,7 @@ The aspect ratio of the axes is fixed to ensure right-angled triangles. So even 
 lexis.grid(year.start = 1900, year.end = 1905, age.start = 0, age.end = 7)
 ```
 
-![](LexisPlotR_files/figure-markdown_github/unnamed-chunk-2-1.png)
+![](LexisPlotR_files/figure-markdown_github/unnamed-chunk-3-1.png)
 
 ### Highlight certain areas of the Lexis grid
 
@@ -65,7 +55,7 @@ mylexis <- lexis.grid(year.start = 1900, year.end = 1905, age.start = 0, age.end
 mylexis
 ```
 
-![](LexisPlotR_files/figure-markdown_github/unnamed-chunk-3-1.png)
+![](LexisPlotR_files/figure-markdown_github/unnamed-chunk-4-1.png)
 
 You can now use `lexis.age()` to add a coloured layer to that Lexis grid:
 
@@ -74,7 +64,7 @@ You can now use `lexis.age()` to add a coloured layer to that Lexis grid:
 lexis.age(lg = mylexis, age = 2)
 ```
 
-![](LexisPlotR_files/figure-markdown_github/unnamed-chunk-4-1.png)
+![](LexisPlotR_files/figure-markdown_github/unnamed-chunk-5-1.png)
 
 The default fill colour for `lexis.age()` is `"yellow"`, but you can change the colour as well as the level of transparency:
 
@@ -83,7 +73,7 @@ The default fill colour for `lexis.age()` is `"yellow"`, but you can change the 
 lexis.age(lg = mylexis, age = 2, fill = "red", alpha = 0.9)
 ```
 
-![](LexisPlotR_files/figure-markdown_github/unnamed-chunk-5-1.png)
+![](LexisPlotR_files/figure-markdown_github/unnamed-chunk-6-1.png)
 
 `lexis.year()`, which highlight a certain year, and `lexis.cohort()`, which does the same thing for a desired cohort, work nearly the same:
 
@@ -92,14 +82,14 @@ lexis.age(lg = mylexis, age = 2, fill = "red", alpha = 0.9)
 lexis.year(lg = mylexis, year = 1902)
 ```
 
-![](LexisPlotR_files/figure-markdown_github/unnamed-chunk-6-1.png)
+![](LexisPlotR_files/figure-markdown_github/unnamed-chunk-7-1.png)
 
 ``` r
 # Highlight the cohort 1898
 lexis.cohort(lg = mylexis, cohort = 1898)
 ```
 
-![](LexisPlotR_files/figure-markdown_github/unnamed-chunk-6-2.png)
+![](LexisPlotR_files/figure-markdown_github/unnamed-chunk-7-2.png)
 
 Again, fill colour and the level of transparency can be altered:
 
@@ -108,14 +98,14 @@ Again, fill colour and the level of transparency can be altered:
 lexis.year(lg = mylexis, year = 1902, fill = "orange", alpha = 0.2)
 ```
 
-![](LexisPlotR_files/figure-markdown_github/unnamed-chunk-7-1.png)
+![](LexisPlotR_files/figure-markdown_github/unnamed-chunk-8-1.png)
 
 ``` r
 # Highlight the cohort 1898, change fill colour to "grey" and decrease transparency
 lexis.cohort(lg = mylexis, cohort = 1898, fill = "grey", alpha = 0.8)
 ```
 
-![](LexisPlotR_files/figure-markdown_github/unnamed-chunk-7-2.png)
+![](LexisPlotR_files/figure-markdown_github/unnamed-chunk-8-2.png)
 
 To add more than one layer or to make changes permanent you have to overwrite your Lexis object:
 
@@ -127,7 +117,7 @@ mylexis <- lexis.cohort(lg = mylexis, cohort = 1898)
 mylexis
 ```
 
-![](LexisPlotR_files/figure-markdown_github/unnamed-chunk-8-1.png)
+![](LexisPlotR_files/figure-markdown_github/unnamed-chunk-9-1.png)
 
 ### Add life lines to the Lexis Diagram
 
@@ -142,7 +132,7 @@ mylexis <- lexis.grid(year.start = 1990, year.end = 1995, age.start = 0, age.end
 lexis.lifeline(lg = mylexis, entry = "1991-09-23")
 ```
 
-![](LexisPlotR_files/figure-markdown_github/unnamed-chunk-9-1.png)
+![](LexisPlotR_files/figure-markdown_github/unnamed-chunk-10-1.png)
 
 If death or any other date that can serve as an "exit" is observed, you can add the exit date:
 
@@ -150,7 +140,7 @@ If death or any other date that can serve as an "exit" is observed, you can add 
 lexis.lifeline(lg = mylexis, entry = "1991-09-23", exit = "1994-06-11")
 ```
 
-![](LexisPlotR_files/figure-markdown_github/unnamed-chunk-10-1.png)
+![](LexisPlotR_files/figure-markdown_github/unnamed-chunk-11-1.png)
 
 You can also use entry and death dates from a `data.frame` which is useful when plotting life lines of several individuals or hole populations. `LexisPlotR` comes with a random dataset of entry and exit dates for 300 Individuals from 1895 to 1905. Some of the deaths (or exits) are not observed or unknown. Take a look at the `lifelines_sample` dataset:
 
@@ -186,7 +176,7 @@ mylexis <- lexis.grid(year.start = 1900, year.end = 1905, age.start = 0, age.end
 lexis.lifeline(lg = mylexis, entry = lifelines_sample$entry, exit = lifelines_sample$exit)
 ```
 
-![](LexisPlotR_files/figure-markdown_github/unnamed-chunk-12-1.png)
+![](LexisPlotR_files/figure-markdown_github/unnamed-chunk-13-1.png)
 
 As this is just random data the plot is not really interesting and confusing. But you can change the default plotting behaviour and add marks to the lineends, change the colour and width of the lines as well as the level of transparency of the lines:
 
@@ -194,7 +184,7 @@ As this is just random data the plot is not really interesting and confusing. Bu
 lexis.lifeline(lg = mylexis, entry = lifelines_sample$entry, exit = lifelines_sample$exit, lineends = TRUE, colour = "blue", lwd = 1.5, alpha = 0.3)
 ```
 
-![](LexisPlotR_files/figure-markdown_github/unnamed-chunk-13-1.png)
+![](LexisPlotR_files/figure-markdown_github/unnamed-chunk-14-1.png)
 
 ### Use data fromo the Human Mortality Database
 
@@ -257,7 +247,7 @@ mylexis <- lexis.grid(year.start = 1980, year.end = 1985, age.start = 0, age.end
 lexis.hmd(lg = mylexis, hmd.data = mydata, column = "Total")
 ```
 
-![](LexisPlotR_files/figure-markdown_github/unnamed-chunk-15-1.png)
+![](LexisPlotR_files/figure-markdown_github/unnamed-chunk-16-1.png)
 
 Again, this is just random data. For real insights use data from the HMD.
 
@@ -268,7 +258,7 @@ mydata$ratioMales <- mydata$Male / mydata$Total
 lexis.hmd(lg = mylexis, hmd.data = mydata, column = "ratioMales")
 ```
 
-![](LexisPlotR_files/figure-markdown_github/unnamed-chunk-16-1.png)
+![](LexisPlotR_files/figure-markdown_github/unnamed-chunk-17-1.png)
 
 Everything is a ggplot2 object
 ------------------------------
@@ -282,7 +272,7 @@ mylexis <- mylexis + labs(title = "LexisPlotR")
 mylexis
 ```
 
-![](LexisPlotR_files/figure-markdown_github/unnamed-chunk-17-1.png)
+![](LexisPlotR_files/figure-markdown_github/unnamed-chunk-18-1.png)
 
 ``` r
 # Change axis labels
@@ -290,4 +280,4 @@ mylexis <- mylexis + theme(axis.title = element_text(face = "bold", colour = "re
 mylexis
 ```
 
-![](LexisPlotR_files/figure-markdown_github/unnamed-chunk-17-2.png)
+![](LexisPlotR_files/figure-markdown_github/unnamed-chunk-18-2.png)

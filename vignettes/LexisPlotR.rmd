@@ -20,8 +20,10 @@ vignette: >
 ### Plot an empty Lexis grid
 
 A Lexis Diagram is basically determined by two measures: A range of years presented on the horizontal axis and a range of ages shown on the vertical axis. To plot an empty Lexis grid, use `lexis.grid()` which takes these measures as numeric inputs:
-```{r}
+```{r, message=FALSE}
 library(LexisPlotR)
+```
+```{r}
 # Plot a Lexis grid from year 1900 to year 1905, representing the ages from 0 to 5
 lexis.grid(year.start = 1900, year.end = 1905, age.start = 0, age.end = 5)
 ```
