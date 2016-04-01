@@ -12,8 +12,8 @@
 #' @export lexis.cohort
 #' @examples
 #' library(LexisPlotR)
-#' lg <- lexis.grid(1900, 1905, 0, 5)
-#' lexis.cohort(lg, 1901)
+#' lg <- lexis.grid(year.start = 1900, year.end = 1905, age.start = 0, age.end = 5)
+#' lexis.cohort(lg = lg, cohort = 1901)
 
 lexis.cohort <- function(lg, cohort, fill = "green", alpha = 0.5) {
   if (!is.ggplot(lg)) { stop("No valid ggplot object.") }

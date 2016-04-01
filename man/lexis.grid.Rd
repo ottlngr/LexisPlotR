@@ -31,7 +31,7 @@ the graph can be edited by adding \code{themes()} to the plot.
 }
 \examples{
 library(LexisPlotR)
-lexis.grid(1900, 1905, 0, 5)
+lexis.grid(year.start = 1900, year.end = 1905, age.start = 0, age.end = 5)
 }
 \author{
 Philipp Ottolinger

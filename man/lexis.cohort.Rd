@@ -23,8 +23,8 @@ Takes an existing Lexis grid and adds a coloured rectangle to the plot. The rect
 }
 \examples{
 library(LexisPlotR)
-lg <- lexis.grid(1900, 1905, 0, 5)
-lexis.cohort(lg, 1901)
+lg <- lexis.grid(year.start = 1900, year.end = 1905, age.start = 0, age.end = 5)
+lexis.cohort(lg = lg, cohort = 1901)
 }
 \author{
 Philipp Ottolinger

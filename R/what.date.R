@@ -9,7 +9,7 @@
 #' @export what.date
 #' @examples 
 #' library(LexisPlotR)
-#' what.date("1900-01-01", 3)
+#' what.date(date = "1900-01-01", age = 3)
 
 what.date <- function(date, age) {
   if (!is.numeric(age)) { stop("No numeric age.") }

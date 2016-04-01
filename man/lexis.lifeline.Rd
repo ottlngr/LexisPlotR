@@ -32,9 +32,9 @@ Add lifelines to an existing Lexis grid.
 Takes an existing Lexis grid and adds lifelines to the grid. Input can be a single dates or dates from a vector.
 }
 \examples{
-lg <- lexis.grid(1900, 1905, 0, 5)
-lexis.lifeline(lg, entry = "1901-09-23")
-lexis.lifeline(lg, entry = "1901-09-23", exit = "1904-03-03")
+lg <- lexis.grid(year.start = 1900, year.end = 1905, age.start = 0, age.end = 5)
+lexis.lifeline(lg = lg, entry = "1901-09-23")
+lexis.lifeline(lg = lg, entry = "1901-09-23", exit = "1904-03-03")
 
 }
 \author{

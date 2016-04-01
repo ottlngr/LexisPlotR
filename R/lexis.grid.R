@@ -19,7 +19,7 @@
 #' @export lexis.grid
 #' @examples 
 #' library(LexisPlotR)
-#' lexis.grid(1900, 1905, 0, 5)
+#' lexis.grid(year.start = 1900, year.end = 1905, age.start = 0, age.end = 5)
 lexis.grid <- function(year.start, year.end, age.start, age.end) {
   # check arguments for is.numeric()
   if (!is.numeric(year.start)) { stop("No numeric value for year.start") }

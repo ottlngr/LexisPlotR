@@ -26,8 +26,8 @@ Takes an existing Lexis grid and adds a coloured rectangle that highlights all t
 }
 \examples{
 library(LexisPlotR)
-lexis <- lexis.grid(1900, 1905, 0, 5)
-lexis <- lexis.age(lexis, 3)
+lexis <- lexis.grid(year.start = 1900, year.end = 1905, age.start = 0, age.end = 5)
+lexis <- lexis.age(lg = lexis, age = 3)
 }
 \author{
 Philipp Ottolinger

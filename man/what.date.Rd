@@ -22,7 +22,7 @@ Helper for LexisPlotR.
 }
 \examples{
 library(LexisPlotR)
-what.date("1900-01-01", 3)
+what.date(date = "1900-01-01", age = 3)
 }
 \author{
 Philipp Ottolinger

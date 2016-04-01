@@ -10,7 +10,7 @@
 #' @export how.old
 #' @examples
 #' library(LexisPlotR)
-#' how.old("1900-01-01", "1905-01-01")
+#' how.old(from = "1900-01-01", to = "1905-01-01")
 
 how.old <- function(from, to) {
   from <- as.Date(from)
