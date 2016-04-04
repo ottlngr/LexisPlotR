@@ -128,7 +128,7 @@ As this is just random data the plot is not really interesting and confusing. Bu
 lexis.lifeline(lg = mylexis, entry = lifelines_sample$entry, exit = lifelines_sample$exit, lineends = TRUE, colour = "blue", lwd = 1.5, alpha = 0.3)
 ```
 
-### Use data fromo the Human Mortality Database
+### Use data from the Human Mortality Database
 
 > The Human Mortality Database (HMD) contains original calculations of death rates and life tables for national populations (countries or areas), as well as the input data used in constructing those tables. The input data consist of death counts from vital statistics, plus census counts, birth counts, and population estimates from various sources. [http://www.mortality.org/Public/Overview.php](http://www.mortality.org/Public/Overview.php)
 
