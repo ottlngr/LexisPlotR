@@ -1,8 +1,8 @@
 ^.*\.Rproj$
 ^\.Rproj\.user$
-LexisPlotR.png
 .git
 .directory
 .gitignore
 .RData
 .Rhistory
+README.md
