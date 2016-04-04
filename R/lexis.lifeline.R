@@ -13,6 +13,7 @@
 #' @return A ggplot2 object.
 #' @author Philipp Ottolinger
 #' @import ggplot2
+#' @importFrom utils tail
 #' @export lexis.lifeline
 #' @examples 
 #' lg <- lexis.grid(year.start = 1900, year.end = 1905, age.start = 0, age.end = 5)

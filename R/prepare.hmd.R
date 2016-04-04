@@ -7,6 +7,8 @@
 #' Furthermore seven columns (\code{upper, x1, x2, x3, y1, y2, y3}) that contain the coordinates of the triangles will be added.
 #' The age group \code{110+} will be removed from the data.
 #' @author Philipp Ottolinger
+#' @importFrom utils read.csv
+#' @importFrom stats complete.cases
 #' @export prepare.hmd
 #' @examples
 #' library(LexisPlotR)

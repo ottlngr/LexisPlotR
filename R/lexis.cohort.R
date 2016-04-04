@@ -9,6 +9,7 @@
 #' @details Takes an existing Lexis grid and adds a coloured rectangle to the plot. The rectangle will highlight a certain cohort in the Lexis grid.
 #' @author Philipp Ottolinger
 #' @import ggplot2
+#' @importFrom utils tail
 #' @export lexis.cohort
 #' @examples
 #' library(LexisPlotR)

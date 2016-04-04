@@ -9,6 +9,7 @@
 #' The triangles will be filled according to the data in \code{column}.
 #' @author Philipp Ottolinger
 #' @import ggplot2
+#' @importFrom utils tail
 #' @export lexis.hmd
 #' @examples 
 #' library(LexisPlotR)

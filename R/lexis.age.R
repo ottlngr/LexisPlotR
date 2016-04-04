@@ -10,6 +10,7 @@
 #' @return A ggplot2 object.
 #' @author Philipp Ottolinger
 #' @import ggplot2
+#' @importFrom utils tail
 #' @export lexis.age
 #' @examples 
 #' library(LexisPlotR)
