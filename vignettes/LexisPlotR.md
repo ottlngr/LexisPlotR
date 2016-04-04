@@ -1,14 +1,14 @@
 LexisPlotR
 ================
 Philipp Ottolinger
-2016-03-31
+2016-04-04
 
 -   [What is a Lexis Diagram?](#what-is-a-lexis-diagram)
 -   [LexisPlotR](#lexisplotr)
     -   [Plot an empty Lexis grid](#plot-an-empty-lexis-grid)
     -   [Highlight certain areas of the Lexis grid](#highlight-certain-areas-of-the-lexis-grid)
     -   [Add life lines to the Lexis Diagram](#add-life-lines-to-the-lexis-diagram)
-    -   [Use data fromo the Human Mortality Database](#use-data-fromo-the-human-mortality-database)
+    -   [Use data from the Human Mortality Database](#use-data-from-the-human-mortality-database)
 -   [Everything is a ggplot2 object](#everything-is-a-ggplot2-object)
 
 What is a Lexis Diagram?
@@ -186,7 +186,7 @@ lexis.lifeline(lg = mylexis, entry = lifelines_sample$entry, exit = lifelines_sa
 
 ![](LexisPlotR_files/figure-markdown_github/unnamed-chunk-14-1.png)
 
-### Use data fromo the Human Mortality Database
+### Use data from the Human Mortality Database
 
 > The Human Mortality Database (HMD) contains original calculations of death rates and life tables for national populations (countries or areas), as well as the input data used in constructing those tables. The input data consist of death counts from vital statistics, plus census counts, birth counts, and population estimates from various sources. <http://www.mortality.org/Public/Overview.php>
 
