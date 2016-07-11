@@ -4,7 +4,8 @@
 \alias{lexis.grid}
 \title{Plot a Lexis grid}
 \usage{
-lexis.grid(year.start, year.end, age.start, age.end)
+lexis.grid(year.start, year.end, age.start, age.end, lwd = 0.3,
+  force.equal = T)
 }
 \arguments{
 \item{year.start}{integer, set the year the Lexis Diagram starts with.}
@@ -14,6 +15,10 @@ lexis.grid(year.start, year.end, age.start, age.end)
 \item{age.start}{integer, set the age the Lexis Diagram starts with.}
 
 \item{age.end}{integer, set the age the Lexis Diagram ends with.}
+
+\item{lwd}{numeric, set the linewidth of the grid.}
+
+\item{force.equal}{logical, by default \code{lexis.grid} uses \code{ggplot2::coord_fixed()} to ensure isosceles trianlges. Set \code{FALSE} to allow for a non-isosceles appearance.}
 }
 \value{
 The functions returns a ggplot2-plot.

@@ -6,6 +6,8 @@
 #' @param year.end integer, set the year the Lexis Diagram ends with.
 #' @param age.start integer, set the age the Lexis Diagram starts with.
 #' @param age.end integer, set the age the Lexis Diagram ends with.
+#' @param lwd numeric, set the linewidth of the grid.
+#' @param force.equal logical, by default \code{lexis.grid} uses \code{ggplot2::coord_fixed()} to ensure isosceles trianlges. Set \code{FALSE} to allow for a non-isosceles appearance. 
 #' @details  
 #' The function determines the aspect ratio of the x- and y-axis to enforce
 #' isosceles triangles. The aspect ratio will not be effected by defining
