@@ -20,7 +20,7 @@
 #' @examples 
 #' library(LexisPlotR)
 #' lexis.grid(year.start = 1900, year.end = 1905, age.start = 0, age.end = 5)
-lexis.grid <- function(year.start, year.end, age.start, age.end, lwd = 0.3) {
+lexis.grid <- function(year.start, year.end, age.start, age.end, lwd = 0.3, force.equal = T) {
   # check arguments for is.numeric()
   if (!is.numeric(year.start)) { stop("No numeric value for year.start") }
   if (!is.numeric(year.end)) { stop("No numeric value for year.end") }
@@ -60,11 +60,15 @@ lexis.grid <- function(year.start, year.end, age.start, age.end, lwd = 0.3) {
   gg <- gg + 
     scale_x_date(date_breaks="1 year", expand=c(0,0), date_labels="%Y", name="Year") +
     scale_y_continuous(expand=c(0,0), breaks=age.seq, name="Age") +
-    coord_fixed(ratio = 365.25, xlim=c(year.start,year.end), ylim = c(age.start, age.end)) +
+    #coord_fixed(ratio = 365.25, xlim=c(year.start,year.end), ylim = c(age.start, age.end)) +
     theme_bw() + 
     theme(
       panel.grid.major = element_blank(),
       panel.grid.minor = element_blank()
       )
+  
+  if (force.equal == T) {
+    gg <- gg + coord_fixed(ratio = 365.25, xlim=c(year.start,year.end), ylim = c(age.start, age.end))
+  }
   return(gg)
 }
