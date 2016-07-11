@@ -20,7 +20,7 @@
 #' @examples 
 #' library(LexisPlotR)
 #' lexis.grid(year.start = 1900, year.end = 1905, age.start = 0, age.end = 5)
-lexis.grid <- function(year.start, year.end, age.start, age.end) {
+lexis.grid <- function(year.start, year.end, age.start, age.end, lwd = 0.3) {
   # check arguments for is.numeric()
   if (!is.numeric(year.start)) { stop("No numeric value for year.start") }
   if (!is.numeric(year.end)) { stop("No numeric value for year.end") }
@@ -52,9 +52,9 @@ lexis.grid <- function(year.start, year.end, age.start, age.end) {
   
   # Basic plot
   gg <- ggplot() + 
-    geom_segment(aes(x = year.seq, xend = year.seq, y = age.start, yend = age.end)) +
-    geom_segment(aes(x = year.start, xend = year.end, y = age.seq, yend = age.seq)) +
-    geom_segment(aes(x = dia$a, xend = dia$b, y = dia$c, yend = dia$d))
+    geom_segment(aes(x = year.seq, xend = year.seq, y = age.start, yend = age.end), lwd = lwd) +
+    geom_segment(aes(x = year.start, xend = year.end, y = age.seq, yend = age.seq), lwd = lwd) +
+    geom_segment(aes(x = dia$a, xend = dia$b, y = dia$c, yend = dia$d), lwd = lwd)
 
   # Plot appearance
   gg <- gg + 
