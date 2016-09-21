@@ -24,10 +24,10 @@ lexis.lifeline <- function(lg, entry, exit = NA, lineends = F, colour = "red", a
   if (!is.ggplot(lg)) { stop("No valid ggplot object.") }
   entry <- as.Date(entry, origin = "1970-01-01")
   exit <- as.Date(exit, origin = "1970-01-01")
-  year.start <- as.Date(min(ggplot_build(lg)$panel$ranges[[1]]$x.major_source), origin = "1970-01-01")
-  year.end <- as.Date(max(ggplot_build(lg)$panel$ranges[[1]]$x.major_source), origin = "1970-01-01")
-  age.start <- min(ggplot_build(lg)$panel$ranges[[1]]$y.major_source)
-  age.end <- max(ggplot_build(lg)$panel$ranges[[1]]$y.major_source)
+  year.start <- as.Date(min(ggplot_build(lg)$layout$panel_ranges[[1]]$x.major_source), origin = "1970-01-01")
+  year.end <- as.Date(max(ggplot_build(lg)$layout$panel_ranges[[1]]$x.major_source), origin = "1970-01-01")
+  age.start <- min(ggplot_build(lg)$layout$panel_ranges[[1]]$y.major_source)
+  age.end <- max(ggplot_build(lg)$layout$panel_ranges[[1]]$y.major_source)
   x <- NULL
   y <- NULL
   xend <- NULL

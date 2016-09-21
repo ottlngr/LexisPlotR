@@ -24,12 +24,12 @@ lexis.year <- function(lg, year, fill = "blue", alpha = 0.5, d = 1) {
   # year_end <- as.numeric(substr(year.end,1,4))
   # age.start <- ggplot_build(lg)$data[[1]][1,3]
   # age.end <- tail(ggplot_build(lg)$data[[1]]$yend,1)
-  year.start <- as.Date(min(ggplot_build(lg)$panel$ranges[[1]]$x.major_source), origin = "1970-01-01")
+  year.start <- as.Date(min(ggplot_build(lg)$layout$panel_ranges[[1]]$x.major_source), origin = "1970-01-01")
   year_start <- as.numeric(substr(year.start,1,4))
-  year.end <- as.Date(max(ggplot_build(lg)$panel$ranges[[1]]$x.major_source), origin = "1970-01-01")
+  year.end <- as.Date(max(ggplot_build(lg)$layout$panel_ranges[[1]]$x.major_source), origin = "1970-01-01")
   year_end <- as.numeric(substr(year.end,1,4))
-  age.start <- min(ggplot_build(lg)$panel$ranges[[1]]$y.major_source)
-  age.end <- max(ggplot_build(lg)$panel$ranges[[1]]$y.major_source)
+  age.start <- min(ggplot_build(lg)$layout$panel_ranges[[1]]$y.major_source)
+  age.end <- max(ggplot_build(lg)$layout$panel_ranges[[1]]$y.major_source)
   if (year > year_end - 1) { stop("Out of bounds.") }
   if (year < year_start) { stop("Out of bounds.") }
   year1 <- year + d
