@@ -4,7 +4,7 @@
 \alias{lexis.cohort}
 \title{Emphasize a certain cohort in a Lexis grid}
 \usage{
-lexis.cohort(lg, cohort, fill = "green", alpha = 0.5)
+lexis.cohort(lg, cohort, fill = "green", alpha = 0.5, d = 1)
 }
 \arguments{
 \item{lg, }{an existing object originally created with \code{lexis.grid()}.}
@@ -14,6 +14,8 @@ lexis.cohort(lg, cohort, fill = "green", alpha = 0.5)
 \item{fill}{character, set the colour of the rectangle. Default is \code{"green"}.}
 
 \item{alpha}{numeric, set the level of transparency of the rectangle. Default is \code{0.5}.}
+
+\item{d}{numeric, set the size of the age groups. Default is 1.}
 }
 \description{
 Takes an existing Lexis grid and adds a coloured rectangle to highlight a certain cohort.

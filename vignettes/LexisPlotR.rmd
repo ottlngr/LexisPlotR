@@ -19,20 +19,41 @@ vignette: >
 
 ### Plot an empty Lexis grid
 
+> In September 2016, `lexis.grid2()` was introduced to add functionality some users missed in `lexis.grid()`. I highly recommend to use `lexis.grid2()` instead of `lexis.grid()` for most tasks.
+
 A Lexis Diagram is basically determined by two measures: A range of years presented on the horizontal axis and a range of ages shown on the vertical axis. To plot an empty Lexis grid, use `lexis.grid()` which takes these measures as numeric inputs:
 ```{r, message=FALSE}
 library(LexisPlotR)
 ```
 ```{r}
 # Plot a Lexis grid from year 1900 to year 1905, representing the ages from 0 to 5
-lexis.grid(year.start = 1900, year.end = 1905, age.start = 0, age.end = 5)
+lexis.grid2(year.start = 1900, year.end = 1905, age.start = 0, age.end = 5)
 ```
 
 The aspect ratio of the axes is fixed to ensure right-angled triangles. So even non-square Lexis grids show right-angled triangles:
 
 ```{r}
-lexis.grid(year.start = 1900, year.end = 1905, age.start = 0, age.end = 7)
+lexis.grid2(year.start = 1900, year.end = 1905, age.start = 0, age.end = 7)
 ```
+
+Lexis Diagrams with a wide age and/or date range may look odd:
+
+```{r}
+lexis.grid2(year.start = 1900, year.end = 1950, age.start = 0, age.end = 50)
+```
+
+One way to improve the appearance of such big plots, one can alter the linewidth of the grid using the `lwd` parameter:
+
+```{r}
+lexis.grid2(year.start = 1900, year.end = 1950, age.start = 0, age.end = 50, lwd = 0.1)
+```
+
+A better option is to use age groups to achieve less grid lines. Use the `d` parameter:
+
+```{r}
+lexis.grid2(year.start = 1900, year.end = 1950, age.start = 0, age.end = 50, d = 5)
+```
+
 
 ### Highlight certain areas of the Lexis grid
 
@@ -42,7 +63,7 @@ Highlighting a certain age in your grid is supported by `lexis.age` which will d
 First, define an empty Lexis grid with the desired dimensions:
 
 ```{r}
-mylexis <- lexis.grid(year.start = 1900, year.end = 1905, age.start = 0, age.end = 5)
+mylexis <- lexis.grid2(year.start = 1900, year.end = 1905, age.start = 0, age.end = 5)
 mylexis
 ```
 
@@ -57,7 +78,7 @@ The default fill colour for `lexis.age()` is `"yellow"`, but you can change the 
 
 ```{r}
 # Change the fill colour to "red" and make the layer nearly non-transparent
-lexis.age(lg = mylexis, age = 2, fill = "red", alpha = 0.9)
+lexis.age(lg = mylexis, age = 2, fill = "red", alpha = 0.8)
 ```
 
 `lexis.year()`, which highlight a certain year, and `lexis.cohort()`, which does the same thing for a desired cohort, work nearly the same:
@@ -96,7 +117,7 @@ To draw an arbitrary life line into your Lexis Diagram you use `lexis.lifeline()
 
 ```{r}
 # Define a Lexis grid
-mylexis <- lexis.grid(year.start = 1990, year.end = 1995, age.start = 0, age.end = 5)
+mylexis <- lexis.grid2(year.start = 1990, year.end = 1995, age.start = 0, age.end = 5)
 # Add a life line for an individual born on 1991-09-23
 lexis.lifeline(lg = mylexis, entry = "1991-09-23")
 ```
@@ -118,7 +139,7 @@ head(lifelines_sample, 10)
 To add all this data to your Lexis Diagram, use `lexis.lifeline()` and provide the respective columns of `lifelines_sample` as arguments:
 
 ```{r}
-mylexis <- lexis.grid(year.start = 1900, year.end = 1905, age.start = 0, age.end = 5)
+mylexis <- lexis.grid2(year.start = 1900, year.end = 1905, age.start = 0, age.end = 5)
 lexis.lifeline(lg = mylexis, entry = lifelines_sample$entry, exit = lifelines_sample$exit)
 ```
 
@@ -129,6 +150,8 @@ lexis.lifeline(lg = mylexis, entry = lifelines_sample$entry, exit = lifelines_sa
 ```
 
 ### Use data from the Human Mortality Database
+
+> I recommend to use the actually deprecated `lexis.grid()` insted of `lexis.grid2()`. 
 
 > The Human Mortality Database (HMD) contains original calculations of death rates and life tables for national populations (countries or areas), as well as the input data used in constructing those tables. The input data consist of death counts from vital statistics, plus census counts, birth counts, and population estimates from various sources. [http://www.mortality.org/Public/Overview.php](http://www.mortality.org/Public/Overview.php)
 

@@ -4,7 +4,7 @@
 \alias{lexis.year}
 \title{Emphasize a certain year in Lexis grid.}
 \usage{
-lexis.year(lg, year, fill = "blue", alpha = 0.5)
+lexis.year(lg, year, fill = "blue", alpha = 0.5, d = 1)
 }
 \arguments{
 \item{lg, }{an existing object originally created with \code{lexis.grid()}.}
@@ -14,6 +14,8 @@ lexis.year(lg, year, fill = "blue", alpha = 0.5)
 \item{fill}{character, set the colour of the rectangle. Default is \code{"blue"}.}
 
 \item{alpha}{numeric, set the transparency of the rectangle. Default is \code{0.5}.}
+
+\item{d}{numeric, set the size of the age groups. Default is 1.}
 }
 \value{
 A ggplot2 object.

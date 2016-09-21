@@ -4,7 +4,7 @@
 \alias{lexis.age}
 \title{Emphasize a certain age in Lexis grid}
 \usage{
-lexis.age(lg, age, fill = "yellow", alpha = 0.5)
+lexis.age(lg, age, fill = "yellow", alpha = 0.5, d = 1)
 }
 \arguments{
 \item{lg, }{an existing object originally created with \code{lexis.grid()}.}
@@ -14,6 +14,8 @@ lexis.age(lg, age, fill = "yellow", alpha = 0.5)
 \item{fill}{character, set colour to fill the rectangle. Default is \code{"yellow"}.}
 
 \item{alpha}{numeric, set alpha, the level of transparency for \code{fill}. Default is \code{0.5}.}
+
+\item{d}{numeric, set the size of the age groups. Default is 1.}
 }
 \value{
 A ggplot2 object.
