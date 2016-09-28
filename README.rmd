@@ -1,3 +1,14 @@
+---
+output:
+  md_document:
+    variant: markdown_github
+    toc: true
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+
+
 # LexisPlotR
 [![CRAN](http://www.r-pkg.org/badges/version/LexisPlotR)](http://cran.rstudio.com/package=LexisPlotR) [![Downloads](http://cranlogs.r-pkg.org/badges/LexisPlotR?color=brightgreen)](http://www.r-pkg.org/pkg/LexisPlotR)
 
