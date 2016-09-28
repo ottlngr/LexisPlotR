@@ -40,7 +40,7 @@ lexis.survey <- function(lg, from_date, to_date, from_age, to_age, fill = "orang
                    y = c(y1,y2,y3,y4))
   df$x <- as.Date(df$x, origin = "1970-01-01")
   
-  print(df)
+  #print(df)
   lg <- lg + 
     geom_polygon(data = df, aes(x, y), fill = fill, alpha = alpha)
   return(lg)

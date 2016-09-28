@@ -1,30 +1,40 @@
----
-title: "LexisPlotR"
-author: "Philipp Ottolinger"
-date: "`r Sys.Date()`"
-output: 
-  github_document:
-    toc: true
-vignette: >
-  %\VignetteIndexEntry{Vignette Title}
-  \usepackage[utf8]{inputenc}
-  %\VignetteEngine{knitr::rmarkdown}
----
+# LexisPlotR
+[![CRAN](http://www.r-pkg.org/badges/version/LexisPlotR)](http://cran.rstudio.com/package=LexisPlotR) [![Downloads](http://cranlogs.r-pkg.org/badges/LexisPlotR?color=brightgreen)](http://www.r-pkg.org/pkg/LexisPlotR)
+
+**`LexisPlotR`** is a tool to easily plot Lexis Diagrams within R. It is based on [`ggplot2`](https://github.com/hadley/ggplot2) and wraps necessary steps like drawing the grid, highlighting certain areas or inserting lifelines in a single function.
+
+
+## Installation
+
+You can install the latest version of **`LexisPlotR`** (v0.3.2) by using `install_github()` from the `devtools`-package:
+
+    devtools::install_github("ottlngr/LexisPlotR")
+    library(LexisPlotR)
+    
+`LexisPlotR v0.2` (outdatet!) is available on CRAN. Install v0.2 from CRAN:
+
+    install.packages("LexisPlotR")
+    library(LexisPlotR)
+
+
 ## What is a Lexis Diagram?
+
 > In demography a Lexis diagram (named after economist and social scientist Wilhelm Lexis) is a two dimensional diagram that is used to represent events (such as births or deaths) that occur to individuals belonging to different cohorts. Calendar time is usually represented on the horizontal axis, while age is represented on the vertical axis. ([https://en.wikipedia.org/wiki/Lexis_diagram](https://en.wikipedia.org/wiki/Lexis_diagram))
 
-## LexisPlotR
+## Using LexisPlotR
 
-`LexisPlotR` provides a couple of functions to draw Lexis Diagrams in R. Besides the ability to draw empty Lexis grids, `LexisPlotR` also offers some functionality to highlight certain areas of the grid or to add actual data to the Lexis Diagram.
+**`LexisPlotR`** provides a couple of functions to draw Lexis Diagrams in R. Besides the ability to draw empty Lexis grids, **`LexisPlotR`** also offers some functionality to highlight certain areas of the grid or to add actual data to the Lexis Diagram.
 
 ### Plot an empty Lexis grid
 
 > In September 2016, `lexis.grid2()` was introduced to add functionality some users missed in `lexis.grid()`. I highly recommend to use `lexis.grid2()` instead of `lexis.grid()` for most tasks.
 
 A Lexis Diagram is basically determined by two measures: A range of years presented on the horizontal axis and a range of ages shown on the vertical axis. To plot an empty Lexis grid, use `lexis.grid()` which takes these measures as numeric inputs:
+
 ```{r, message=FALSE}
 library(LexisPlotR)
 ```
+
 ```{r}
 # Plot a Lexis grid from year 1900 to year 1905, representing the ages from 0 to 5
 lexis.grid2(year.start = 1900, year.end = 1905, age.start = 0, age.end = 5)
@@ -99,15 +109,23 @@ lexis.year(lg = mylexis, year = 1902, fill = "orange", alpha = 0.2)
 lexis.cohort(lg = mylexis, cohort = 1898, fill = "grey", alpha = 0.8)
 ```
 
+From v0.3.1 on, `lexis.survey()` is part of **`LexisPlotR`**. With `lexis.survey()`, one can sketch the progress of a survey or the like.
+
+```{r}
+mylexis <- lexis.survey(lg = mylexis, from_date = "1901-06-01", to_date = "1902-12-31", from_age = 1, to_age = 3)
+mylexis
+```
+
 To add more than one layer or to make changes permanent you have to overwrite your Lexis object:
 
 ```{r}
-mylexis <- lexis.grid(year.start = 1900, year.end = 1905, age.start = 0, age.end = 5)
+mylexis <- lexis.grid2(year.start = 1900, year.end = 1905, age.start = 0, age.end = 5)
 mylexis <- lexis.age(lg = mylexis, age = 2)
 mylexis <- lexis.year(lg = mylexis, year = 1903)
 mylexis <- lexis.cohort(lg = mylexis, cohort = 1898)
 mylexis
 ```
+
 
 ### Add life lines to the Lexis Diagram
 
@@ -128,7 +146,7 @@ If death or any other date that can serve as an "exit" is observed, you can add 
 lexis.lifeline(lg = mylexis, entry = "1991-09-23", exit = "1994-06-11")
 ```
 
-You can also use entry and death dates from a `data.frame` which is useful when plotting life lines of several individuals or hole populations. `LexisPlotR` comes with a random dataset of entry and exit dates for 300 Individuals from 1895 to 1905. Some of the deaths (or exits) are not observed or unknown. Take a look at the `lifelines_sample` dataset:
+You can also use entry and death dates from a `data.frame` which is useful when plotting life lines of several individuals or hole populations. **`LexisPlotR`** comes with a random dataset of entry and exit dates for 300 Individuals from 1895 to 1905. Some of the deaths (or exits) are not observed or unknown. Take a look at the `lifelines_sample` dataset:
 
 ```{r}
 data("lifelines_sample")
@@ -151,7 +169,7 @@ lexis.lifeline(lg = mylexis, entry = lifelines_sample$entry, exit = lifelines_sa
 
 ### Use data from the Human Mortality Database
 
-> I recommend to use the actually deprecated `lexis.grid()` insted of `lexis.grid2()`. 
+> I recommend to use the actually deprecated `lexis.grid()` insted of `lexis.grid2()` when working with HMD data. I will fix this soon. 
 
 > The Human Mortality Database (HMD) contains original calculations of death rates and life tables for national populations (countries or areas), as well as the input data used in constructing those tables. The input data consist of death counts from vital statistics, plus census counts, birth counts, and population estimates from various sources. [http://www.mortality.org/Public/Overview.php](http://www.mortality.org/Public/Overview.php)
 
@@ -192,7 +210,7 @@ lexis.hmd(lg = mylexis, hmd.data = mydata, column = "ratioMales")
 
 ## Everything is a ggplot2 object
 
-`LexisPlotR` is simply a specialised wrapper for `ggplot2`. Therefore you can edit the appearance of your Lexis Diagram by adding some `labs` and `themes` just like with any other `ggplot2` plot.
+**`LexisPlotR`** is simply a specialised wrapper for `ggplot2`. Therefore you can edit the appearance of your Lexis Diagram by adding some `labs` and `themes` just like with any other `ggplot2` plot.
 
 ```{r}
 mylexis <- lexis.grid(year.start = 1900, year.end = 1905, age.start = 0, age.end = 5)
@@ -204,4 +222,8 @@ mylexis <- mylexis + theme(axis.title = element_text(face = "bold", colour = "re
 mylexis
 ```
 
+## If you ...
 
+... are missing some functionality, have some ideas how to improve this package or even want to contribute, open an issue here on GitHub or contact me.
+
+    
