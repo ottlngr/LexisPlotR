@@ -15,10 +15,10 @@
 #' @export lexis.age
 #' @examples 
 #' library(LexisPlotR)
-#' lexis <- lexis.grid(year.start = 1900, year.end = 1905, age.start = 0, age.end = 5)
+#' lexis <- lexis.grid2(year.start = 1900, year.end = 1905, age.start = 0, age.end = 5)
 #' lexis <- lexis.age(lg = lexis, age = 3)
 
-lexis.age <- function(lg, age, fill = "yellow", alpha = 0.5, d = 1) {
+lexis.age <- function(lg, age, fill = lpr_colours()[2], alpha = 0.7, d = 1) {
   age <- as.numeric(age)
   # year.start <- as.Date(ggplot_build(lg)$data[[1]][1,1], origin="1970-01-01")
   # year.end <- as.Date(tail(ggplot_build(lg)$data[[1]]$xend,1), origin = "1970-01-01")

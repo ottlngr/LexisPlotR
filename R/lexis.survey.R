@@ -19,7 +19,7 @@
 #' lexis.survey(lg, from_date = "1982-09-01", to_date = "1986-03-01", from_age = 32, to_age = 36)
   
 
-lexis.survey <- function(lg, from_date, to_date, from_age, to_age, fill = "orange", alpha = 0.5) {
+lexis.survey <- function(lg, from_date, to_date, from_age, to_age, fill = lpr_colours()[6], alpha = 0.7) {
   from_date <- as.Date(from_date, origin = "1970-01-01")
   to_date <- as.Date(to_date, origin = "1970-01-01")
   

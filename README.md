@@ -15,7 +15,7 @@ LexisPlotR
 
 [![CRAN](http://www.r-pkg.org/badges/version/LexisPlotR)](http://cran.rstudio.com/package=LexisPlotR) [![Downloads](http://cranlogs.r-pkg.org/badges/LexisPlotR?color=brightgreen)](http://www.r-pkg.org/pkg/LexisPlotR)
 
-**`LexisPlotR`** is a tool to easily plot Lexis Diagrams within R. It is based on [`ggplot2`](https://github.com/hadley/ggplot2) and wraps necessary steps like drawing the grid, highlighting certain areas or inserting lifelines in a single function.
+**`LexisPlotR`** is a tool to easily plot Lexis Diagrams within R. It is based on [`ggplot2`](https://github.com/hadley/ggplot2) and wraps necessary steps like drawing the grid, highlighting certain areas or inserting lifelines in a couple of easy to use functions.
 
 Installation
 ------------
@@ -25,7 +25,7 @@ You can install the latest version of **`LexisPlotR`** (v0.3.2) by using `instal
     devtools::install_github("ottlngr/LexisPlotR")
     library(LexisPlotR)
 
-`LexisPlotR v0.2` (outdatet!) is available on CRAN. Install v0.2 from CRAN:
+**`LexisPlotR`** (v0.3) is available on CRAN. Install v0.3 from CRAN:
 
     install.packages("LexisPlotR")
     library(LexisPlotR)
@@ -42,7 +42,7 @@ Using LexisPlotR
 
 ### Plot an empty Lexis grid
 
-> In September 2016, `lexis.grid2()` was introduced to add functionality some users missed in `lexis.grid()`. I highly recommend to use `lexis.grid2()` instead of `lexis.grid()` for most tasks.
+> In September 2016 (v0.3.2), `lexis.grid2()` was introduced to add functionality some users missed in `lexis.grid()`. I highly recommend to use `lexis.grid2()` instead of `lexis.grid()` for most tasks.
 
 A Lexis Diagram is basically determined by two measures: A range of years presented on the horizontal axis and a range of ages shown on the vertical axis. To plot an empty Lexis grid, use `lexis.grid()` which takes these measures as numeric inputs:
 
