@@ -55,6 +55,8 @@ library(LexisPlotR)
 lexis.grid2(year.start = 1900, year.end = 1905, age.start = 0, age.end = 5)
 ```
 
+    ## Warning: Ignoring unknown aesthetics: x, y
+
 ![](README_files/figure-markdown_github/unnamed-chunk-2-1.png)
 
 The aspect ratio of the axes is fixed to ensure right-angled triangles. So even non-square Lexis grids show right-angled triangles:
@@ -62,6 +64,8 @@ The aspect ratio of the axes is fixed to ensure right-angled triangles. So even 
 ``` r
 lexis.grid2(year.start = 1900, year.end = 1905, age.start = 0, age.end = 7)
 ```
+
+    ## Warning: Ignoring unknown aesthetics: x, y
 
 ![](README_files/figure-markdown_github/unnamed-chunk-3-1.png)
 
@@ -71,6 +75,8 @@ Lexis Diagrams with a wide age and/or date range may look odd:
 lexis.grid2(year.start = 1900, year.end = 1950, age.start = 0, age.end = 50)
 ```
 
+    ## Warning: Ignoring unknown aesthetics: x, y
+
 ![](README_files/figure-markdown_github/unnamed-chunk-4-1.png)
 
 One way to improve the appearance of such big plots, one can alter the linewidth of the grid using the `lwd` parameter:
@@ -79,6 +85,8 @@ One way to improve the appearance of such big plots, one can alter the linewidth
 lexis.grid2(year.start = 1900, year.end = 1950, age.start = 0, age.end = 50, lwd = 0.1)
 ```
 
+    ## Warning: Ignoring unknown aesthetics: x, y
+
 ![](README_files/figure-markdown_github/unnamed-chunk-5-1.png)
 
 A better option is to use age groups to achieve less grid lines. Use the `d` parameter:
@@ -86,6 +94,8 @@ A better option is to use age groups to achieve less grid lines. Use the `d` par
 ``` r
 lexis.grid2(year.start = 1900, year.end = 1950, age.start = 0, age.end = 50, d = 5)
 ```
+
+    ## Warning: Ignoring unknown aesthetics: x, y
 
 ![](README_files/figure-markdown_github/unnamed-chunk-6-1.png)
 
@@ -97,6 +107,11 @@ First, define an empty Lexis grid with the desired dimensions:
 
 ``` r
 mylexis <- lexis.grid2(year.start = 1900, year.end = 1905, age.start = 0, age.end = 5)
+```
+
+    ## Warning: Ignoring unknown aesthetics: x, y
+
+``` r
 mylexis
 ```
 
@@ -165,6 +180,11 @@ To add more than one layer or to make changes permanent you have to overwrite yo
 
 ``` r
 mylexis <- lexis.grid2(year.start = 1900, year.end = 1905, age.start = 0, age.end = 5)
+```
+
+    ## Warning: Ignoring unknown aesthetics: x, y
+
+``` r
 mylexis <- lexis.age(lg = mylexis, age = 2)
 mylexis <- lexis.year(lg = mylexis, year = 1903)
 mylexis <- lexis.cohort(lg = mylexis, cohort = 1898)
@@ -182,6 +202,11 @@ To draw an arbitrary life line into your Lexis Diagram you use `lexis.lifeline()
 ``` r
 # Define a Lexis grid
 mylexis <- lexis.grid2(year.start = 1990, year.end = 1995, age.start = 0, age.end = 5)
+```
+
+    ## Warning: Ignoring unknown aesthetics: x, y
+
+``` r
 # Add a life line for an individual born on 1991-09-23
 lexis.lifeline(lg = mylexis, entry = "1991-09-23")
 ```
@@ -227,6 +252,11 @@ To add all this data to your Lexis Diagram, use `lexis.lifeline()` and provide t
 
 ``` r
 mylexis <- lexis.grid2(year.start = 1900, year.end = 1905, age.start = 0, age.end = 5)
+```
+
+    ## Warning: Ignoring unknown aesthetics: x, y
+
+``` r
 lexis.lifeline(lg = mylexis, entry = lifelines_sample$entry, exit = lifelines_sample$exit)
 ```
 
