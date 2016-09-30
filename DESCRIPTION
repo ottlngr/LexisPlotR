@@ -7,7 +7,7 @@ Authors@R: c(person("Philipp", "Ottolinger", , "philipp@ottolinger.de", role=c("
 						 person("Marieke", "Smilde-Becker", role="ctb"))
 Author: Philipp Ottolinger [aut, cre], Marieke Smilde-Becker [ctb]
 Maintainer: Philipp Ottolinger <philipp@ottolinger.de>
-Description: Functions to plot Lexis Diagrams for Demographic purposes.
+Description: Plots empty Lexis grids, adds lifelines and highlights certain areas of the grid, like cohorts and age groups.
 Depends:
     R (>= 3.0.0),
     ggplot2 (>= 1.0.1)
