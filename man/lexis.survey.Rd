@@ -5,8 +5,8 @@
 \title{Emphasize a survey range in a Lexis grid
 Takes an existing Lexis grid and adds a coloured parallelogram to highlight a survey range.}
 \usage{
-lexis.survey(lg, from_date, to_date, from_age, to_age, fill = "orange",
-  alpha = 0.5)
+lexis.survey(lg, from_date, to_date, from_age, to_age,
+  fill = lpr_colours()[6], alpha = 0.7)
 }
 \arguments{
 \item{lg, }{an existing object originally created with \code{lexis.grid()}.}

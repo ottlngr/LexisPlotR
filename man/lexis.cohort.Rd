@@ -4,7 +4,7 @@
 \alias{lexis.cohort}
 \title{Emphasize a certain cohort in a Lexis grid}
 \usage{
-lexis.cohort(lg, cohort, fill = "green", alpha = 0.5, d = 1)
+lexis.cohort(lg, cohort, fill = lpr_colours()[4], alpha = 0.7, d = 1)
 }
 \arguments{
 \item{lg, }{an existing object originally created with \code{lexis.grid()}.}

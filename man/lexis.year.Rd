@@ -4,7 +4,7 @@
 \alias{lexis.year}
 \title{Emphasize a certain year in Lexis grid.}
 \usage{
-lexis.year(lg, year, fill = "blue", alpha = 0.5, d = 1)
+lexis.year(lg, year, fill = lpr_colours()[3], alpha = 0.7, d = 1)
 }
 \arguments{
 \item{lg, }{an existing object originally created with \code{lexis.grid()}.}
