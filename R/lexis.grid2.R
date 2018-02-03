@@ -78,8 +78,8 @@ lexis.grid2 <- function(year.start, year.end, age.start, age.end, lwd = 0.3, for
   # Plot appearance
   
   gg <- gg + 
-    scale_x_date(breaks=year.seq[seq(1,length(year.seq), d)], expand=c(0,0), date_labels="%Y", name="Year") +
-    scale_y_continuous(expand=c(0,0), breaks=age.seq[seq(1, length(age.seq), d)], name="Age") +
+    scale_x_date(breaks=year.seq[seq(1,length(year.seq), d)], expand=c(0,0), date_labels="%Y") + xlab("Year") +
+    scale_y_continuous(expand=c(0,0), breaks=age.seq[seq(1, length(age.seq), d)]) + ylab("Age") +
     #coord_fixed(ratio = 365.25, xlim=c(year.start,year.end), ylim = c(age.start, age.end)) +
     theme_bw() +
     theme(panel.grid.major = element_line(colour = "black", size = lwd),
