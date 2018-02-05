@@ -23,7 +23,7 @@
 #' @examples 
 #' library(LexisPlotR)
 #' lexis.grid(year.start = 1900, year.end = 1905, age.start = 0, age.end = 5)
-lexis.grid2 <- function(year.start, year.end, age.start, age.end, lwd = 0.3, force.equal = T, d = 1) {
+lexis.grid2 <- function(year.start, year.end, age.start, age.end, lwd = 0.3, force.equal = TRUE, d = 1) {
   # check arguments for is.numeric()
   if (!is.numeric(year.start)) { stop("No numeric value for year.start") }
   if (!is.numeric(year.end)) { stop("No numeric value for year.end") }
@@ -35,10 +35,17 @@ lexis.grid2 <- function(year.start, year.end, age.start, age.end, lwd = 0.3, for
   # transform to as.Date()
   year.start <- as.Date(paste(year.start, "-01-01", sep = ""))
   year.end <- as.Date(paste(year.end, "-01-01", sep = ""))
-  # create sequences
+  # create sequence for the x-axis
   year.seq <- seq(year.start, year.end, by = "year")
-  age.seq <- age.start:age.end
   
+  ##Fix problem that age.end can be a fraction
+  age_axis_in_full_years <- age.end - floor(age.end) == 0 
+  
+  if (age_axis_in_full_years) {
+    age.seq <- age.start:age.end
+  } else {
+    age.seq <- seq(age.start,age.end, length=max(2,length(age.start:age.end)))
+  }
   x <- NULL
   y <- NULL 
   ####
@@ -52,7 +59,9 @@ lexis.grid2 <- function(year.start, year.end, age.start, age.end, lwd = 0.3, for
   gg <- ggplot() +
     geom_blank(data = m, aes(x = x, y = y)) +
     geom_abline(intercept = seq(-diff.dia-100, diff.dia+100, d)-1, slope = 1/365.25, lwd = lwd)
-  gg
+  
+  ##gg
+  
   ####
   # create data.frame for diagonal geom_segment()
   # dia <- data.frame()
@@ -76,17 +85,23 @@ lexis.grid2 <- function(year.start, year.end, age.start, age.end, lwd = 0.3, for
   #   geom_segment(aes(x = dia$a, xend = dia$b, y = dia$c, yend = dia$d), lwd = lwd)
   # 
   # Plot appearance
+ ## browser()
   
   gg <- gg + 
-    scale_x_date(breaks=year.seq[seq(1,length(year.seq), d)], expand=c(0,0), date_labels="%Y", name="Year") +
-    scale_y_continuous(expand=c(0,0), breaks=age.seq[seq(1, length(age.seq), d)], name="Age") +
-    #coord_fixed(ratio = 365.25, xlim=c(year.start,year.end), ylim = c(age.start, age.end)) +
+    scale_x_date(breaks=year.seq[seq(1,length(year.seq), d)], expand=c(0,0), date_labels="%Y") + xlab("Year") +
+    (if (age_axis_in_full_years) {
+      scale_y_continuous(expand=c(0,0), breaks=age.seq[seq(1, length(age.seq), d)])  
+    } else {
+      scale_y_continuous(expand=c(0,0), breaks=age.seq[seq(1, length(age.seq), d)], labels=sprintf("%.0f",365.25*age.seq[seq(1, length(age.seq), d)])) 
+    }) +
+    ylab("Age") +
     theme_bw() +
     theme(panel.grid.major = element_line(colour = "black", size = lwd),
           panel.grid.minor = element_blank())
-  gg
   
-  if (force.equal == T) {
+  ##gg
+  
+  if (force.equal == TRUE) {
     gg <- gg + coord_fixed(ratio = 365.25, xlim=c(year.start,year.end), ylim = c(age.start, age.end))
   }
   return(gg)
