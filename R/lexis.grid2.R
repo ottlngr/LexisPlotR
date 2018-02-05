@@ -92,7 +92,7 @@ lexis.grid2 <- function(year.start, year.end, age.start, age.end, lwd = 0.3, for
     (if (age_axis_in_full_years) {
       scale_y_continuous(expand=c(0,0), breaks=age.seq[seq(1, length(age.seq), d)])  
     } else {
-      scale_y_continuous(expand=c(0,0), breaks=age.seq, labels=sprintf("%.0f",365*age.seq[seq(1, length(age.seq), d)])) 
+      scale_y_continuous(expand=c(0,0), breaks=age.seq[seq(1, length(age.seq), d)], labels=sprintf("%.0f",365.25*age.seq[seq(1, length(age.seq), d)])) 
     }) +
     ylab("Age") +
     theme_bw() +
