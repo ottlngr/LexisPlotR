@@ -31,4 +31,3 @@ lexis.cohort(lg = lg, cohort = 1901)
 \author{
 Philipp Ottolinger
 }
-

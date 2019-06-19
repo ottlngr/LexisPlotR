@@ -19,6 +19,7 @@
 #' lexis <- lexis.age(lg = lexis, age = 3)
 
 lexis.age <- function(lg, age, fill = lpr_colours()[2], alpha = 0.7, d = 1) {
+  .Deprecated("lexis_age")
   age <- as.numeric(age)
   # year.start <- as.Date(ggplot_build(lg)$data[[1]][1,1], origin="1970-01-01")
   # year.end <- as.Date(tail(ggplot_build(lg)$data[[1]]$xend,1), origin = "1970-01-01")

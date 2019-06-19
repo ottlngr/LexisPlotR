@@ -18,6 +18,7 @@
 #' lexis.cohort(lg = lg, cohort = 1901)
 
 lexis.cohort <- function(lg, cohort, fill = lpr_colours()[4], alpha = 0.7, d = 1) {
+  .Deprecated("lexis_cohort")
   if (!is.ggplot(lg)) { stop("No valid ggplot object.") }
   # year.start <- as.Date(ggplot_build(lg)$data[[1]][1,1], origin="1970-01-01")
   # year.end <- as.Date(tail(ggplot_build(lg)$data[[1]]$xend,1), origin = "1970-01-01")

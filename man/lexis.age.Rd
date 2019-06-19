@@ -34,4 +34,3 @@ lexis <- lexis.age(lg = lexis, age = 3)
 \author{
 Philipp Ottolinger
 }
-

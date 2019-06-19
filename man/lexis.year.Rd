@@ -33,4 +33,3 @@ lexis.year(lg = lg, year = 1902)
 \author{
 Philipp Ottoliner
 }
-

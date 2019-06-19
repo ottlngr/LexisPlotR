@@ -18,6 +18,7 @@
 #' lexis.year(lg = lg, year = 1902)
 
 lexis.year <- function(lg, year, fill = lpr_colours()[3], alpha = 0.7, d = 1) {
+  .Deprecated("lexis_year")
   # year.start <- as.Date(ggplot_build(lg)$data[[1]][1,1], origin="1970-01-01")
   # year_start <- as.numeric(substr(year.start,1,4))
   # year.end <- as.Date(tail(ggplot_build(lg)$data[[1]]$xend,1), origin = "1970-01-01")

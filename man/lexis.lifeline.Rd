@@ -40,4 +40,3 @@ lexis.lifeline(lg = lg, entry = "1901-09-23", exit = "1904-03-03")
 \author{
 Philipp Ottolinger
 }
-
