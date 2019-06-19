@@ -26,4 +26,3 @@ deaths.triangles <- prepare.hmd(path)
 \author{
 Philipp Ottolinger
 }
-
