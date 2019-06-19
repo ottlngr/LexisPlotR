@@ -3,11 +3,11 @@ Type: Package
 Title: Plot Lexis Diagrams for Demographic Purposes
 Version: 0.3.2
 Date: 2016-09-28
-Authors@R: c(person("Philipp", "Ottolinger", , "philipp@ottolinger.de", role=c("aut","cre")),
+Authors@R: c(person("Philipp", "Ottolinger", email = "philipp@ottolinger.de", role = "cre"),
 						 person("Marieke", "Smilde-Becker", role="ctb"))
-Author: Philipp Ottolinger [aut, cre], Marieke Smilde-Becker [ctb]
 Maintainer: Philipp Ottolinger <philipp@ottolinger.de>
 Description: Plots empty Lexis grids, adds lifelines and highlights certain areas of the grid, like cohorts and age groups.
+Imports: ggplot2, dplyr, tidyr
 Depends:
     R (>= 3.0.0),
     ggplot2 (>= 1.0.1)

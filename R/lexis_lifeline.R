@@ -13,7 +13,7 @@
 #' @return A ggplot2 object.
 #' @author Philipp Ottolinger
 #' @import ggplot2
-#' @importFrom dplyr mutate %>%
+#' @importFrom dplyr mutate %>% n
 #' @importFrom utils tail
 #' @export lexis_lifeline
 #' @examples 
@@ -45,10 +45,10 @@ lexis_lifeline <- function(lg, birth, entry = NA, exit = NA, lineends = FALSE, c
            y = ifelse(is.na(entry), 0, age_from_start_and_end_date(birth, entry)),
            yend = ifelse(is.na(exit), age_from_start_and_end_date(birth, year_end), age_from_start_and_end_date(birth, exit)))
   
-  lg <- lg + geom_segment(data = lifelines, aes(x = x, xend = xend, y = y, yend = yend), colour = colour, alpha = alpha, lwd = lwd)
+  lg <- lg + geom_segment(data = lifelines, aes(x = .data$x, xend = .data$xend, y = .data$y, yend = .data$yend), colour = colour, alpha = alpha, lwd = lwd)
   
   if (lineends == TRUE) {
-    lg <- lg + geom_point(data = lifelines[!is.na(lifelines$exit),], aes(x=xend, y=yend), size=2, shape = 3)
+    lg <- lg + geom_point(data = lifelines[!is.na(lifelines$exit),], aes(x = .data$xend, y = .data$yend), size=2, shape = 3)
   }
   
   return(lg)

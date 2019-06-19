@@ -33,6 +33,6 @@ lexis_age <- function(lg, age, fill = lexisplotr_colours()[2], alpha = 0.7, delt
   if (age < age_start) { stop("Out of bounds.") }
   
   polygon <- data.frame(x = c(year_start, year_end, year_end, year_start), y = c(age, age, age + delta, age + delta))
-  lg <- lg + geom_polygon(data = polygon, aes(x, y), fill = fill, alpha = alpha, colour = NA)
+  lg <- lg + geom_polygon(data = polygon, aes(x = .data$x, y = .data$y), fill = fill, alpha = alpha, colour = NA)
   return(lg)
 }

@@ -59,7 +59,7 @@ lexis_grid <- function(year_start, year_end, age_start, age_end, delta = 1, lwd 
   lexis <- ggplot() + theme_bw()
   
   # Create a blank plotting area with the respective size
-  lexis <- lexis + geom_blank(data = m, aes(x = x, y = y))
+  lexis <- lexis + geom_blank(data = m, aes(x = .data$x, y = .data$y))
   
   # Plot the diagonals
   lexis <- lexis + geom_abline(intercept = seq(-diff_dia - 100, diff_dia + 100, delta) - 1, slope = 1/365.25, lwd = lwd)

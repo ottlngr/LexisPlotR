@@ -33,7 +33,7 @@ lexis_cohort <- function(lg, cohort, delta = 1, fill = lexisplotr_colours()[4], 
   
   polygon$x <- as.Date(paste(polygon$x, "-01-01", sep = ""), origin = "1970-01-01")
   
-  lg <- lg + geom_polygon(data = polygon, aes(x,y), fill = fill, alpha = alpha)
+  lg <- lg + geom_polygon(data = polygon, aes(x = .data$x, y = .data$y), fill = fill, alpha = alpha)
   
   return(lg)
 }

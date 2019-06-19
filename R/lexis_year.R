@@ -40,7 +40,7 @@ lexis_year <- function(lg, year, delta = 1, fill = lexisplotr_colours()[3], alph
   polygon <- data.frame(x = c(year, year1, year1, year),
                         y = c(age_start, age_start, age_end, age_end))
   
-  lg <- lg + geom_polygon(data = polygon, aes(x = x, y = y), fill = fill, alpha = alpha, colour = NA)
+  lg <- lg + geom_polygon(data = polygon, aes(x = .data$x, y = .data$y), fill = fill, alpha = alpha, colour = NA)
   
   return(lg)
 }
