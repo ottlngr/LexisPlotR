@@ -35,4 +35,3 @@ lexis.hmd(lg, deaths.triangles, "RatioMale")
 \author{
 Philipp Ottolinger
 }
-

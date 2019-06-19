@@ -17,6 +17,7 @@
 #' deaths.triangles <- prepare.hmd(path)
 
 prepare.hmd <- function(file) {
+  .Deprecated("")
   data <- read.csv(file, sep="", skip = 2)
   data$Year <- as.numeric(as.character(data$Year))
   data$Age <- as.numeric(as.character(data$Age))

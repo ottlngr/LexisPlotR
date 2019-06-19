@@ -38,4 +38,3 @@ lexis.survey(lg, from_date = "1982-09-01", to_date = "1986-03-01", from_age = 32
 \author{
 Philipp Ottolinger
 }
-
