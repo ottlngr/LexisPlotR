@@ -35,8 +35,10 @@ Because the returned object is a ggplot2 graph, the overall appearence of
 the graph can be edited by adding \code{themes()} to the plot.
 }
 \examples{
+\dontrun{
 library(LexisPlotR)
 lexis.grid(year.start = 1900, year.end = 1905, age.start = 0, age.end = 5)
+}
 }
 \author{
 Philipp Ottolinger

@@ -4,9 +4,9 @@
 #' 
 #' @param lg, an existing object originally created with \code{lexis.grid()}.
 #' @param cohort numeric, set the cohort to highlight.
+#' @param delta numeric, set the size of the age groups. Default is 1.
 #' @param fill character, set the colour of the rectangle. Default is \code{"green"}.
 #' @param alpha numeric, set the level of transparency of the rectangle. Default is \code{0.5}.
-#' @param d numeric, set the size of the age groups. Default is 1.
 #' @details Takes an existing Lexis grid and adds a coloured rectangle to the plot. The rectangle will highlight a certain cohort in the Lexis grid.
 #' @author Philipp Ottolinger
 #' @import ggplot2
@@ -14,7 +14,7 @@
 #' @export lexis_cohort
 #' @examples
 #' library(LexisPlotR)
-#' lg <- lexis_grid(year.start = 1900, year.end = 1905, age.start = 0, age.end = 5)
+#' lg <- lexis_grid(year_start = 1900, year_end = 1905, age_start = 0, age_end = 5)
 #' lexis_cohort(lg = lg, cohort = 1901)
 
 lexis_cohort <- function(lg, cohort, delta = 1, fill = lexisplotr_colours()[4], alpha = 0.7) {

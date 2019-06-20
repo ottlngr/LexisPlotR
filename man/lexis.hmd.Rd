@@ -21,6 +21,7 @@ The function creates a subset of \code{hmd.data} that fits in the dimensions of 
 The triangles will be filled according to the data in \code{column}.
 }
 \examples{
+\dontrun{
 library(LexisPlotR)
 lg <- lexis.grid(year.start = 1980, year.end = 1985, age.start = 0, age.end = 5)
 # Load sample data
@@ -31,6 +32,7 @@ lexis.hmd(lg = lg, hmd.data = deaths.triangles, column = "Total")
 ### Plot data not explicitly present in HMD data
 deaths.triangles$RatioMale <- deaths.triangles$Male / deaths.triangles$Total
 lexis.hmd(lg, deaths.triangles, "RatioMale")
+}
 }
 \author{
 Philipp Ottolinger

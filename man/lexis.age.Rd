@@ -27,9 +27,11 @@ Add a coloured rectangle to an existing Lexis grid to highlight a certain age in
 Takes an existing Lexis grid and adds a coloured rectangle that highlights all triangles belonging to a certain age.
 }
 \examples{
+\dontrun{
 library(LexisPlotR)
 lexis <- lexis.grid2(year.start = 1900, year.end = 1905, age.start = 0, age.end = 5)
 lexis <- lexis.age(lg = lexis, age = 3)
+}
 }
 \author{
 Philipp Ottolinger

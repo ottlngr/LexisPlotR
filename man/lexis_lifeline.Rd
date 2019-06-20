@@ -10,9 +10,11 @@ lexis_lifeline(lg, birth, entry = NA, exit = NA, lineends = FALSE,
 \arguments{
 \item{lg, }{an existing object originally created with \code{lexis.grid()}.}
 
-\item{entry}{character, set the entry or birth date of an individual in format \code{"YYYY-MM-DD"}.}
+\item{birth}{character, set the birth date of an individual in format \code{"YYYY-MM-DD"}.}
 
-\item{exit}{character, set the exit or death date of an individual in format \code{"YYYY-MM-DD"}. Default is \code{NA} (no exit or death observed).}
+\item{entry}{character, set the entry of an individual in format \code{"YYYY-MM-DD"}. Optional.}
+
+\item{exit}{character, set the exit or death date of an individual in format \code{"YYYY-MM-DD"}. Optional.}
 
 \item{lineends}{logical, if \code{TRUE} lineends will be marked. Default is \code{FALSE}.}
 

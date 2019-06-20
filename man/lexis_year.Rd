@@ -8,15 +8,15 @@ lexis_year(lg, year, delta = 1, fill = lexisplotr_colours()[3],
   alpha = 0.7)
 }
 \arguments{
-\item{lg, }{an existing object originally created with \code{lexis.grid()}.}
+\item{lg, }{an existing object originally created with \code{lexis_grid()}.}
 
 \item{year}{numeric, set the year to highlight.}
+
+\item{delta}{numeric, set the size of the age groups. Default is 1.}
 
 \item{fill}{character, set the colour of the rectangle. Default is \code{"blue"}.}
 
 \item{alpha}{numeric, set the transparency of the rectangle. Default is \code{0.5}.}
-
-\item{d}{numeric, set the size of the age groups. Default is 1.}
 }
 \value{
 A ggplot2 object.
@@ -28,7 +28,7 @@ Takes an existing Lexis grid and adds a coloured rectangle to highlight a certai
 Takes an existing Lexis grid and adds a coloured rectangle to the plot. The rectangle will highlight a certain year in the grid.
 }
 \examples{
-lg <- lexis_grid(year.start = 1900, year.end = 1905, age.start = 0, age.end = 5)
+lg <- lexis_grid(year_start = 1900, year_end = 1905, age_start = 0, age_end = 5)
 lexis_year(lg = lg, year = 1902)
 }
 \author{

@@ -27,8 +27,10 @@ Takes an existing Lexis grid and adds a coloured rectangle to highlight a certai
 Takes an existing Lexis grid and adds a coloured rectangle to the plot. The rectangle will highlight a certain year in the grid.
 }
 \examples{
+\dontrun{
 lg <- lexis.grid(year.start = 1900, year.end = 1905, age.start = 0, age.end = 5)
 lexis.year(lg = lg, year = 1902)
+}
 }
 \author{
 Philipp Ottoliner

@@ -24,9 +24,11 @@ Takes an existing Lexis grid and adds a coloured rectangle to highlight a certai
 Takes an existing Lexis grid and adds a coloured rectangle to the plot. The rectangle will highlight a certain cohort in the Lexis grid.
 }
 \examples{
+\dontrun{
 library(LexisPlotR)
 lg <- lexis.grid(year.start = 1900, year.end = 1905, age.start = 0, age.end = 5)
 lexis.cohort(lg = lg, cohort = 1901)
+}
 }
 \author{
 Philipp Ottolinger

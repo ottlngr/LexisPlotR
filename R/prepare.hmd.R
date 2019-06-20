@@ -11,10 +11,12 @@
 #' @importFrom stats complete.cases
 #' @export prepare.hmd
 #' @examples
+#' \dontrun{
 #' library(LexisPlotR)
 #' # Load sample data
 #' path <- system.file("extdata", "Deaths_lexis_sample.txt", package = "LexisPlotR")
 #' deaths.triangles <- prepare.hmd(path)
+#' }
 
 prepare.hmd <- function(file) {
   .Deprecated("")

@@ -20,8 +20,10 @@
 #' @import ggplot2
 #' @export lexis.grid
 #' @examples 
+#' \dontrun{
 #' library(LexisPlotR)
 #' lexis.grid(year.start = 1900, year.end = 1905, age.start = 0, age.end = 5)
+#' }
 lexis.grid <- function(year.start, year.end, age.start, age.end, lwd = 0.3, force.equal = T) {
   .Deprecated("lexis_grid")
   # check arguments for is.numeric()

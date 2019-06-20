@@ -3,8 +3,9 @@
 #' Add lifelines to an existing Lexis grid.
 #' 
 #' @param lg, an existing object originally created with \code{lexis.grid()}.
-#' @param entry character, set the entry or birth date of an individual in format \code{"YYYY-MM-DD"}.
-#' @param exit character, set the exit or death date of an individual in format \code{"YYYY-MM-DD"}. Default is \code{NA} (no exit or death observed).
+#' @param birth character, set the birth date of an individual in format \code{"YYYY-MM-DD"}.
+#' @param entry character, set the entry of an individual in format \code{"YYYY-MM-DD"}. Optional.
+#' @param exit character, set the exit or death date of an individual in format \code{"YYYY-MM-DD"}. Optional.
 #' @param lineends logical, if \code{TRUE} lineends will be marked. Default is \code{FALSE}.
 #' @param colour character, set the colour of the lifelines. Default is \code{"red"}.
 #' @param alpha numeric, set the transparency of the lifelines. Default is \code{1} (no transparency).

@@ -12,11 +12,11 @@ lexis_cohort(lg, cohort, delta = 1, fill = lexisplotr_colours()[4],
 
 \item{cohort}{numeric, set the cohort to highlight.}
 
+\item{delta}{numeric, set the size of the age groups. Default is 1.}
+
 \item{fill}{character, set the colour of the rectangle. Default is \code{"green"}.}
 
 \item{alpha}{numeric, set the level of transparency of the rectangle. Default is \code{0.5}.}
-
-\item{d}{numeric, set the size of the age groups. Default is 1.}
 }
 \description{
 Takes an existing Lexis grid and adds a coloured rectangle to highlight a certain cohort.
@@ -26,7 +26,7 @@ Takes an existing Lexis grid and adds a coloured rectangle to the plot. The rect
 }
 \examples{
 library(LexisPlotR)
-lg <- lexis_grid(year.start = 1900, year.end = 1905, age.start = 0, age.end = 5)
+lg <- lexis_grid(year_start = 1900, year_end = 1905, age_start = 0, age_end = 5)
 lexis_cohort(lg = lg, cohort = 1901)
 }
 \author{

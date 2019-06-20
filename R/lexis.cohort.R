@@ -13,9 +13,11 @@
 #' @importFrom utils tail
 #' @export lexis.cohort
 #' @examples
+#' \dontrun{
 #' library(LexisPlotR)
 #' lg <- lexis.grid(year.start = 1900, year.end = 1905, age.start = 0, age.end = 5)
 #' lexis.cohort(lg = lg, cohort = 1901)
+#' }
 
 lexis.cohort <- function(lg, cohort, fill = lpr_colours()[4], alpha = 0.7, d = 1) {
   .Deprecated("lexis_cohort")

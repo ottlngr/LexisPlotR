@@ -4,19 +4,19 @@
 \alias{lexis_age}
 \title{Emphasize a certain age in Lexis grid}
 \usage{
-lexis_age(lg, age, fill = lexisplotr_colours()[2], alpha = 0.7,
-  delta = 1)
+lexis_age(lg, age, delta = 1, fill = lexisplotr_colours()[2],
+  alpha = 0.7)
 }
 \arguments{
-\item{lg, }{an existing object originally created with \code{lexis.grid()}.}
+\item{lg, }{an existing object originally created with \code{lexis_grid()}.}
 
 \item{age}{numeric, set the age to highlight.}
+
+\item{delta}{numeric, set the size of the age groups. Default is 1.}
 
 \item{fill}{character, set colour to fill the rectangle. Default is \code{"yellow"}.}
 
 \item{alpha}{numeric, set alpha, the level of transparency for \code{fill}. Default is \code{0.5}.}
-
-\item{d}{numeric, set the size of the age groups. Default is 1.}
 }
 \value{
 A ggplot2 object.
@@ -29,8 +29,8 @@ Takes an existing Lexis grid and adds a coloured rectangle that highlights all t
 }
 \examples{
 library(LexisPlotR)
-lexis <- lexis.grid2(year_start = 1900, year_end = 1905, age_start = 0, age_end = 5)
-lexis <- lexis.age(lg = lexis, age = 3)
+lexis <- lexis_grid(year_start = 1900, year_end = 1905, age_start = 0, age_end = 5)
+lexis <- lexis_age(lg = lexis, age = 3)
 }
 \author{
 Philipp Ottolinger

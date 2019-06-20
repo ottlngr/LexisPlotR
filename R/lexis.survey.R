@@ -14,9 +14,11 @@
 #' @import ggplot2
 #' @export lexis.survey
 #' @examples
+#' \dontrun{
 #' library(LexisPlotR)
 #' lg <- lexis.grid(year.start = 1980, year.end = 1990, age.start = 30, age.end = 40)
 #' lexis.survey(lg, from_date = "1982-09-01", to_date = "1986-03-01", from_age = 32, to_age = 36)
+#' }
   
 
 lexis.survey <- function(lg, from_date, to_date, from_age, to_age, fill = lpr_colours()[6], alpha = 0.7) {

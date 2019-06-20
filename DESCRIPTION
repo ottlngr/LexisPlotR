@@ -1,17 +1,15 @@
 Package: LexisPlotR
 Type: Package
 Title: Plot Lexis Diagrams for Demographic Purposes
-Version: 0.3.2
-Date: 2016-09-28
+Version: 0.4
 Authors@R: c(person("Philipp", "Ottolinger", email = "philipp@ottolinger.de", role = "cre"),
 						 person("Marieke", "Smilde-Becker", role="ctb"))
 Maintainer: Philipp Ottolinger <philipp@ottolinger.de>
 Description: Plots empty Lexis grids, adds lifelines and highlights certain areas of the grid, like cohorts and age groups.
 Imports: ggplot2, dplyr, tidyr
-Depends:
-    R (>= 3.0.0),
-    ggplot2 (>= 1.0.1)
 Suggests: knitr, HMDHFDplus
+Depends: R (>= 2.10)
+Encoding: UTF-8
 LazyData: true
 License: GPL-2
 URL: https://github.com/ottlngr/LexisPlotR

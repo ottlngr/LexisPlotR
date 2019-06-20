@@ -14,8 +14,10 @@
 #' @importFrom utils tail
 #' @export lexis.year
 #' @examples 
+#' \dontrun{
 #' lg <- lexis.grid(year.start = 1900, year.end = 1905, age.start = 0, age.end = 5)
 #' lexis.year(lg = lg, year = 1902)
+#' }
 
 lexis.year <- function(lg, year, fill = lpr_colours()[3], alpha = 0.7, d = 1) {
   .Deprecated("lexis_year")
