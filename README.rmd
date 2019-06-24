@@ -85,11 +85,16 @@ lexis <- lexis_grid(year_start = 1900, year_end = 1905, age_start = 0, age_end =
 lexis_cohort(lg = lexis, cohort = 1898)
 ```
 
-The similar `lexis_survey()` can be used to sketch the progress of a survey or the like.
+The similar `lexis_polygon()` can be used to highlight arbitrary regions of the Lexis grid:
 
 ```{r}
-#mylexis <- lexis.survey(lg = mylexis, from_date = "1901-06-01", to_date = "1902-12-31", from_age = 1, to_age = 3)
-#mylexis
+lexis <- lexis_grid(year_start = 1900, year_end = 1905, age_start = 0, age_end = 5)
+
+polygons <- data.frame(group = c(1, 1, 1, 2, 2, 2),
+                       x = c("1901-01-01", "1902-01-01", "1902-01-01", "1903-01-01", "1904-01-01", "1904-01-01"),
+                       y = c(1, 1, 2, 1, 1, 2))
+
+lexis_polygon(lg = lexis, x = polygons$x, y = polygons$y, group = polygons$group)
 ```
 
 ##### Add life lines to the Lexis Diagram
