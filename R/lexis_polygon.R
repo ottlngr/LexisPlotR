@@ -25,9 +25,3 @@ lexis_polygon <- function(lg, x, y, group = 1, fill = lexisplotr_colours()[6], a
   lg <- lg + geom_polygon(data = data, aes(x = x, y = y, group = group), fill = fill, alpha = alpha)
   return(lg)
 }
-
-a <- c("1901-01-01", "1902-01-01", "1902-01-01")
-c <- c("1903-01-01", "1904-01-01", "1904-01-01")
-b <- c(1,1,2)
-
-ddd <- data.frame(x = c(a,c), y = c(b,b), group = c(1,1,1,2,2,2))
