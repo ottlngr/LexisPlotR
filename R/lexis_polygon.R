@@ -5,6 +5,7 @@
 #' @param lg, an existing object originally created with \code{lexis_grid()}.
 #' @param x, vector describing the x coordinates of the polygon. Format: YYYY-MM-DD.
 #' @param y, vector describing the y coordinates of the polygon
+#' @param group, vector describing the groups of coordinates.
 #' @param fill character, fill colour of the polygon.
 #' @param alpha numeric, transparency of the fill colour. Default: 0.7.
 #' @details The function can be used to plot a polygon inside a Lexis grid. 
@@ -19,9 +20,8 @@
 #' }
 
 
-lexis_polygon <- function(lg, x, y, fill = lexisplotr_colours()[6], alpha = 0.7) {
+lexis_polygon <- function(lg, x, y, group = 1, fill = lexisplotr_colours()[6], alpha = 0.7) {
   
-  group = 1
   x <- as.Date(x, origin = "1970-01-01")
   data <- data.frame(group, x, y)
   

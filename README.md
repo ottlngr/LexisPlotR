@@ -89,52 +89,73 @@ lexis_cohort(lg = lexis, cohort = 1898)
 
 ![](README_files/figure-markdown_github/unnamed-chunk-7-1.png)
 
-The similar `lexis_survey()` can be used to sketch the progress of a survey or the like.
+The similar `lexis_polygon()` can be used to highlight arbitrary regions of the Lexis grid:
 
 ``` r
-#mylexis <- lexis.survey(lg = mylexis, from_date = "1901-06-01", to_date = "1902-12-31", from_age = 1, to_age = 3)
-#mylexis
+lexis <- lexis_grid(year_start = 1900, year_end = 1905, age_start = 0, age_end = 5)
+
+polygons <- data.frame(group = c(1, 1, 1, 2, 2, 2),
+                       x = c("1901-01-01", "1902-01-01", "1902-01-01", "1903-01-01", "1904-01-01", "1904-01-01"),
+                       y = c(1, 1, 2, 1, 1, 2))
+
+lexis_polygon(lg = lexis, x = polygons$x, y = polygons$y, group = polygons$group)
 ```
+
+![](README_files/figure-markdown_github/unnamed-chunk-8-1.png)
 
 ##### Add life lines to the Lexis Diagram
 
-A life line is a simple tool to represent an individual's life in a Lexis Diagram. The life line is a straight line and starts with the individual's birth at the respective point on the horizontal axis. The line ends with an individual's death (if observed).
+A life line is a simple tool to represent an individual's life in a Lexis Diagram.
 
-To draw an arbitrary life line into your Lexis Diagram you use `lexis.lifeline()` and provide at least an entry or birth date to the function. If death is not observed or the date of death unknown, `exit` is `NA` resulting in a never ending life line.
-
-``` r
-# Define a Lexis grid
-#mylexis <- lexis.grid2(year.start = 1990, year.end = 1995, age.start = 0, age.end = 5)
-# Add a life line for an individual born on 1991-09-23
-#lexis.lifeline(lg = mylexis, entry = "1991-09-23")
-```
-
-If death or any other date that can serve as an "exit" is observed, you can add the exit date:
+The behaviour of `lexis_lifeline()` can be controlled by supplying an entry and/or exit date along with the individuals birthday:
 
 ``` r
-#lexis.lifeline(lg = mylexis, entry = "1991-09-23", exit = "1994-06-11")
+lg <- lexis_grid(year_start = 1900, year_end = 1905, age_start = 0, age_end = 5)
+lexis_lifeline(lg = lg, birth = "1901-09-23")
 ```
+
+![](README_files/figure-markdown_github/unnamed-chunk-9-1.png)
+
+``` r
+lexis_lifeline(lg = lg, birth = "1901-09-23", entry = "1902-04-01")
+```
+
+![](README_files/figure-markdown_github/unnamed-chunk-9-2.png)
+
+``` r
+lexis_lifeline(lg = lg, birth = "1901-09-23", entry = "1902-04-01", exit = "1904-10-31")
+```
+
+![](README_files/figure-markdown_github/unnamed-chunk-9-3.png)
 
 You can also use entry and death dates from a `data.frame` which is useful when plotting life lines of several individuals or hole populations. **`LexisPlotR`** comes with a random dataset of entry and exit dates for 300 Individuals from 1895 to 1905. Some of the deaths (or exits) are not observed or unknown. Take a look at the `lifelines_sample` dataset:
 
 ``` r
-# data("lifelines_sample")
-# str(lifelines_sample)
-# head(lifelines_sample, 10)
+data("lifelines_sample")
+lifelines_sample <- lifelines_sample[1:30,]
+head(lifelines_sample, 10)
 ```
+
+    ##         entry       exit
+    ## 1  1898-04-25 1898-07-30
+    ## 2  1899-12-28       <NA>
+    ## 3  1903-01-15       <NA>
+    ## 4  1901-04-13       <NA>
+    ## 5  1895-05-30 1900-03-29
+    ## 6  1897-09-22       <NA>
+    ## 7  1896-02-16 1896-04-24
+    ## 8  1896-11-13 1902-10-30
+    ## 9  1904-10-31       <NA>
+    ## 10 1899-04-02 1902-04-11
 
 To add all this data to your Lexis Diagram, use `lexis.lifeline()` and provide the respective columns of `lifelines_sample` as arguments:
 
 ``` r
-# mylexis <- lexis.grid2(year.start = 1900, year.end = 1905, age.start = 0, age.end = 5)
-# lexis.lifeline(lg = mylexis, entry = lifelines_sample$entry, exit = lifelines_sample$exit)
+lg <- lexis_grid(year_start = 1900, year_end = 1905, age_start = 0, age_end = 5)
+lexis_lifeline(lg = lg, birth = lifelines_sample$entry, exit = lifelines_sample$exit, lineends = TRUE)
 ```
 
-As this is just random data the plot is not really interesting and confusing. But you can change the default plotting behaviour and add marks to the lineends, change the colour and width of the lines as well as the level of transparency of the lines:
-
-``` r
-#lexis.lifeline(lg = mylexis, entry = lifelines_sample$entry, exit = lifelines_sample$exit, lineends = TRUE, colour = "blue", lwd = 1.5, alpha = 0.3)
-```
+![](README_files/figure-markdown_github/unnamed-chunk-11-1.png)
 
 ##### Use data from the Human Mortality Database
 
