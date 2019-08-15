@@ -126,60 +126,19 @@ lg <- lexis_grid(year_start = 1900, year_end = 1905, age_start = 0, age_end = 5)
 lexis_lifeline(lg = lg, birth = lifelines_sample$entry, exit = lifelines_sample$exit, lineends = TRUE)
 ```
 
-
-##### Use data from the Human Mortality Database
-
-> I recommend to use the actually deprecated `lexis.grid()` insted of `lexis.grid2()` when working with HMD data. I will fix this soon. 
-
-> The Human Mortality Database (HMD) contains original calculations of death rates and life tables for national populations (countries or areas), as well as the input data used in constructing those tables. The input data consist of death counts from vital statistics, plus census counts, birth counts, and population estimates from various sources. [http://www.mortality.org/Public/Overview.php](http://www.mortality.org/Public/Overview.php)
-
-To access data from the [HMD](http://www.mortality.org/) you first have to [register for free](http://www.mortality.org/mp/auth.pl).
-
-The type of data we want to use here are the "Deaths by Lexis triangles" you can download for a couple of countries. These datafiles contain death counts for every year, age and cohort and so every row of these datafiles represents one of the triangles in the Lexis Diagram. The function `lexis.hmd()` takes these death counts and the respective triangles according to a gradient scale.
-
-First you have to download a "Deaths by Lexis triangles" file from the HMD. Alternatively you can use the sample data (`Deaths_lexis_sample.txt`) that ships with `LexisPlotR`. This raw dataset includes random deaths counts but emulates the structure of the HMD datafiles.
-
-To load and prepare the HMD data for further usage, LexisPlotR ships with `prepare.hmd()` which reads the raw data from the `.txt` file and does some preparation.
+### HMD
 
 ```{r}
-# # Find the path to the sample data
-# path <- system.file("extdata", "Deaths_lexis_sample.txt", package = "LexisPlotR")
-# # read the raw data with prepare.hmd()
-# mydata <- prepare.hmd(path)
-# # Inspect your data
-# str(mydata)
-# summary(mydata[,c("Year", "Age", "Cohort")])
-```
+library(ggplot2)
+library(HMDHFDplus)
 
-As you see from `summary()` this datafile contains death counts from 1970 to 1989 for the ages 0 to 109. In a Lexis grid with suitable dimensions these death counts can be plotted. You may choose whether to plot total death counts or death counts for females or males.
+triangles <- HMDHFDplus::readHMDweb("RUS", "Deaths_lexis", Sys.getenv("HMD_USER"), Sys.getenv("HMD_PASSWORD"))
 
-```{r, fig.width=10}
-# mylexis <- lexis.grid(year.start = 1980, year.end = 1985, age.start = 0, age.end = 5)
-# # Plot total death counts
-# lexis.hmd(lg = mylexis, hmd.data = mydata, column = "Total")
-```
+tidy_triangles <- tidy_triangle_data(triangles)
 
-Again, this is just random data. For real insights use data from the HMD.
+lg <- lexis_grid(1960, 2000, 30, 80)
 
-The HMD datafiles offer the following death counts: Total, Female and Male. If you want to plot the ratio of males on total death counts, you first have to add a respective column:
-
-```{r, fig.width=10}
-# mydata$ratioMales <- mydata$Male / mydata$Total
-# lexis.hmd(lg = mylexis, hmd.data = mydata, column = "ratioMales")
-```
-
-##### Everything is a ggplot2 object
-
-**`LexisPlotR`** is simply a specialised wrapper for `ggplot2`. Therefore you can edit the appearance of your Lexis Diagram by adding some `labs` and `themes` just like with any other `ggplot2` plot.
-
-```{r}
-# mylexis <- lexis.grid(year.start = 1900, year.end = 1905, age.start = 0, age.end = 5)
-# # Add a title
-# mylexis <- mylexis + labs(title = "LexisPlotR")
-# mylexis
-# # Change axis labels
-# mylexis <- mylexis + theme(axis.title = element_text(face = "bold", colour = "red"))
-# mylexis
+lg + geom_polygon(data = tidy_triangles, aes(x = x, y = y, group = id, fill = Total))
 ```
 
 ### If you ...
