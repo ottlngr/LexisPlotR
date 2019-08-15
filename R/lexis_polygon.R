@@ -1,24 +1,27 @@
-#' Emphasize a survey range in a Lexis grid
+#' Plot a polygon inside a Lexis grid
 
-#' Takes an existing Lexis grid and adds a coloured parallelogram to highlight a survey range.
+#' Takes an existing Lexis grid and adds a polygon.
 #' 
-#' @param lg, an existing object originally created with \code{lexis.grid()}.
-#' @param fill character, set the colour to fill the parallelogram. Default is \code{"orange"}.
-#' @param alpha numeric, set the transparency of the fill colour. Default is \code{0.5}.
-#' @details The function can be used to plot the time and age range of a survey. Use \code{from_date} and \code{to_date} to specify the time range the survey took place and \code{from_age} and \code{to_age} to define the considered ages of participants/observations.
+#' @param lg, an existing object originally created with \code{lexis_grid()}.
+#' @param x, vector describing the x coordinates of the polygon. Format: YYYY-MM-DD.
+#' @param y, vector describing the y coordinates of the polygon
+#' @param fill character, fill colour of the polygon.
+#' @param alpha numeric, transparency of the fill colour. Default: 0.7.
+#' @details The function can be used to plot a polygon inside a Lexis grid. 
 #' @author Philipp Ottolinger
 #' @import ggplot2
 #' @export lexis_polygon
 #' @examples
 #' \dontrun{
 #' library(LexisPlotR)
-#' lg <- lexis.grid(year.start = 1980, year.end = 1990, age.start = 30, age.end = 40)
-#' lexis.survey(lg, from_date = "1982-09-01", to_date = "1986-03-01", from_age = 32, to_age = 36)
+#' lg <- lexis_grid(year_start = 1900, year_end = 1905, age_start = 0, age_end = 5)
+#' lexis_polygon(lg, x = c("1901-06-30", "1904-06-30", "1904-06-30", "1901-06-30"), y = c(2,2,4,4))
 #' }
 
 
-lexis_polygon <- function(lg, x, y, group = 1, fill = lexisplotr_colours()[6], alpha = 0.7) {
+lexis_polygon <- function(lg, x, y, fill = lexisplotr_colours()[6], alpha = 0.7) {
   
+  group = 1
   x <- as.Date(x, origin = "1970-01-01")
   data <- data.frame(group, x, y)
   
