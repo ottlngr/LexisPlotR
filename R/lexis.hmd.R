@@ -11,7 +11,8 @@
 #' @import ggplot2
 #' @importFrom utils tail
 #' @export lexis.hmd
-#' @examples 
+#' @examples
+#' \dontrun{
 #' library(LexisPlotR)
 #' lg <- lexis.grid(year.start = 1980, year.end = 1985, age.start = 0, age.end = 5)
 #' # Load sample data
@@ -22,6 +23,7 @@
 #' ### Plot data not explicitly present in HMD data
 #' deaths.triangles$RatioMale <- deaths.triangles$Male / deaths.triangles$Total
 #' lexis.hmd(lg, deaths.triangles, "RatioMale")
+#' }
 
 lexis.hmd <- function(lg, hmd.data, column) {
   # year.start <- as.Date(ggplot_build(lg)$data[[1]][1,1], origin="1970-01-01")

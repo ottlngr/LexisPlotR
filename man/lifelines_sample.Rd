@@ -16,4 +16,3 @@ lifelines_sample
 This dataset contains 300 random entry dates and 150 exit dates for demonstration purposes.
 }
 \keyword{datasets}
-

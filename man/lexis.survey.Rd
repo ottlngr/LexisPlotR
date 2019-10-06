@@ -31,11 +31,12 @@ Takes an existing Lexis grid and adds a coloured parallelogram to highlight a su
 The function can be used to plot the time and age range of a survey. Use \code{from_date} and \code{to_date} to specify the time range the survey took place and \code{from_age} and \code{to_age} to define the considered ages of participants/observations.
 }
 \examples{
+\dontrun{
 library(LexisPlotR)
 lg <- lexis.grid(year.start = 1980, year.end = 1990, age.start = 30, age.end = 40)
 lexis.survey(lg, from_date = "1982-09-01", to_date = "1986-03-01", from_age = 32, to_age = 36)
 }
+}
 \author{
 Philipp Ottolinger
 }
-
