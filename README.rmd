@@ -6,8 +6,6 @@ output:
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-
-
 # LexisPlotR
 [![CRAN](http://www.r-pkg.org/badges/version/LexisPlotR)](http://cran.rstudio.com/package=LexisPlotR) [![Downloads](http://cranlogs.r-pkg.org/badges/LexisPlotR?color=brightgreen)](http://www.r-pkg.org/pkg/LexisPlotR)
 
@@ -52,7 +50,7 @@ lexis_grid(year_start = 1900, year_end = 1905, age_start = 0, age_end = 5)
 The aspect ratio of the axes is fixed to ensure right-angled triangles. So even non-square Lexis grids show right-angled triangles:
 
 ```{r}
-lexis_grid(year_start = 1900, year_end = 1905, age_start = 0, age_end = 7)
+lexis_grid(year_start = 1900, year_end = 1905, age_start = 0, age_end = 8)
 ```
 
 When using wide age and/or date ranges, it may be helpful to define a `delta` specifying the number of years to group in the grid:

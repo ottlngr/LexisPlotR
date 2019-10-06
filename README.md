@@ -47,7 +47,7 @@ lexis_grid(year_start = 1900, year_end = 1905, age_start = 0, age_end = 5)
 The aspect ratio of the axes is fixed to ensure right-angled triangles. So even non-square Lexis grids show right-angled triangles:
 
 ``` r
-lexis_grid(year_start = 1900, year_end = 1905, age_start = 0, age_end = 7)
+lexis_grid(year_start = 1900, year_end = 1905, age_start = 0, age_end = 8)
 ```
 
 ![](README_files/figure-markdown_github/unnamed-chunk-3-1.png)
