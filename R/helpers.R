@@ -34,6 +34,6 @@ lpr_colours <- function() {
 }
 
 lexisplotr_colours <- function() {
-  lexisplotr_colours <- c("#999999", "#E69F00", "#56B4E9", "#009E73", "#F0E442", "#0072B2", "#D55E00", "#CC79A7")
+  lexisplotr_colours <- c("#FFFD98", "#BDE4A7", "#B3D2B2", "#9FBBCC", "#7A9CC6")
   return(lexisplotr_colours)
 }

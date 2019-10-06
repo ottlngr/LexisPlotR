@@ -19,12 +19,11 @@
 #' lexis_polygon(lg, x = c("1901-06-30", "1904-06-30", "1904-06-30", "1901-06-30"), y = c(2,2,4,4))
 #' }
 
-
-lexis_polygon <- function(lg, x, y, group = 1, fill = lexisplotr_colours()[6], alpha = 0.7) {
+lexis_polygon <- function(lg, x, y, group = 1, fill = lexisplotr_colours()[4], alpha = 0.7) {
   
   x <- as.Date(x, origin = "1970-01-01")
   data <- data.frame(group, x, y)
   
-  lg <- lg + geom_polygon(data = data, aes(x = x, y = y, group = group), fill = fill, alpha = alpha)
+  lg <- lg + geom_polygon(data = data, aes(x = .data$x, y = .data$y, group = .data$group), fill = fill, alpha = alpha)
   return(lg)
 }

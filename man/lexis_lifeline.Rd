@@ -5,7 +5,7 @@
 \title{Plot lifelines into a Lexis grid}
 \usage{
 lexis_lifeline(lg, birth, entry = NA, exit = NA, lineends = FALSE,
-  colour = lexisplotr_colours()[7], alpha = 1, lwd = 0.5)
+  colour = lexisplotr_colours()[5], alpha = 1, lwd = 0.5)
 }
 \arguments{
 \item{lg, }{an existing object originally created with \code{lexis.grid()}.}

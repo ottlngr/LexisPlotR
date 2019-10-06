@@ -18,7 +18,7 @@
 #' lexis <- lexis_grid(year_start = 1900, year_end = 1905, age_start = 0, age_end = 5)
 #' lexis <- lexis_age(lg = lexis, age = 3)
 
-lexis_age <- function(lg, age, delta = 1, fill = lexisplotr_colours()[2], alpha = 0.7) { 
+lexis_age <- function(lg, age, delta = 1, fill = lexisplotr_colours()[1], alpha = 0.7) { 
   
   age <- as.numeric(age)
   

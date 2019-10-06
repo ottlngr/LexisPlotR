@@ -4,7 +4,7 @@
 \alias{lexis_year}
 \title{Emphasize a certain year in Lexis grid.}
 \usage{
-lexis_year(lg, year, delta = 1, fill = lexisplotr_colours()[3],
+lexis_year(lg, year, delta = 1, fill = lexisplotr_colours()[2],
   alpha = 0.7)
 }
 \arguments{

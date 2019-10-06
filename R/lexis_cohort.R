@@ -17,7 +17,7 @@
 #' lg <- lexis_grid(year_start = 1900, year_end = 1905, age_start = 0, age_end = 5)
 #' lexis_cohort(lg = lg, cohort = 1901)
 
-lexis_cohort <- function(lg, cohort, delta = 1, fill = lexisplotr_colours()[4], alpha = 0.7) {
+lexis_cohort <- function(lg, cohort, delta = 1, fill = lexisplotr_colours()[3], alpha = 0.7) {
 
   if (!is.ggplot(lg)) { stop("No valid ggplot object.") }
   

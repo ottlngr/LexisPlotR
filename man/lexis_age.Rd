@@ -4,7 +4,7 @@
 \alias{lexis_age}
 \title{Emphasize a certain age in Lexis grid}
 \usage{
-lexis_age(lg, age, delta = 1, fill = lexisplotr_colours()[2],
+lexis_age(lg, age, delta = 1, fill = lexisplotr_colours()[1],
   alpha = 0.7)
 }
 \arguments{

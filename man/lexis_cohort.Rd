@@ -4,7 +4,7 @@
 \alias{lexis_cohort}
 \title{Emphasize a certain cohort in a Lexis grid}
 \usage{
-lexis_cohort(lg, cohort, delta = 1, fill = lexisplotr_colours()[4],
+lexis_cohort(lg, cohort, delta = 1, fill = lexisplotr_colours()[3],
   alpha = 0.7)
 }
 \arguments{

@@ -23,7 +23,7 @@
 #' lexis_lifeline(lg = lg, birth = "1901-09-23", entry = "1902-04-01")
 #' lexis_lifeline(lg = lg, birth = "1901-09-23", exit = "1904-10-31")
 
-lexis_lifeline <- function(lg, birth, entry = NA, exit = NA, lineends = FALSE, colour = lexisplotr_colours()[7], alpha = 1, lwd = 0.5) {
+lexis_lifeline <- function(lg, birth, entry = NA, exit = NA, lineends = FALSE, colour = lexisplotr_colours()[5], alpha = 1, lwd = 0.5) {
   
   if (!is.ggplot(lg)) { stop("No valid ggplot object.") }
   

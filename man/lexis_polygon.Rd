@@ -5,7 +5,7 @@
 \title{Plot a polygon inside a Lexis grid
 Takes an existing Lexis grid and adds a polygon.}
 \usage{
-lexis_polygon(lg, x, y, group = 1, fill = lexisplotr_colours()[6],
+lexis_polygon(lg, x, y, group = 1, fill = lexisplotr_colours()[4],
   alpha = 0.7)
 }
 \arguments{
