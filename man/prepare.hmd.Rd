@@ -2,7 +2,7 @@
 % Please edit documentation in R/prepare.hmd.R
 \name{prepare.hmd}
 \alias{prepare.hmd}
-\title{Prepare HMD data for \code{lexis.hmd()}}
+\title{Deprecated. Prepare HMD data for \code{lexis.hmd()}}
 \usage{
 prepare.hmd(file)
 }

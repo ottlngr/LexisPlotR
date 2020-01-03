@@ -1,4 +1,4 @@
-#' Fill Lexis triangles by HMD data
+#' Deprecated. Fill Lexis triangles by HMD data
 #' 
 #' The function opens an existing Lexis grid and fill the triangles according to data from the Human Mortality Database.
 #' 
@@ -26,6 +26,7 @@
 #' }
 
 lexis.hmd <- function(lg, hmd.data, column) {
+  .Deprecated("")
   # year.start <- as.Date(ggplot_build(lg)$data[[1]][1,1], origin="1970-01-01")
   # year_start <- as.numeric(substr(year.start, 1, 4))
   # year.end <- as.Date(tail(ggplot_build(lg)$data[[1]]$xend,1), origin = "1970-01-01")

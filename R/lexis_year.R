@@ -5,7 +5,7 @@
 #' @param lg, an existing object originally created with \code{lexis_grid()}.
 #' @param year numeric, set the year to highlight.
 #' @param delta numeric, set the size of the age groups. Default is 1.
-#' @param fill character, set the colour of the rectangle. Default is \code{"blue"}.
+#' @param fill character, set the colour of the rectangle.
 #' @param alpha numeric, set the transparency of the rectangle. Default is \code{0.5}.
 #' @details Takes an existing Lexis grid and adds a coloured rectangle to the plot. The rectangle will highlight a certain year in the grid.
 #' @return A ggplot2 object.

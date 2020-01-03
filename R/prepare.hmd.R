@@ -1,4 +1,4 @@
-#' Prepare HMD data for \code{lexis.hmd()}
+#' Deprecated. Prepare HMD data for \code{lexis.hmd()}
 #' 
 #' \code{prepare.hmd()} prepares the raw 'Deaths by Lexis triangles' HMD data for further use by \code{lexis.hmd}.
 #' 
@@ -19,7 +19,7 @@
 #' }
 
 prepare.hmd <- function(file) {
-  .Deprecated("")
+  .Deprecated("tidy_triangle_data")
   data <- read.csv(file, sep="", skip = 2)
   data$Year <- as.numeric(as.character(data$Year))
   data$Age <- as.numeric(as.character(data$Age))

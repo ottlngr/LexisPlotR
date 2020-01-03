@@ -2,7 +2,7 @@
 % Please edit documentation in R/lexis.year.R
 \name{lexis.year}
 \alias{lexis.year}
-\title{Emphasize a certain year in Lexis grid.}
+\title{Deprecated. Emphasize a certain year in Lexis grid.}
 \usage{
 lexis.year(lg, year, fill = lpr_colours()[3], alpha = 0.7, d = 1)
 }

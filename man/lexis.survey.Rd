@@ -2,7 +2,7 @@
 % Please edit documentation in R/lexis.survey.R
 \name{lexis.survey}
 \alias{lexis.survey}
-\title{Emphasize a survey range in a Lexis grid
+\title{Deprecated. Emphasize a survey range in a Lexis grid
 Takes an existing Lexis grid and adds a coloured parallelogram to highlight a survey range.}
 \usage{
 lexis.survey(lg, from_date, to_date, from_age, to_age,
@@ -24,7 +24,7 @@ lexis.survey(lg, from_date, to_date, from_age, to_age,
 \item{alpha}{numeric, set the transparency of the fill colour. Default is \code{0.5}.}
 }
 \description{
-Emphasize a survey range in a Lexis grid
+Deprecated. Emphasize a survey range in a Lexis grid
 Takes an existing Lexis grid and adds a coloured parallelogram to highlight a survey range.
 }
 \details{

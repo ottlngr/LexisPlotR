@@ -5,7 +5,7 @@
 #' @param lg, an existing object originally created with \code{lexis_grid()}.
 #' @param age numeric, set the age to highlight.
 #' @param delta numeric, set the size of the age groups. Default is 1.
-#' @param fill character, set colour to fill the rectangle. Default is \code{"yellow"}.
+#' @param fill character, set colour to fill the rectangle.
 #' @param alpha numeric, set alpha, the level of transparency for \code{fill}. Default is \code{0.5}.
 #' @details Takes an existing Lexis grid and adds a coloured rectangle that highlights all triangles belonging to a certain age.
 #' @return A ggplot2 object.

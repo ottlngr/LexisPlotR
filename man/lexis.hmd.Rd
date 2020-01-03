@@ -2,7 +2,7 @@
 % Please edit documentation in R/lexis.hmd.R
 \name{lexis.hmd}
 \alias{lexis.hmd}
-\title{Fill Lexis triangles by HMD data}
+\title{Deprecated. Fill Lexis triangles by HMD data}
 \usage{
 lexis.hmd(lg, hmd.data, column)
 }

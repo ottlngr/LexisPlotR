@@ -2,7 +2,7 @@
 % Please edit documentation in R/lexis.grid.R
 \name{lexis.grid}
 \alias{lexis.grid}
-\title{Plot a Lexis grid}
+\title{Deprecated. Plot a Lexis grid}
 \usage{
 lexis.grid(year.start, year.end, age.start, age.end, lwd = 0.3,
   force.equal = T)

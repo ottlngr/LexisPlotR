@@ -1,4 +1,4 @@
-#' Emphasize a survey range in a Lexis grid
+#' Deprecated. Emphasize a survey range in a Lexis grid
 
 #' Takes an existing Lexis grid and adds a coloured parallelogram to highlight a survey range.
 #' 
@@ -22,6 +22,7 @@
   
 
 lexis.survey <- function(lg, from_date, to_date, from_age, to_age, fill = lpr_colours()[6], alpha = 0.7) {
+  .Deprecated("lexis_polygon")
   from_date <- as.Date(from_date, origin = "1970-01-01")
   to_date <- as.Date(to_date, origin = "1970-01-01")
   

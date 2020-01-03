@@ -1,4 +1,4 @@
-#' Emphasize a certain year in Lexis grid.
+#' Deprecated. Emphasize a certain year in Lexis grid.
 #' 
 #' Takes an existing Lexis grid and adds a coloured rectangle to highlight a certain age.
 #' 

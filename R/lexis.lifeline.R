@@ -1,4 +1,4 @@
-#' Plot lifelines into a Lexis grid
+#' Deprecated. Plot lifelines into a Lexis grid
 #' 
 #' Add lifelines to an existing Lexis grid.
 #' 
@@ -23,6 +23,7 @@
 #' }
 #' 
 lexis.lifeline <- function(lg, entry, exit = NA, lineends = F, colour = lpr_colours()[7], alpha = 1, lwd = 0.5) {
+  .Deprecated("lexis_lifeline")
   if (!is.ggplot(lg)) { stop("No valid ggplot object.") }
   entry <- as.Date(entry, origin = "1970-01-01")
   exit <- as.Date(exit, origin = "1970-01-01")

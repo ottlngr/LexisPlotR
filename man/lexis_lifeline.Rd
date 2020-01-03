@@ -8,7 +8,7 @@ lexis_lifeline(lg, birth, entry = NA, exit = NA, lineends = FALSE,
   colour = lexisplotr_colours()[5], alpha = 1, lwd = 0.5)
 }
 \arguments{
-\item{lg, }{an existing object originally created with \code{lexis.grid()}.}
+\item{lg, }{an existing object originally created with \code{lexis_grid()}.}
 
 \item{birth}{character, set the birth date of an individual in format \code{"YYYY-MM-DD"}.}
 
@@ -18,7 +18,7 @@ lexis_lifeline(lg, birth, entry = NA, exit = NA, lineends = FALSE,
 
 \item{lineends}{logical, if \code{TRUE} lineends will be marked. Default is \code{FALSE}.}
 
-\item{colour}{character, set the colour of the lifelines. Default is \code{"red"}.}
+\item{colour}{character, set the colour of the lifelines.}
 
 \item{alpha}{numeric, set the transparency of the lifelines. Default is \code{1} (no transparency).}
 

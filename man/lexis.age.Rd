@@ -2,7 +2,7 @@
 % Please edit documentation in R/lexis.age.R
 \name{lexis.age}
 \alias{lexis.age}
-\title{Emphasize a certain age in Lexis grid}
+\title{Deprecated. Emphasize a certain age in Lexis grid}
 \usage{
 lexis.age(lg, age, fill = lpr_colours()[2], alpha = 0.7, d = 1)
 }
