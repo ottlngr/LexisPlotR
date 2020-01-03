@@ -2,7 +2,7 @@
 % Please edit documentation in R/lexis.cohort.R
 \name{lexis.cohort}
 \alias{lexis.cohort}
-\title{Emphasize a certain cohort in a Lexis grid}
+\title{Deprecated. Emphasize a certain cohort in a Lexis grid}
 \usage{
 lexis.cohort(lg, cohort, fill = lpr_colours()[4], alpha = 0.7, d = 1)
 }

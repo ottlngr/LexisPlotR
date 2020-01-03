@@ -1,4 +1,4 @@
-#' Emphasize a certain cohort in a Lexis grid
+#' Deprecated. Emphasize a certain cohort in a Lexis grid
 #' 
 #' Takes an existing Lexis grid and adds a coloured rectangle to highlight a certain cohort.
 #' 

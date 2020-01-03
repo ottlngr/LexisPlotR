@@ -1,4 +1,4 @@
-#' Plot a Lexis grid
+#' Deprecated. Plot a Lexis grid
 #' 
 #' lexis.grid() plots the basic Lexis grid.
 #' 

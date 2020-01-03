@@ -2,10 +2,10 @@
 #' 
 #' Takes an existing Lexis grid and adds a coloured rectangle to highlight a certain cohort.
 #' 
-#' @param lg, an existing object originally created with \code{lexis.grid()}.
+#' @param lg, an existing object originally created with \code{lexis_grid()}.
 #' @param cohort numeric, set the cohort to highlight.
 #' @param delta numeric, set the size of the age groups. Default is 1.
-#' @param fill character, set the colour of the rectangle. Default is \code{"green"}.
+#' @param fill character, set the colour of the rectangle.
 #' @param alpha numeric, set the level of transparency of the rectangle. Default is \code{0.5}.
 #' @details Takes an existing Lexis grid and adds a coloured rectangle to the plot. The rectangle will highlight a certain cohort in the Lexis grid.
 #' @author Philipp Ottolinger

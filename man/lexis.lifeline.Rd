@@ -2,7 +2,7 @@
 % Please edit documentation in R/lexis.lifeline.R
 \name{lexis.lifeline}
 \alias{lexis.lifeline}
-\title{Plot lifelines into a Lexis grid}
+\title{Deprecated. Plot lifelines into a Lexis grid}
 \usage{
 lexis.lifeline(lg, entry, exit = NA, lineends = F,
   colour = lpr_colours()[7], alpha = 1, lwd = 0.5)

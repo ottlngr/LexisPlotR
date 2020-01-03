@@ -8,13 +8,13 @@ lexis_cohort(lg, cohort, delta = 1, fill = lexisplotr_colours()[3],
   alpha = 0.7)
 }
 \arguments{
-\item{lg, }{an existing object originally created with \code{lexis.grid()}.}
+\item{lg, }{an existing object originally created with \code{lexis_grid()}.}
 
 \item{cohort}{numeric, set the cohort to highlight.}
 
 \item{delta}{numeric, set the size of the age groups. Default is 1.}
 
-\item{fill}{character, set the colour of the rectangle. Default is \code{"green"}.}
+\item{fill}{character, set the colour of the rectangle.}
 
 \item{alpha}{numeric, set the level of transparency of the rectangle. Default is \code{0.5}.}
 }

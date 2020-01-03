@@ -1,4 +1,4 @@
-#' Emphasize a certain age in Lexis grid
+#' Deprecated. Emphasize a certain age in Lexis grid
 #' 
 #' Add a coloured rectangle to an existing Lexis grid to highlight a certain age in that Lexis grid.
 #' 

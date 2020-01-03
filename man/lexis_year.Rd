@@ -14,7 +14,7 @@ lexis_year(lg, year, delta = 1, fill = lexisplotr_colours()[2],
 
 \item{delta}{numeric, set the size of the age groups. Default is 1.}
 
-\item{fill}{character, set the colour of the rectangle. Default is \code{"blue"}.}
+\item{fill}{character, set the colour of the rectangle.}
 
 \item{alpha}{numeric, set the transparency of the rectangle. Default is \code{0.5}.}
 }

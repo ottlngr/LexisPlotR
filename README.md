@@ -111,19 +111,19 @@ The behaviour of `lexis_lifeline()` can be controlled by supplying an entry and/
 
 ``` r
 lg <- lexis_grid(year_start = 1900, year_end = 1905, age_start = 0, age_end = 5)
-lexis_lifeline(lg = lg, birth = "1901-09-23")
+lexis_lifeline(lg = lg, birth = "1901-09-23", lwd = 1.5)
 ```
 
 ![](README_files/figure-markdown_github/unnamed-chunk-9-1.png)
 
 ``` r
-lexis_lifeline(lg = lg, birth = "1901-09-23", entry = "1902-04-01")
+lexis_lifeline(lg = lg, birth = "1901-09-23", entry = "1902-04-01", lwd = 1.5)
 ```
 
 ![](README_files/figure-markdown_github/unnamed-chunk-9-2.png)
 
 ``` r
-lexis_lifeline(lg = lg, birth = "1901-09-23", entry = "1902-04-01", exit = "1904-10-31")
+lexis_lifeline(lg = lg, birth = "1901-09-23", entry = "1902-04-01", exit = "1904-10-31", lwd = 1.5)
 ```
 
 ![](README_files/figure-markdown_github/unnamed-chunk-9-3.png)
@@ -152,34 +152,76 @@ To add all this data to your Lexis Diagram, use `lexis.lifeline()` and provide t
 
 ``` r
 lg <- lexis_grid(year_start = 1900, year_end = 1905, age_start = 0, age_end = 5)
-lexis_lifeline(lg = lg, birth = lifelines_sample$entry, exit = lifelines_sample$exit, lineends = TRUE)
+lexis_lifeline(lg = lg, birth = lifelines_sample$entry, exit = lifelines_sample$exit, lwd = 1.5, lineends = TRUE)
 ```
 
 ![](README_files/figure-markdown_github/unnamed-chunk-11-1.png)
 
-### HMD
+#### Chaining `LexisPlotR` functions
+
+`LexisPlotR` functions can be chained using the pipe operator `%>%` which can be imported from `magrittr`, `dplyr` and other packages.
 
 ``` r
-library(ggplot2)
-library(HMDHFDplus)
+library(magrittr)
 
-triangles <- HMDHFDplus::readHMDweb("RUS", "Deaths_lexis", Sys.getenv("HMD_USER"), Sys.getenv("HMD_PASSWORD"))
-
-tidy_triangles <- tidy_triangle_data(triangles)
-```
-
-    ## Joining, by = "id"
-
-    ## Joining, by = c("id", "index")
-
-``` r
-lg <- lexis_grid(1960, 2000, 30, 80)
-
-lg + geom_polygon(data = tidy_triangles, aes(x = x, y = y, group = id, fill = Total))
+lexis_grid(year_start = 1990, year_end = 2000, age_start = 0, age_end = 10) %>%
+  lexis_age(age = 3) %>%
+  lexis_cohort(cohort = 1988) %>%
+  lexis_year(year = 1998) %>%
+  lexis_lifeline(birth = "1991-09-23", lwd = 1.5)
 ```
 
 ![](README_files/figure-markdown_github/unnamed-chunk-12-1.png)
 
-### If you ...
+#### `LexisPlotR` is build on top of `ggplot2`
 
-... are missing some functionality, have some ideas how to improve this package or even want to contribute, open an issue here on GitHub or contact me.
+`LexisPlotR` is actually just a collection of wrapper functions encapsulating `ggplot2` logic. Therefore, each plot returned by `LexisPlotR` is an object of class `ggplot` and can be altered using well known `ggplot2` functionalities.
+
+``` r
+library(magrittr)
+library(ggplot2)
+
+p <- lexis_grid(year_start = 1990, year_end = 2000, age_start = 0, age_end = 10) %>%
+  lexis_age(age = 3) %>%
+  lexis_cohort(cohort = 1988) %>%
+  lexis_year(year = 1998) %>%
+  lexis_lifeline(birth = "1991-09-23", lwd = 1.5)
+
+p <- p + labs(x = "Age", y = "Year", "title" = "LexisPlotR")
+p
+```
+
+![](README_files/figure-markdown_github/unnamed-chunk-13-1.png)
+
+#### Use public available data within LexisPlotR
+
+Projects like the [Human Mortality Database (HMD)](https://mortality.org) provide demographic data for many countries in the world.
+
+##### HMD
+
+HMD's Lexis Triangle data can be visualized using `LexisPlotR`'s `lexis_polygon()`. To fetch data from HMD, the [`HMDHFDplus`](https://github.com/timriffe/TR1/tree/master/TR1/HMDHFDplus) package can be used:
+
+``` r
+library(LexisPlotR)
+library(ggplot2)
+library(HMDHFDplus)
+
+triangles <- HMDHFDplus::readHMDweb(CNTRY = "RUS", "Deaths_lexis", Sys.getenv("HMD_USER"), Sys.getenv("HMD_PASSWORD"))
+
+tidy_triangles <- tidy_triangle_data(triangles)
+
+lg <- lexis_grid(1960, 2000, 30, 80, delta = 5)
+
+lg + geom_polygon(data = tidy_triangles, aes(x = x, y = y, group = id, fill = Total))
+```
+
+##### Other sources for demographic data
+
+Besides HMD, there are other similar or related projects that provide demographic data that could be used within LexisPlotR. An incomplete list:
+
+-   [Japanese Mortality Database](http://www.ipss.go.jp/p-toukei/JMD/index-en.asp)
+-   [Canadian Human Mortality Database](http://www.bdlc.umontreal.ca/CHMD/)
+-   [Human Fertility Database](https://www.humanfertility.org/cgi-bin/main.php)
+-   ...
+
+Until now, only HMD Lexis Triangles are supported natively by LexisPlotR.
