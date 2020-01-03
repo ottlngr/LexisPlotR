@@ -145,11 +145,11 @@ polygons &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io
 <p>A life line is a simple tool to represent an individual’s life in a Lexis Diagram.</p>
 <p>The behaviour of <code><a href="reference/lexis_lifeline.html">lexis_lifeline()</a></code> can be controlled by supplying an entry and/or exit date along with the individuals birthday:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">lg &lt;-<span class="st"> </span><span class="kw"><a href="reference/lexis_grid.html">lexis_grid</a></span>(<span class="dt">year_start =</span> <span class="dv">1900</span>, <span class="dt">year_end =</span> <span class="dv">1905</span>, <span class="dt">age_start =</span> <span class="dv">0</span>, <span class="dt">age_end =</span> <span class="dv">5</span>)
-<span class="kw"><a href="reference/lexis_lifeline.html">lexis_lifeline</a></span>(<span class="dt">lg =</span> lg, <span class="dt">birth =</span> <span class="st">"1901-09-23"</span>)</code></pre></div>
+<span class="kw"><a href="reference/lexis_lifeline.html">lexis_lifeline</a></span>(<span class="dt">lg =</span> lg, <span class="dt">birth =</span> <span class="st">"1901-09-23"</span>, <span class="dt">lwd =</span> <span class="fl">1.5</span>)</code></pre></div>
 <p><img src="README_files/figure-markdown_github/unnamed-chunk-9-1.png"></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="reference/lexis_lifeline.html">lexis_lifeline</a></span>(<span class="dt">lg =</span> lg, <span class="dt">birth =</span> <span class="st">"1901-09-23"</span>, <span class="dt">entry =</span> <span class="st">"1902-04-01"</span>)</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="reference/lexis_lifeline.html">lexis_lifeline</a></span>(<span class="dt">lg =</span> lg, <span class="dt">birth =</span> <span class="st">"1901-09-23"</span>, <span class="dt">entry =</span> <span class="st">"1902-04-01"</span>, <span class="dt">lwd =</span> <span class="fl">1.5</span>)</code></pre></div>
 <p><img src="README_files/figure-markdown_github/unnamed-chunk-9-2.png"></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="reference/lexis_lifeline.html">lexis_lifeline</a></span>(<span class="dt">lg =</span> lg, <span class="dt">birth =</span> <span class="st">"1901-09-23"</span>, <span class="dt">entry =</span> <span class="st">"1902-04-01"</span>, <span class="dt">exit =</span> <span class="st">"1904-10-31"</span>)</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="reference/lexis_lifeline.html">lexis_lifeline</a></span>(<span class="dt">lg =</span> lg, <span class="dt">birth =</span> <span class="st">"1901-09-23"</span>, <span class="dt">entry =</span> <span class="st">"1902-04-01"</span>, <span class="dt">exit =</span> <span class="st">"1904-10-31"</span>, <span class="dt">lwd =</span> <span class="fl">1.5</span>)</code></pre></div>
 <p><img src="README_files/figure-markdown_github/unnamed-chunk-9-3.png"></p>
 <p>You can also use entry and death dates from a <code>data.frame</code> which is useful when plotting life lines of several individuals or hole populations. <strong><code>LexisPlotR</code></strong> comes with a random dataset of entry and exit dates for 300 Individuals from 1895 to 1905. Some of the deaths (or exits) are not observed or unknown. Take a look at the <code>lifelines_sample</code> dataset:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="https://rdrr.io/r/utils/data.html">data</a></span>(<span class="st">"lifelines_sample"</span>)
@@ -168,31 +168,73 @@ lifelines_sample &lt;-<span class="st"> </span>lifelines_sample[<span class="dv"
 ## 10 1899-04-02 1902-04-11</code></pre></div>
 <p>To add all this data to your Lexis Diagram, use <code><a href="reference/lexis.lifeline.html">lexis.lifeline()</a></code> and provide the respective columns of <code>lifelines_sample</code> as arguments:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">lg &lt;-<span class="st"> </span><span class="kw"><a href="reference/lexis_grid.html">lexis_grid</a></span>(<span class="dt">year_start =</span> <span class="dv">1900</span>, <span class="dt">year_end =</span> <span class="dv">1905</span>, <span class="dt">age_start =</span> <span class="dv">0</span>, <span class="dt">age_end =</span> <span class="dv">5</span>)
-<span class="kw"><a href="reference/lexis_lifeline.html">lexis_lifeline</a></span>(<span class="dt">lg =</span> lg, <span class="dt">birth =</span> lifelines_sample<span class="op">$</span>entry, <span class="dt">exit =</span> lifelines_sample<span class="op">$</span>exit, <span class="dt">lineends =</span> <span class="ot">TRUE</span>)</code></pre></div>
+<span class="kw"><a href="reference/lexis_lifeline.html">lexis_lifeline</a></span>(<span class="dt">lg =</span> lg, <span class="dt">birth =</span> lifelines_sample<span class="op">$</span>entry, <span class="dt">exit =</span> lifelines_sample<span class="op">$</span>exit, <span class="dt">lwd =</span> <span class="fl">1.5</span>, <span class="dt">lineends =</span> <span class="ot">TRUE</span>)</code></pre></div>
 <p><img src="README_files/figure-markdown_github/unnamed-chunk-11-1.png"></p>
 </div>
-</div>
-<div id="hmd" class="section level3">
-<h3 class="hasAnchor">
-<a href="#hmd" class="anchor"></a>HMD</h3>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(ggplot2)
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(HMDHFDplus)
+<div id="chaining-lexisplotr-functions" class="section level4">
+<h4 class="hasAnchor">
+<a href="#chaining-lexisplotr-functions" class="anchor"></a>Chaining <code>LexisPlotR</code> functions</h4>
+<p><code>LexisPlotR</code> functions can be chained using the pipe operator <code><a href="https://rdrr.io/pkg/magrittr/man/pipe.html">%&gt;%</a></code> which can be imported from <code>magrittr</code>, <code>dplyr</code> and other packages.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(magrittr)
 
-triangles &lt;-<span class="st"> </span>HMDHFDplus<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/HMDHFDplus/man/readHMDweb.html">readHMDweb</a></span>(<span class="st">"RUS"</span>, <span class="st">"Deaths_lexis"</span>, <span class="kw"><a href="https://rdrr.io/r/base/Sys.getenv.html">Sys.getenv</a></span>(<span class="st">"HMD_USER"</span>), <span class="kw"><a href="https://rdrr.io/r/base/Sys.getenv.html">Sys.getenv</a></span>(<span class="st">"HMD_PASSWORD"</span>))
-
-tidy_triangles &lt;-<span class="st"> </span><span class="kw"><a href="reference/tidy_triangle_data.html">tidy_triangle_data</a></span>(triangles)</code></pre></div>
-<div class="sourceCode"><pre class="sourceCode R"><code class="sourceCode r">## Joining, by = "id"
-
-## Joining, by = c("id", "index")</code></pre></div>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">lg &lt;-<span class="st"> </span><span class="kw"><a href="reference/lexis_grid.html">lexis_grid</a></span>(<span class="dv">1960</span>, <span class="dv">2000</span>, <span class="dv">30</span>, <span class="dv">80</span>)
-
-lg <span class="op">+</span><span class="st"> </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/geom_polygon.html">geom_polygon</a></span>(<span class="dt">data =</span> tidy_triangles, <span class="kw"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span>(<span class="dt">x =</span> x, <span class="dt">y =</span> y, <span class="dt">group =</span> id, <span class="dt">fill =</span> Total))</code></pre></div>
+<span class="kw"><a href="reference/lexis_grid.html">lexis_grid</a></span>(<span class="dt">year_start =</span> <span class="dv">1990</span>, <span class="dt">year_end =</span> <span class="dv">2000</span>, <span class="dt">age_start =</span> <span class="dv">0</span>, <span class="dt">age_end =</span> <span class="dv">10</span>) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw"><a href="reference/lexis_age.html">lexis_age</a></span>(<span class="dt">age =</span> <span class="dv">3</span>) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw"><a href="reference/lexis_cohort.html">lexis_cohort</a></span>(<span class="dt">cohort =</span> <span class="dv">1988</span>) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw"><a href="reference/lexis_year.html">lexis_year</a></span>(<span class="dt">year =</span> <span class="dv">1998</span>) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw"><a href="reference/lexis_lifeline.html">lexis_lifeline</a></span>(<span class="dt">birth =</span> <span class="st">"1991-09-23"</span>, <span class="dt">lwd =</span> <span class="fl">1.5</span>)</code></pre></div>
 <p><img src="README_files/figure-markdown_github/unnamed-chunk-12-1.png"></p>
 </div>
-<div id="if-you" class="section level3">
-<h3 class="hasAnchor">
-<a href="#if-you" class="anchor"></a>If you …</h3>
-<p>… are missing some functionality, have some ideas how to improve this package or even want to contribute, open an issue here on GitHub or contact me.</p>
+<div id="lexisplotr-is-build-on-top-of-ggplot2" class="section level4">
+<h4 class="hasAnchor">
+<a href="#lexisplotr-is-build-on-top-of-ggplot2" class="anchor"></a><code>LexisPlotR</code> is build on top of <code>ggplot2</code>
+</h4>
+<p><code>LexisPlotR</code> is actually just a collection of wrapper functions encapsulating <code>ggplot2</code> logic. Therefore, each plot returned by <code>LexisPlotR</code> is an object of class <code>ggplot</code> and can be altered using well known <code>ggplot2</code> functionalities.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(magrittr)
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(ggplot2)
+
+p &lt;-<span class="st"> </span><span class="kw"><a href="reference/lexis_grid.html">lexis_grid</a></span>(<span class="dt">year_start =</span> <span class="dv">1990</span>, <span class="dt">year_end =</span> <span class="dv">2000</span>, <span class="dt">age_start =</span> <span class="dv">0</span>, <span class="dt">age_end =</span> <span class="dv">10</span>) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw"><a href="reference/lexis_age.html">lexis_age</a></span>(<span class="dt">age =</span> <span class="dv">3</span>) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw"><a href="reference/lexis_cohort.html">lexis_cohort</a></span>(<span class="dt">cohort =</span> <span class="dv">1988</span>) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw"><a href="reference/lexis_year.html">lexis_year</a></span>(<span class="dt">year =</span> <span class="dv">1998</span>) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw"><a href="reference/lexis_lifeline.html">lexis_lifeline</a></span>(<span class="dt">birth =</span> <span class="st">"1991-09-23"</span>, <span class="dt">lwd =</span> <span class="fl">1.5</span>)
+
+p &lt;-<span class="st"> </span>p <span class="op">+</span><span class="st"> </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span>(<span class="dt">x =</span> <span class="st">"Age"</span>, <span class="dt">y =</span> <span class="st">"Year"</span>, <span class="st">"title"</span> =<span class="st"> "LexisPlotR"</span>)
+p</code></pre></div>
+<p><img src="README_files/figure-markdown_github/unnamed-chunk-13-1.png"></p>
+</div>
+<div id="use-public-available-data-within-lexisplotr" class="section level4">
+<h4 class="hasAnchor">
+<a href="#use-public-available-data-within-lexisplotr" class="anchor"></a>Use public available data within LexisPlotR</h4>
+<p>Projects like the <a href="https://mortality.org">Human Mortality Database (HMD)</a> provide demographic data for many countries in the world.</p>
+<div id="hmd" class="section level5">
+<h5 class="hasAnchor">
+<a href="#hmd" class="anchor"></a>HMD</h5>
+<p>HMD’s Lexis Triangle data can be visualized using <code>LexisPlotR</code>’s <code><a href="reference/lexis_polygon.html">lexis_polygon()</a></code>. To fetch data from HMD, the <a href="https://github.com/timriffe/TR1/tree/master/TR1/HMDHFDplus"><code>HMDHFDplus</code></a> package can be used:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(LexisPlotR)
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(ggplot2)
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(HMDHFDplus)
+
+triangles &lt;-<span class="st"> </span>HMDHFDplus<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/HMDHFDplus/man/readHMDweb.html">readHMDweb</a></span>(<span class="dt">CNTRY =</span> <span class="st">"RUS"</span>, <span class="st">"Deaths_lexis"</span>, <span class="kw"><a href="https://rdrr.io/r/base/Sys.getenv.html">Sys.getenv</a></span>(<span class="st">"HMD_USER"</span>), <span class="kw"><a href="https://rdrr.io/r/base/Sys.getenv.html">Sys.getenv</a></span>(<span class="st">"HMD_PASSWORD"</span>))
+
+tidy_triangles &lt;-<span class="st"> </span><span class="kw"><a href="reference/tidy_triangle_data.html">tidy_triangle_data</a></span>(triangles)
+
+lg &lt;-<span class="st"> </span><span class="kw"><a href="reference/lexis_grid.html">lexis_grid</a></span>(<span class="dv">1960</span>, <span class="dv">2000</span>, <span class="dv">30</span>, <span class="dv">80</span>, <span class="dt">delta =</span> <span class="dv">5</span>)
+
+lg <span class="op">+</span><span class="st"> </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/geom_polygon.html">geom_polygon</a></span>(<span class="dt">data =</span> tidy_triangles, <span class="kw"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span>(<span class="dt">x =</span> x, <span class="dt">y =</span> y, <span class="dt">group =</span> id, <span class="dt">fill =</span> Total))</code></pre></div>
+</div>
+<div id="other-sources-for-demographic-data" class="section level5">
+<h5 class="hasAnchor">
+<a href="#other-sources-for-demographic-data" class="anchor"></a>Other sources for demographic data</h5>
+<p>Besides HMD, there are other similar or related projects that provide demographic data that could be used within LexisPlotR. An incomplete list:</p>
+<ul>
+<li><a href="http://www.ipss.go.jp/p-toukei/JMD/index-en.asp">Japanese Mortality Database</a></li>
+<li><a href="http://www.bdlc.umontreal.ca/CHMD/">Canadian Human Mortality Database</a></li>
+<li><a href="https://www.humanfertility.org/cgi-bin/main.php">Human Fertility Database</a></li>
+<li>…</li>
+</ul>
+<p>Until now, only HMD Lexis Triangles are supported natively by LexisPlotR.</p>
+</div>
+</div>
 </div>
 </div>
   </div>

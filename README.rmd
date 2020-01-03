@@ -190,8 +190,3 @@ Besides HMD, there are other similar or related projects that provide demographi
 
 Until now, only HMD Lexis Triangles are supported natively by LexisPlotR.
 
-### If you ...
-
-... are missing some functionality, have some ideas how to improve this package or even want to contribute, open an issue here on GitHub or contact me.
-
-    
