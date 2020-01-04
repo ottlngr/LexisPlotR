@@ -6,6 +6,12 @@ output:
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  fig.path = "man/figures/"
+)
+```
+
 # LexisPlotR
 [![CRAN](http://www.r-pkg.org/badges/version/LexisPlotR)](http://cran.rstudio.com/package=LexisPlotR) [![Downloads](http://cranlogs.r-pkg.org/badges/LexisPlotR?color=brightgreen)](http://www.r-pkg.org/pkg/LexisPlotR) [![Travis build status](https://travis-ci.org/ottlngr/LexisPlotR.svg?branch=master)](https://travis-ci.org/ottlngr/LexisPlotR) [![AppVeyor build status](https://ci.appveyor.com/api/projects/status/github/ottlngr/LexisPlotR?branch=master&svg=true)](https://ci.appveyor.com/project/ottlngr/LexisPlotR)
 
@@ -36,7 +42,7 @@ You can install the latest version of **`LexisPlotR`** by using `install_github(
 
 ##### Plot an empty Lexis grid
 
-A Lexis Diagram is basically determined by two measures: A range of years presented on the horizontal axis and a range of ages shown on the vertical axis. To plot an empty Lexis grid, use `lexis.grid()` which takes these measures as numeric inputs:
+A Lexis Diagram is basically determined by two measures: A range of years presented on the horizontal axis and a range of ages shown on the vertical axis. To plot an empty Lexis grid, use `lexis_grid()` which takes these measures as numeric inputs:
 
 ```{r, message=FALSE}
 library(LexisPlotR)

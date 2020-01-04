@@ -2,7 +2,7 @@ Package: LexisPlotR
 Type: Package
 Title: Plot Lexis Diagrams for Demographic Purposes
 Version: 0.4
-Authors@R: c(person("Philipp", "Ottolinger", email = "philipp@ottolinger.de", role = "cre"),
+Authors@R: c(person("Philipp", "Ottolinger", email = "philipp@ottolinger.de", role = c("cre", "aut")),
 						 person("Marieke", "Smilde-Becker", role="ctb"))
 Maintainer: Philipp Ottolinger <philipp@ottolinger.de>
 Description: Plots empty Lexis grids, adds lifelines and highlights certain areas of the grid, like cohorts and age groups.

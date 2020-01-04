@@ -1,6 +1,8 @@
 # LexisPlotR 0.4
 
-- Many minor improvements in many functions.
-- Switched function name schema from `lexis.grid()` to `lexis_grid()`. Old functions are existent but deprecated - new features are only existent in `lexis_*` functions.
-- New Feature: `lexis_lifeline()` now support lifelines starting at an arbitrary age.
-- Improved support for HMD data.
+- Many minor improvements.
+- Unified functions and arguments, changed function naming scheme from `lexis.grid()` to `lexis_grid()`.
+- Set legacy functions to `.Deprecated`.
+- New feature: `lexis_lifeline()` now lets start and end lifelines at arbitrary points in time.
+- New feature: `lexis_polygon()` can draw arbitrary polygons inside a Lexis grid.
+- Improved support for HMD Lexis Triangle data.

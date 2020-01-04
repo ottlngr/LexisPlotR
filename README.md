@@ -31,7 +31,7 @@ You can install the latest version of **`LexisPlotR`** by using `install_github(
 
 ##### Plot an empty Lexis grid
 
-A Lexis Diagram is basically determined by two measures: A range of years presented on the horizontal axis and a range of ages shown on the vertical axis. To plot an empty Lexis grid, use `lexis.grid()` which takes these measures as numeric inputs:
+A Lexis Diagram is basically determined by two measures: A range of years presented on the horizontal axis and a range of ages shown on the vertical axis. To plot an empty Lexis grid, use `lexis_grid()` which takes these measures as numeric inputs:
 
 ``` r
 library(LexisPlotR)
@@ -42,7 +42,7 @@ library(LexisPlotR)
 lexis_grid(year_start = 1900, year_end = 1905, age_start = 0, age_end = 5)
 ```
 
-![](README_files/figure-markdown_github/unnamed-chunk-2-1.png)
+![](man/figures/unnamed-chunk-3-1.png)
 
 The aspect ratio of the axes is fixed to ensure right-angled triangles. So even non-square Lexis grids show right-angled triangles:
 
@@ -50,7 +50,7 @@ The aspect ratio of the axes is fixed to ensure right-angled triangles. So even 
 lexis_grid(year_start = 1900, year_end = 1905, age_start = 0, age_end = 8)
 ```
 
-![](README_files/figure-markdown_github/unnamed-chunk-3-1.png)
+![](man/figures/unnamed-chunk-4-1.png)
 
 When using wide age and/or date ranges, it may be helpful to define a `delta` specifying the number of years to group in the grid:
 
@@ -58,7 +58,7 @@ When using wide age and/or date ranges, it may be helpful to define a `delta` sp
 lexis_grid(year_start = 1900, year_end = 1950, age_start = 0, age_end = 50, delta = 5)
 ```
 
-![](README_files/figure-markdown_github/unnamed-chunk-4-1.png)
+![](man/figures/unnamed-chunk-5-1.png)
 
 ##### Highlight certain areas of the Lexis grid
 
@@ -71,7 +71,7 @@ lexis <- lexis_grid(year_start = 1900, year_end = 1905, age_start = 0, age_end =
 lexis_age(lg = lexis, age = 2)
 ```
 
-![](README_files/figure-markdown_github/unnamed-chunk-5-1.png)
+![](man/figures/unnamed-chunk-6-1.png)
 
 Next to `lexis_age()` there are also `lexis_year()` and `lexis_cohort()` which highlight a certain year or cohort, respectively:
 
@@ -80,14 +80,14 @@ lexis <- lexis_grid(year_start = 1900, year_end = 1905, age_start = 0, age_end =
 lexis_year(lg = lexis, year = 1903)
 ```
 
-![](README_files/figure-markdown_github/unnamed-chunk-6-1.png)
+![](man/figures/unnamed-chunk-7-1.png)
 
 ``` r
 lexis <- lexis_grid(year_start = 1900, year_end = 1905, age_start = 0, age_end = 5)
 lexis_cohort(lg = lexis, cohort = 1898)
 ```
 
-![](README_files/figure-markdown_github/unnamed-chunk-7-1.png)
+![](man/figures/unnamed-chunk-8-1.png)
 
 The similar `lexis_polygon()` can be used to highlight arbitrary regions of the Lexis grid:
 
@@ -101,7 +101,7 @@ polygons <- data.frame(group = c(1, 1, 1, 2, 2, 2),
 lexis_polygon(lg = lexis, x = polygons$x, y = polygons$y, group = polygons$group)
 ```
 
-![](README_files/figure-markdown_github/unnamed-chunk-8-1.png)
+![](man/figures/unnamed-chunk-9-1.png)
 
 ##### Add life lines to the Lexis Diagram
 
@@ -114,19 +114,19 @@ lg <- lexis_grid(year_start = 1900, year_end = 1905, age_start = 0, age_end = 5)
 lexis_lifeline(lg = lg, birth = "1901-09-23", lwd = 1.5)
 ```
 
-![](README_files/figure-markdown_github/unnamed-chunk-9-1.png)
+![](man/figures/unnamed-chunk-10-1.png)
 
 ``` r
 lexis_lifeline(lg = lg, birth = "1901-09-23", entry = "1902-04-01", lwd = 1.5)
 ```
 
-![](README_files/figure-markdown_github/unnamed-chunk-9-2.png)
+![](man/figures/unnamed-chunk-10-2.png)
 
 ``` r
 lexis_lifeline(lg = lg, birth = "1901-09-23", entry = "1902-04-01", exit = "1904-10-31", lwd = 1.5)
 ```
 
-![](README_files/figure-markdown_github/unnamed-chunk-9-3.png)
+![](man/figures/unnamed-chunk-10-3.png)
 
 You can also use entry and death dates from a `data.frame` which is useful when plotting life lines of several individuals or hole populations. **`LexisPlotR`** comes with a random dataset of entry and exit dates for 300 Individuals from 1895 to 1905. Some of the deaths (or exits) are not observed or unknown. Take a look at the `lifelines_sample` dataset:
 
@@ -155,7 +155,7 @@ lg <- lexis_grid(year_start = 1900, year_end = 1905, age_start = 0, age_end = 5)
 lexis_lifeline(lg = lg, birth = lifelines_sample$entry, exit = lifelines_sample$exit, lwd = 1.5, lineends = TRUE)
 ```
 
-![](README_files/figure-markdown_github/unnamed-chunk-11-1.png)
+![](man/figures/unnamed-chunk-12-1.png)
 
 #### Chaining `LexisPlotR` functions
 
@@ -171,7 +171,7 @@ lexis_grid(year_start = 1990, year_end = 2000, age_start = 0, age_end = 10) %>%
   lexis_lifeline(birth = "1991-09-23", lwd = 1.5)
 ```
 
-![](README_files/figure-markdown_github/unnamed-chunk-12-1.png)
+![](man/figures/unnamed-chunk-13-1.png)
 
 #### `LexisPlotR` is build on top of `ggplot2`
 
@@ -191,7 +191,7 @@ p <- p + labs(x = "Age", y = "Year", "title" = "LexisPlotR")
 p
 ```
 
-![](README_files/figure-markdown_github/unnamed-chunk-13-1.png)
+![](man/figures/unnamed-chunk-14-1.png)
 
 #### Use public available data within LexisPlotR
 
