@@ -7,12 +7,5 @@
 
 ## R CMD check results
 
-0 errors | 0 warnings | 1 note
-
-
-```
-  checking top-level files ... NOTE
-  Non-standard file/directory found at top level:
-    ‘docs’
-```
+0 errors | 0 warnings | 0 notes
 
