@@ -11,3 +11,6 @@ README.md
 README.rmd
 README.html
 ^cran-comments\.md$
+^CRAN-RELEASE$
+^docs$
+^_pkgdown\.yml$
